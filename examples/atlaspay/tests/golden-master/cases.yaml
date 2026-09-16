@@ -1,0 +1,105 @@
+cases:
+  - id: GM-001
+    description: US Gold baseline
+    account_id: SYN000000003
+    product: GLD1
+    jurisdiction: US
+    mcc: '5411'
+    amount: 4000.00
+    temp_control: 0
+    risk_score: 650
+    risk_available: true
+    expected_limit: 5000.00
+
+  - id: GM-002
+    description: Grandfathered exception overrides ordinary calculation
+    account_id: SYN000000001
+    product: GLD1
+    jurisdiction: US
+    mcc: '5411'
+    amount: 7000.00
+    grandfathered: true
+    expected_limit: 7500.00
+
+  - id: GM-003
+    description: Jurisdiction lower cap
+    account_id: SYN000000003
+    product: GLD1
+    jurisdiction: CA
+    mcc: '5411'
+    amount: 3900.00
+    expected_limit: 4000.00
+
+  - id: GM-004
+    description: Temporary customer control lowers limit
+    account_id: SYN000000003
+    product: GLD1
+    jurisdiction: US
+    mcc: '5411'
+    temp_control: 2500.00
+    expected_limit: 2500.00
+
+  - id: GM-005
+    description: Gambling merchant category cap
+    product: GLD1
+    jurisdiction: US
+    mcc: '7995'
+    risk_score: 650
+    expected_limit: 1000.00
+
+  - id: GM-006
+    description: Cash-like merchant category cap
+    product: GLD1
+    jurisdiction: US
+    mcc: '6051'
+    risk_score: 650
+    expected_limit: 2000.00
+
+  - id: GM-007
+    description: Elevated synthetic risk severity reduces candidate limit
+    product: GLD1
+    jurisdiction: US
+    mcc: '5411'
+    risk_score: 850
+    expected_limit: 4000.00
+
+  - id: GM-008
+    description: Low synthetic risk-score branch is intentionally more restrictive in this estate
+    product: GLD1
+    jurisdiction: US
+    mcc: '5411'
+    risk_score: 450
+    expected_limit: 3500.00
+
+  - id: GM-009
+    description: Risk timeout invokes deterministic fallback
+    product: GLD1
+    jurisdiction: US
+    mcc: '5411'
+    risk_available: false
+    fallback_score: 650
+    expected_limit: 5000.00
+
+  - id: GM-010
+    description: Product maximum is absolute ceiling
+    product: PLT1
+    jurisdiction: US
+    mcc: '5411'
+    candidate_before_cap: 20000.00
+    expected_limit: 15000.00
+
+  - id: GM-011
+    description: Amount above applied limit is declined
+    product: GLD1
+    jurisdiction: US
+    mcc: '5411'
+    amount: 5500.00
+    expected_decision: D
+
+  - id: GM-012
+    description: Amount at applied limit is approved
+    product: GLD1
+    jurisdiction: US
+    mcc: '5411'
+    amount: 5000.00
+    expected_decision: A

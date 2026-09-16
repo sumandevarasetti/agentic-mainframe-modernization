@@ -1,0 +1,23 @@
+name: atlaspay-understand-eval
+version: 0.1.0
+ground_truth: ground-truth.yaml
+metrics:
+  - dependency_recall
+  - dependency_precision
+  - business_rule_recall
+  - business_rule_precision
+  - evidence_traceability
+  - unsupported_claim_rate
+  - known_unknown_quality
+  - impact_analysis_completeness
+
+minimum_evidence_expectations:
+  each_dependency_claim_requires_artifact_reference: true
+  each_business_rule_requires_artifact_reference: true
+  inference_must_be_labeled: true
+  unknowns_must_be_explicit: true
+
+score_interpretation:
+  note: >
+    No single aggregate score should substitute for review of unsupported claims
+    and evidence gaps. High recall with hallucinated dependencies is not acceptable.

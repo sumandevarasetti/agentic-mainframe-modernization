@@ -1,0 +1,18 @@
+programs:
+  - ATLAUTH
+  - ACCTVAL
+  - MERCHCHK
+  - TRNLIM01
+  - LIMITPOL
+  - EXCEPT01
+  - TMPCTRL
+  - MERCHVAL
+  - CUSTRSK
+  - RISKFBK
+  - LIMUTIL
+  - AUTHLOG
+
+notes:
+  - LIMITBAT is batch-only.
+  - EXCREC01 is batch-only.
+  - AUTHRPT is batch-only.
