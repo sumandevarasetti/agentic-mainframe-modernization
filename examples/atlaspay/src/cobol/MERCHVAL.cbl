@@ -1,0 +1,19 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. MERCHVAL.
+
+       DATA DIVISION.
+       LINKAGE SECTION.
+       COPY AUTHREQ.
+       01 LK-MCC-LIMIT PIC 9(7)V99.
+
+       PROCEDURE DIVISION USING AUTH-REQUEST LK-MCC-LIMIT.
+           MOVE 9999999.99 TO LK-MCC-LIMIT
+           EVALUATE AR-MERCHANT-CATEGORY
+              WHEN '7995'
+                 MOVE 1000.00 TO LK-MCC-LIMIT
+              WHEN '6051'
+                 MOVE 2000.00 TO LK-MCC-LIMIT
+              WHEN OTHER
+                 CONTINUE
+           END-EVALUATE
+           GOBACK.

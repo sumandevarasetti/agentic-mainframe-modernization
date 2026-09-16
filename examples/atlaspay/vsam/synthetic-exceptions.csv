@@ -1,0 +1,4 @@
+account_id,effective_date,expiry_date,exception_limit,reason,active
+SYN000000001,20220101,20991231,7500.00,legacy_contract,Y
+SYN000000777,20250101,20271231,12000.00,premium_exception,Y
+SYN000000888,20200101,20231231,6500.00,expired_exception,N

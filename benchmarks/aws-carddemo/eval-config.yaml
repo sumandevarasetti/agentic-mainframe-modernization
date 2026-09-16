@@ -1,0 +1,22 @@
+benchmark: aws-carddemo
+adapter_version: 0.1.0
+upstream_repository: aws-samples/aws-mainframe-modernization-carddemo
+pinned_commit: 59cc6c2fd7ebd7ef7925cad552a01a4b8b6e4d5e
+source_strategy: fetch-upstream-not-vendored
+
+stage: UNDERSTAND
+metrics:
+  - evidence_traceability
+  - unsupported_claim_rate
+  - known_unknown_quality
+  - impact_analysis_completeness
+
+future_metrics:
+  - dependency_recall_after_ground_truth_baseline
+  - dependency_precision_after_ground_truth_baseline
+  - business_rule_recall_after_ground_truth_baseline
+  - business_rule_precision_after_ground_truth_baseline
+
+notes:
+  - External benchmark ground truth will be curated separately from AtlasPay.
+  - Do not copy AtlasPay business rules into CardDemo evaluation.

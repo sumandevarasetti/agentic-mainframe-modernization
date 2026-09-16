@@ -1,0 +1,103 @@
+estate: atlaspay
+estate_version: 0.1.0
+capability: dynamic-transaction-limit
+status: canonical-synthetic-ground-truth
+
+entry_points:
+  cics_transaction: ATLA
+  online_orchestrator: ATLAUTH
+  limit_orchestrator: TRNLIM01
+
+expected_program_dependencies:
+  direct_limit_path:
+    - TRNLIM01
+    - LIMITPOL
+    - EXCEPT01
+    - TMPCTRL
+    - MERCHVAL
+    - CUSTRSK
+    - RISKFBK
+    - LIMUTIL
+  upstream_or_supporting:
+    - ATLAUTH
+    - MERCHCHK
+    - AUTHLOG
+  batch_maintenance:
+    - LIMITBAT
+    - EXCREC01
+
+expected_batch_dependencies:
+  - LIMREFR.jcl
+  - EXCRECON.jcl
+  - LIMITBKP.jcl
+
+expected_data_dependencies:
+  - ATLAS_LIMIT_POLICY
+  - ATLAS_ACCOUNT_PRODUCT
+  - ATLASPAY.VSAM.LIMIT.EXCEPT
+
+expected_external_dependencies:
+  - ATLAS.RISK.REQUEST
+  - ATLAS.RISK.RESPONSE
+
+expected_business_rules:
+  BR-001:
+    name: product_base_limit
+    evidence:
+      - src/cobol/LIMITPOL.cbl
+      - db2/schema.sql
+  BR-002:
+    name: jurisdiction_cap
+    evidence:
+      - src/cobol/LIMITPOL.cbl
+      - src/cobol/LIMUTIL.cbl
+  BR-003:
+    name: grandfathered_exception_override
+    evidence:
+      - src/cobol/EXCEPT01.cbl
+      - src/cobol/LIMUTIL.cbl
+      - vsam/synthetic-exceptions.csv
+  BR-004:
+    name: temporary_customer_control_can_lower_limit
+    evidence:
+      - src/cobol/TMPCTRL.cbl
+      - src/cobol/LIMUTIL.cbl
+  BR-005:
+    name: merchant_category_constraint
+    evidence:
+      - src/cobol/MERCHVAL.cbl
+      - src/cobol/LIMUTIL.cbl
+  BR-006:
+    name: risk_severity_adjustment
+    evidence:
+      - src/cobol/CUSTRSK.cbl
+      - src/cobol/LIMUTIL.cbl
+      - mq/message-contracts.md
+  BR-007:
+    name: deterministic_risk_timeout_fallback
+    evidence:
+      - src/cobol/TRNLIM01.cbl
+      - src/cobol/RISKFBK.cbl
+      - mq/queues.yaml
+  BR-008:
+    name: absolute_product_ceiling
+    evidence:
+      - src/cobol/LIMUTIL.cbl
+      - db2/schema.sql
+  BR-009:
+    name: authorize_when_amount_at_or_below_applied_limit
+    evidence:
+      - src/cobol/ATLAUTH.cbl
+
+planted_cross_artifact_dependencies:
+  - nightly Db2 policy refresh via LIMREFR -> LIMITBAT
+  - exception data maintenance via EXCRECON -> EXCREC01 -> VSAM exception dataset
+  - risk timeout path via CUSTRSK -> RISKFBK
+  - merchant-category constraint separate from primary limit-policy lookup
+
+known_unknowns_expected_from_a_good_analysis:
+  - production-scale latency is not represented
+  - actual regulatory/card-network rules are intentionally absent
+  - MQRSKGET implementation is external to this estate
+  - detailed VSAM reconciliation logic is intentionally omitted
+  - synthetic source is not guaranteed to compile on a specific compiler without environment adaptation

@@ -1,9 +1,12 @@
+# OS / editors
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
 *.swp
 *.swo
+
+# Secrets / local configuration
 .env
 .env.*
 !.env.example
@@ -11,6 +14,8 @@ Thumbs.db
 *.key
 secrets/
 credentials/
+
+# Runtime / build artifacts
 __pycache__/
 *.pyc
 build/
@@ -20,4 +25,12 @@ out/
 coverage/
 .tmp/
 tmp/
+
+# External benchmark worktrees
+benchmarks/aws-carddemo/worktree/
+
+# Logs
 *.log
+
+# Local evaluation results
+evals/results/local/

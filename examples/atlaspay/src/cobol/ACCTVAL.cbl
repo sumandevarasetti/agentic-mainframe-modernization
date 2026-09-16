@@ -1,0 +1,14 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. ACCTVAL.
+
+       DATA DIVISION.
+       LINKAGE SECTION.
+       COPY AUTHREQ.
+       01 LK-VALID PIC X.
+
+       PROCEDURE DIVISION USING AUTH-REQUEST LK-VALID.
+           MOVE 'Y' TO LK-VALID
+           IF AR-ACCOUNT-ID = SPACES
+              MOVE 'N' TO LK-VALID
+           END-IF
+           GOBACK.

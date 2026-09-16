@@ -1,0 +1,13 @@
+queues:
+  - name: ATLAS.RISK.REQUEST
+    direction: outbound
+    producer: CUSTRSK
+    purpose: Request current synthetic account risk context.
+  - name: ATLAS.RISK.RESPONSE
+    direction: inbound
+    consumer: CUSTRSK
+    purpose: Return risk score/status used by transaction-limit decisioning.
+
+timeout_behavior:
+  program: RISKFBK
+  rule: deterministic_fallback

@@ -1,0 +1,7 @@
+transactions:
+  - id: ATLA
+    program: ATLAUTH
+    description: Synthetic online card authorization transaction.
+  - id: ATLI
+    program: TRNLIM01
+    description: Synthetic internal transaction-limit diagnostic entry point.
