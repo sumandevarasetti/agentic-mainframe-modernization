@@ -1,0 +1,26 @@
+stage: LEARN
+purpose: Convert outcomes into reusable knowledge and future modernization advantage.
+question: What did this modernization teach us that should make the next decision
+  safer or faster?
+inputs:
+- shift_record
+- production_telemetry
+- modernization_proof_package
+outputs:
+- knowledge_delta
+evidence:
+- new_rules
+- corrected_assumptions
+- new_tests
+- reusable_patterns
+- new_candidates
+agent_permissions:
+  read: true
+  update_low_risk_docs: true
+  change_domain_policy: false
+human_gate: null
+exit_criteria:
+- knowledge_reused_by_future_understand
+failure_modes:
+- throwaway_modernization_knowledge
+next_stage: UNDERSTAND

@@ -1,0 +1,15 @@
+status: illustrative-framework-example
+stage: TRANSFORM
+artifact: traceable_change_set
+traceability:
+  objective: Dynamic Transaction Limit
+  evidence: ../understand/current-state-evidence.yaml
+  decision: ../decide/modernization-decision-record.yaml
+  plan: ../plan/modernization-execution-plan.yaml
+candidate_changes:
+  - {id: C01, change: introduce_stable_policy_contract, scope_status: approved}
+  - {id: C02, change: implement_dynamic_policy_component, scope_status: approved}
+  - {id: C03, change: preserve_grandfathered_exception_adapter, scope_status: approved}
+  - {id: C04, change: add_shadow_comparison_path, scope_status: approved}
+explicitly_not_changed: [unrelated_authorization_logic, unrelated_batch_jobs, production_retirement_controls]
+note: This starter pack records the intended bounded change set; no IBM Bob transformation is claimed to have been executed.

@@ -1,0 +1,43 @@
+name: full-agentic-strangler
+version: 0.1.0
+type: modernization-lifecycle
+portable: true
+native_product_syntax: false
+core_policy:
+  evidence_required_for_progression: true
+  human_authority_required_for:
+  - modernization_decision
+  - plan_risk_acceptance
+  - evidence_sufficiency
+  - production_shift
+  - irreversible_retirement
+  destructive_actions_default: disabled
+  production_execution_default: disabled
+stages:
+- id: '01'
+  name: UNDERSTAND
+  file: stages/01-understand.yaml
+- id: '02'
+  name: DECIDE
+  file: stages/02-decide.yaml
+- id: '03'
+  name: PLAN
+  file: stages/03-plan.yaml
+- id: '04'
+  name: TRANSFORM
+  file: stages/04-transform.yaml
+- id: '05'
+  name: PROVE
+  file: stages/05-prove.yaml
+- id: '06'
+  name: SHIFT
+  file: stages/06-shift.yaml
+- id: '07'
+  name: LEARN
+  file: stages/07-learn.yaml
+loop:
+  from: LEARN
+  to: UNDERSTAND
+governance:
+  human_gates: ../../governance/human-gates.yaml
+  autonomy_policy: ../../governance/autonomy-policy.yaml

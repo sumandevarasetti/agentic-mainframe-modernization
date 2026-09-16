@@ -1,0 +1,26 @@
+stage: PLAN
+purpose: Convert the approved disposition into a bounded execution plan.
+question: Exactly what changes, in what order, and how will success be proven?
+inputs:
+- modernization_decision_record
+outputs:
+- modernization_execution_plan
+evidence:
+- scope
+- non_scope
+- ordered_steps
+- rollback_strategy
+- proof_strategy
+- human_gates
+agent_permissions:
+  read: true
+  recommend: true
+  execute: false
+human_gate: GATE-02
+exit_criteria:
+- bounded_plan
+- rollback_defined
+- proof_strategy_defined
+failure_modes:
+- agentic_scope_creep
+next_stage: TRANSFORM

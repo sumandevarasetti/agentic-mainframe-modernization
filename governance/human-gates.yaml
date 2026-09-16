@@ -1,0 +1,58 @@
+policy_name: human-gates
+version: 0.1.0
+status: framework-portable
+description: >
+  Canonical human authority gates for the Agentic Strangler lifecycle.
+  This is a framework policy, not IBM Bob-native syntax.
+principles:
+  - "Agents perform work. Humans retain authority."
+  - "No Evidence, No Progression."
+  - "Agent autonomy should generally decrease as irreversibility increases."
+  - "Production progression is evidence-driven, not schedule-driven."
+  - "Irreversible retirement always requires explicit human authorization."
+gates:
+  GATE-01:
+    name: modernization-decision
+    stage: DECIDE
+    required: true
+    authority: [human_architect, capability_owner]
+    evidence_required: [current_state_evidence_pack, modernization_options, known_unknowns]
+    agent_may: [recommend_disposition, compare_options, summarize_evidence, identify_risks]
+    agent_must_not: [approve_final_disposition, change_business_objective]
+    approval_output: modernization_decision_record
+  GATE-02:
+    name: plan-risk-acceptance
+    stage: PLAN
+    required: true
+    authority: [human_architect, human_engineer]
+    evidence_required: [modernization_decision_record, execution_plan, rollback_strategy, proof_strategy]
+    agent_may: [draft_plan, identify_dependencies, propose_rollback, propose_test_strategy]
+    agent_must_not: [expand_scope_without_approval, remove_required_validation]
+    approval_output: approved_execution_plan
+  GATE-03:
+    name: evidence-sufficiency
+    stage: PROVE
+    required: true
+    authority: [human_engineer, risk_owner]
+    evidence_required: [proof_package, classified_differences, residual_risks]
+    agent_may: [execute_tests, aggregate_evidence, classify_candidate_differences, identify_gaps]
+    agent_must_not: [accept_unexplained_regressions, waive_required_evidence]
+    approval_output: evidence_sufficiency_record
+  GATE-04:
+    name: production-shift
+    stage: SHIFT
+    required: true
+    authority: [release_owner, service_owner]
+    evidence_required: [evidence_sufficiency_record, shift_plan, rollback_thresholds]
+    agent_may: [recommend_progression, execute_pre_authorized_canary, execute_pre_authorized_rollback, monitor_thresholds]
+    agent_must_not: [increase_exposure_beyond_approved_bounds, disable_rollback_controls]
+    approval_output: production_shift_authorization
+  GATE-05:
+    name: irreversible-retirement
+    stage: RETIRE
+    required: true
+    authority: [human_architect, service_owner]
+    evidence_required: [usage_analysis, dependency_analysis, production_observation_period, rollback_or_recovery_plan]
+    agent_may: [analyze_usage, identify_remaining_dependencies, prepare_decommission_plan]
+    agent_must_not: [irreversibly_delete_production_capability, destroy_recovery_artifacts]
+    approval_output: retirement_authorization

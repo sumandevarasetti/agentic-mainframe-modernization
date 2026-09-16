@@ -1,0 +1,3 @@
+account_id,exception_limit,reason
+SYN0001,7500.00,legacy_contract
+SYN0002,12000.00,premium_exception

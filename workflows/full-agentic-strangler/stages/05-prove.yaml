@@ -1,0 +1,27 @@
+stage: PROVE
+purpose: Accumulate objective evidence that the change is acceptable.
+question: What evidence gives justified confidence that the new path can replace or
+  augment the old path?
+inputs:
+- traceable_change_set
+- legacy_behavior_baseline
+outputs:
+- modernization_proof_package
+evidence:
+- behavioral_comparison
+- test_results
+- static_analysis
+- performance_results
+- security_findings
+- classified_differences
+agent_permissions:
+  read: true
+  execute_tests: true
+  approve_risk: false
+human_gate: GATE-03
+exit_criteria:
+- required_evidence_complete
+- unexplained_regressions_resolved_or_rejected
+failure_modes:
+- proof_by_plausibility
+next_stage: SHIFT

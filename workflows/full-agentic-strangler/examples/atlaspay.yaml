@@ -1,0 +1,26 @@
+example: AtlasPay Dynamic Transaction Limit
+status: illustrative-framework-example
+workflow: full-agentic-strangler
+stages:
+  UNDERSTAND:
+    output: current_state_evidence_pack
+    summary: The capability spans COBOL, policy data, exceptions, MQ risk context, CICS context, and JCL refresh.
+  DECIDE:
+    output: modernization_decision_record
+    disposition: EXTRACT
+    human_decision: Extract dynamic policy decisioning behind a stable contract while retaining selected authoritative mainframe behavior.
+  PLAN:
+    output: modernization_execution_plan
+    summary: [characterize_current_behavior, define_stable_contract, isolate_policy_rules, preserve_exceptions, add_dynamic_risk_input, implement_shadow_mode, prove_unchanged_behavior, prove_authorized_new_behavior]
+  TRANSFORM:
+    output: traceable_change_set
+    summary: Produce only the bounded implementation approved by the plan.
+  PROVE:
+    output: modernization_proof_package
+    summary: Compare unchanged behavior for equivalence and classify authorized differences separately from regressions.
+  SHIFT:
+    output: shift_record
+    progression: [shadow, internal, 1_percent, 5_percent, 25_percent, 50_percent, 100_percent]
+  LEARN:
+    output: knowledge_delta
+    summary: Update rules, tests, dependencies, reusable patterns, and backlog.

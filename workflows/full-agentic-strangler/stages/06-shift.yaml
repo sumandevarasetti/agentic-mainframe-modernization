@@ -1,0 +1,23 @@
+stage: SHIFT
+purpose: Progressively transfer production responsibility under explicit thresholds.
+question: Can production responsibility move safely based on measured evidence?
+inputs:
+- evidence_sufficiency_record
+- shift_plan
+outputs:
+- shift_record
+evidence:
+- traffic_progression
+- telemetry
+- comparison_results
+- rollback_events
+agent_permissions:
+  recommend: true
+  execute_pre_authorized_canary: true
+  increase_beyond_bounds: false
+human_gate: GATE-04
+exit_criteria:
+- new_path_reliably_handles_intended_responsibility
+failure_modes:
+- schedule_driven_cutover
+next_stage: LEARN

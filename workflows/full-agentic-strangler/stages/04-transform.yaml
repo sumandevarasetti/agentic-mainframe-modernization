@@ -1,0 +1,22 @@
+stage: TRANSFORM
+purpose: Execute the approved bounded modernization change.
+question: Can we implement the approved change without exceeding the approved boundary?
+inputs:
+- approved_execution_plan
+outputs:
+- traceable_change_set
+evidence:
+- change_traceability
+- diffs
+- generated_tests
+- implementation_notes
+agent_permissions:
+  read: true
+  modify_nonprod: true
+  deploy_prod: false
+human_gate: null
+exit_criteria:
+- implementation_ready_for_proof
+failure_modes:
+- successful_generation_mistaken_for_successful_modernization
+next_stage: PROVE

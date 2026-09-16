@@ -1,0 +1,16 @@
+status: illustrative-framework-example
+stage: PROVE
+artifact: modernization_proof_package
+baseline:
+  golden_master_cases: ../../../tests/golden-master-cases.yaml
+evidence:
+  unchanged_behavior: {required: true, examples: [baseline-us-gold, grandfathered-exception]}
+  intended_new_behavior: {required: true, examples: [high-risk-score-increase]}
+  performance: {required: true, result: placeholder-not-executed}
+  static_analysis: {required: true, result: placeholder-not-executed}
+  security: {required: context-dependent, result: placeholder}
+difference_classification:
+  expected: [approved_dynamic_limit_behavior]
+  unexplained: []
+residual_risks: [runtime_scale_not_tested, production_dependencies_not_modeled]
+human_gate: {id: GATE-03, status: pending-real-execution, authority: [human_engineer, risk_owner]}

@@ -1,0 +1,23 @@
+stage: DECIDE
+purpose: Select the appropriate modernization disposition.
+question: Should we change this capability at all, and if so, how?
+inputs:
+- current_state_evidence_pack
+- business_objective
+outputs:
+- modernization_decision_record
+evidence:
+- options_considered
+- recommended_disposition
+- rejected_alternatives
+- risk_summary
+agent_permissions:
+  read: true
+  recommend: true
+  approve: false
+human_gate: GATE-01
+exit_criteria:
+- named_human_approved_disposition
+failure_modes:
+- transformation_bias
+next_stage: PLAN

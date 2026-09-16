@@ -1,0 +1,28 @@
+policy_name: autonomy-policy
+version: 0.1.0
+status: framework-portable
+rule: "Agent autonomy should generally decrease as irreversibility increases."
+levels:
+  A0:
+    name: observe-only
+    examples: [read_source, build_dependency_graph, summarize_documentation]
+    human_preapproval: false
+  A1:
+    name: recommend
+    examples: [propose_modernization_options, propose_plan, propose_tests]
+    human_preapproval: false
+    human_acceptance_required: true
+  A2:
+    name: bounded-nonprod-execution
+    examples: [generate_code_on_isolated_branch, execute_tests, run_static_analysis]
+    human_preapproval: true
+  A3:
+    name: bounded-production-automation
+    examples: [pre_authorized_canary, automatic_rollback_on_threshold_breach]
+    human_preapproval: true
+    explicit_bounds_required: true
+  A4:
+    name: irreversible
+    examples: [final_legacy_retirement, destructive_authoritative_state_changes]
+    agent_execution_allowed: false
+    human_authorization_required: true

@@ -1,0 +1,30 @@
+stage: UNDERSTAND
+purpose: Construct decision-grade, evidence-linked understanding.
+question: What actually implements this capability, and what might be affected if
+  it changes?
+inputs:
+- source_artifacts
+- runtime_metadata
+- tests
+- documentation
+- sme_knowledge
+outputs:
+- current_state_evidence_pack
+evidence:
+- artifact_inventory
+- dependency_map
+- business_rules
+- known_unknowns
+- source_references
+agent_permissions:
+  read: true
+  recommend: true
+  modify: false
+  deploy: false
+human_gate: null
+exit_criteria:
+- decision_grade_understanding
+- known_unknowns_explicit
+failure_modes:
+- code_comprehension_mistaken_for_application_understanding
+next_stage: DECIDE

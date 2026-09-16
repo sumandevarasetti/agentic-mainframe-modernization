@@ -1,0 +1,38 @@
+status: illustrative-framework-example
+stage: UNDERSTAND
+artifact: current_state_evidence_pack
+capability: Dynamic Transaction Limit
+capability_definition: >
+  Determine the applicable transaction limit for an authorization request,
+  considering product policy, jurisdiction, grandfathered exceptions, and risk context.
+relevant_artifacts:
+  - cobol/TRNLIM01.cbl
+  - cobol/LIMITPOL.cbl
+  - cobol/CUSTRSK.cbl
+  - jcl/LIMITREF.jcl
+  - data/policy-sample.csv
+  - data/grandfathered-exceptions.csv
+  - tests/golden-master-cases.yaml
+dependencies:
+  - Digital Authorization API
+  - CICS ATLA
+  - Db2 policy data
+  - VSAM-style grandfathered exception concept
+  - MQ risk-score concept
+  - nightly policy refresh
+business_rules:
+  - base_limit_comes_from_product_and_jurisdiction_policy
+  - grandfathered_exception_overrides_dynamic_calculation
+  - high_risk_score_example_may_adjust_limit_under_synthetic_rule
+known_unknowns:
+  - production_scale_performance_not_modeled
+  - real_regulatory_rules_intentionally_excluded
+  - real_card_network_rules_intentionally_excluded
+  - bob_specific_analysis_output_not_yet_captured
+human_validation_required:
+  - confirm_synthetic_business_rule_intent
+  - confirm_modernization_objective
+  - confirm_no_proprietary_logic_present
+exit_gate:
+  satisfied: true
+  statement: The synthetic scope is sufficiently understood to compare modernization options.

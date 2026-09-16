@@ -1,0 +1,17 @@
+cases:
+  - id: baseline-us-gold
+    product: GLD1
+    jurisdiction: US
+    risk_score: 725
+    grandfathered: false
+    expected_limit: 5000.00
+  - id: high-risk-score-increase
+    product: GLD1
+    jurisdiction: US
+    risk_score: 825
+    grandfathered: false
+    expected_limit: 6000.00
+  - id: grandfathered-exception
+    account_id: SYN0001
+    grandfathered: true
+    expected_limit: 7500.00

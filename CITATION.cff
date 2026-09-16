@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this framework in research, talks, or publications, please cite the repository and the associated Project Bob book when available."
+title: "Agentic Mainframe Modernization Framework"
+type: software
+authors:
+  - family-names: Devarasetti
+    given-names: Suman
+version: 0.1.0
+date-released: 2026-09-16
+license: Apache-2.0
+repository-code: "https://github.com/sumandevarasetti/agentic-mainframe-modernization"

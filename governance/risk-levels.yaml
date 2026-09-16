@@ -1,0 +1,15 @@
+risk_model: modernization-risk-levels
+version: 0.1.0
+levels:
+  low:
+    description: Reversible analysis/documentation activities.
+    examples: [source_explanation, dependency_analysis, test_generation]
+  medium:
+    description: Bounded code/configuration changes outside production.
+    examples: [refactoring_on_branch, nonproduction_deployment]
+  high:
+    description: Production behavior or authoritative-state exposure.
+    examples: [canary_traffic, production_routing, state_changing_modernization]
+  critical:
+    description: Hard-to-reverse or irreversible actions.
+    examples: [final_legacy_retirement, destructive_data_migration, deletion_of_recovery_path]

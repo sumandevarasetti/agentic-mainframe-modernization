@@ -1,0 +1,28 @@
+status: illustrative-framework-example
+stage: PLAN
+artifact: modernization_execution_plan
+scope:
+  - characterize_current_limit_behavior
+  - define_stable_policy_contract
+  - isolate_dynamic_policy_logic
+  - preserve_grandfathered_exception_path
+  - add_risk_context_input
+  - build_shadow_comparison
+  - prove_unchanged_behavior
+  - prove_authorized_new_behavior
+non_scope:
+  - unrelated_cobol_cleanup
+  - full_platform_migration
+  - wholesale_database_replacement
+  - irreversible_legacy_retirement
+ordered_steps:
+  - {id: P01, action: establish_characterization_baseline}
+  - {id: P02, action: define_capability_contract}
+  - {id: P03, action: implement_bounded_policy_component}
+  - {id: P04, action: preserve_exception_adapter}
+  - {id: P05, action: add_shadow_execution}
+  - {id: P06, action: run_proof_suite}
+  - {id: P07, action: request_shift_authorization}
+proof_strategy: [golden_master_for_unchanged_scenarios, explicit_tests_for_new_dynamic_behavior, latency_comparison, fallback_validation]
+rollback_strategy: [keep_legacy_path_available, route_all_traffic_to_legacy_on_threshold_breach]
+human_gate: {id: GATE-02, status: approved-for-example, authority: [human_architect, human_engineer]}

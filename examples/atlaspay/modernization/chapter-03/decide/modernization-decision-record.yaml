@@ -1,0 +1,18 @@
+status: illustrative-framework-example
+stage: DECIDE
+artifact: modernization_decision_record
+business_objective: Enable dynamic transaction-limit policy safely.
+options_considered:
+  KEEP: {selected: false, reason: "Does not satisfy new business requirement."}
+  REFACTOR: {selected: false, reason: "Improves maintainability but does not create the desired capability boundary."}
+  EXPOSE: {selected: false, reason: "Exposing current behavior alone does not add dynamic policy context."}
+  EXTRACT: {selected: true, reason: "Creates a bounded policy capability while preserving selected mainframe authority."}
+  TRANSFORM: {selected: false, reason: "Language/runtime transformation is not required for the first increment."}
+  REPLATFORM: {selected: false, reason: "No platform move is required to meet the objective."}
+  RETIRE: {selected: false, reason: "Existing authoritative behavior is still required."}
+decision: EXTRACT
+decision_statement: >
+  Extract dynamic limit-policy decisioning behind a stable contract while retaining
+  grandfathered exception behavior and selected authoritative mainframe logic.
+principal_risks: [hidden_exception_behavior, latency_regression, unintended_difference_in_unchanged_scenarios]
+human_gate: {id: GATE-01, status: approved-for-example, authority: human_architect}

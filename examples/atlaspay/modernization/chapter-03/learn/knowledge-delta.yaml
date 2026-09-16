@@ -1,0 +1,11 @@
+status: illustrative-framework-example
+stage: LEARN
+artifact: knowledge_delta
+new_knowledge:
+  - transaction_limit_is_a_cross_artifact_capability
+  - grandfathered_exceptions_need_explicit_preservation
+  - policy_and_risk_inputs_should_be_tested_independently
+new_tests: [golden_master_baseline_cases, explicit_expected_difference_cases]
+reusable_patterns: [dependency_evidence_pack, modernization_decision_record, proof_package_structure, staged_shift_record]
+future_candidates: [other_policy_decision_capabilities, other_exception_driven_mainframe_logic]
+feeds_next_stage: UNDERSTAND

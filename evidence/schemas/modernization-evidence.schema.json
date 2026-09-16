@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Modernization Evidence",
+  "type": "object",
+  "required": [
+    "objective",
+    "stage_evidence",
+    "human_approvals"
+  ],
+  "properties": {
+    "objective": {
+      "type": "string"
+    },
+    "capability": {
+      "type": "string"
+    },
+    "stage_evidence": {
+      "type": "object",
+      "properties": {
+        "UNDERSTAND": {
+          "type": "object"
+        },
+        "DECIDE": {
+          "type": "object"
+        },
+        "PLAN": {
+          "type": "object"
+        },
+        "TRANSFORM": {
+          "type": "object"
+        },
+        "PROVE": {
+          "type": "object"
+        },
+        "SHIFT": {
+          "type": "object"
+        },
+        "LEARN": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "human_approvals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "gate_id",
+          "authority",
+          "status"
+        ],
+        "properties": {
+          "gate_id": {
+            "type": "string"
+          },
+          "authority": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "pending",
+              "approved",
+              "rejected"
+            ]
+          },
+          "timestamp": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
