@@ -1,36 +1,54 @@
 name: rule-extraction
-version: 0.3.0
+version: 0.3.1
+artifact_type: framework-playbook
 framework_stage: UNDERSTAND
 portable: true
-ibm_bob_native_syntax: false
+native_capability_first: true
 purpose: Recover business rules, precedence, exceptions, and evidence from cross-artifact implementation.
+
+ibm_bob_mapping:
+  strategy: compose-native-capabilities
+  preferred_mode: Z Architect
+  verified_capabilities:
+    - Generate program documentation workflow
+    - Generate application documentation workflow
+    - explain skill/command
+    - data-dictionary-management skill
+    - Z Understand analysis
+  supplemental_prompt: prompts/business-rules/extract-business-rules.md
+
 inputs:
   - capability
   - source_artifacts
   - data_definitions
   - middleware_contracts
   - tests
+
 outputs:
   - candidate_business_rules
   - rule_precedence
   - exception_paths
   - unresolved_business_intent
+
 permissions:
   read_only: true
   modify_source: false
   deploy: false
+
 prohibited_actions:
   - invent_regulatory_intent
   - promote_hypothesis_to_fact_without_evidence
   - read_evaluation_ground_truth_during_scored_run
-evidence_required:
+
+required_evidence:
   - implementing_artifacts
   - conditions
   - outcomes
   - confidence_classification
-human_gate:
-  required: false
-  note: Human/domain validation is required for ambiguous business meaning.
+
+human_validation:
+  required_for_ambiguous_business_meaning: true
+
 evaluation:
   - business_rule_recall
   - evidence_traceability

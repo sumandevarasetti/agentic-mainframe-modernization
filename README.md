@@ -1,12 +1,12 @@
 # Agentic Mainframe Modernization Framework
 
-**Version:** 0.3.0  
-**Status:** UNDERSTAND Pack  
+**Version:** 0.3.1  
+**Status:** PP4Z-aligned UNDERSTAND foundation  
 **Companion project:** *Project Bob — Accelerating Mainframe Modernization with Agentic AI*
 
 > **Read it in the book. Run it in the repo.**
 
-This repository is the open companion implementation for *Project Bob*. It turns the book's modernization methodology into inspectable, reusable assets: lifecycle definitions, human approval gates, evidence models, synthetic mainframe estates, prompts, skills, agents, evaluations, and verified product integrations.
+This repository is the open companion implementation for *Project Bob*. It turns the book's modernization methodology into inspectable, reusable assets: lifecycle definitions, human approval gates, evidence models, synthetic mainframe estates, framework playbooks, supplemental prompts, evaluations, and verified product mappings.
 
 ## Core lifecycle
 
@@ -23,68 +23,72 @@ Core rules:
 3. **Agent autonomy generally decreases as irreversibility increases.**
 4. **Modernization is decision-first, not generation-first.**
 5. **KEEP is a valid modernization decision.**
+6. **Native capability first.** If the selected platform already provides a verified capability, the framework composes and evaluates it rather than rebuilding it.
 
-## v0.3.0 — UNDERSTAND Pack
+## IBM Bob Premium Package for Z alignment
 
-This release makes the first Agentic Strangler stage operational as a portable framework package.
+IBM Bob Premium Package for Z (PP4Z) is the primary IBM Z reference implementation for this project. PP4Z already provides Z-specific modes, workflows, skills, tools, Z Understand-backed analysis, repository guidance through `AGENTS.md`, data-dictionary support, impact analysis, implementation planning, explanation, documentation/business-rule extraction, refactoring, and transformation workflows.
 
-### Prompts
+The Agentic Strangler Framework does **not** attempt to recreate those product capabilities.
 
-- `prompts/understanding/capability-discovery.md`
-- `prompts/impact-analysis/change-impact.md`
-- `prompts/business-rules/extract-business-rules.md`
-- `prompts/understanding/known-unknowns.md`
-- `prompts/understanding/sme-questions.md`
+Instead, the framework defines:
 
-### Skills
+- which capability should run at each modernization stage;
+- what evidence it must produce;
+- what uncertainty must remain explicit;
+- which human decisions are required;
+- how outputs are evaluated;
+- how stages connect into a full modernization lifecycle.
 
-- `skills/discovery/`
-- `skills/dependency-analysis/`
-- `skills/rule-extraction/`
+> **IBM Bob supplies modernization capabilities. Agentic Strangler supplies modernization discipline.**
 
-### Agent
+See:
 
-- `agents/understanding-agent/`
-
-### AtlasPay runbook
-
-- `examples/atlaspay/modernization/understand/`
-
-### Evaluation
-
-- `evals/understanding/`
-- canonical synthetic truth remains isolated in `evals/atlaspay/ground-truth.yaml`
-
-### IBM Bob grounding
-
+- `docs/architecture/native-capability-first.md`
+- `integrations/ibm-bob/capability-mapping.yaml`
 - `integrations/ibm-bob/VERIFIED-CAPABILITIES.md`
 
-IBM Bob Premium Package for Z is the primary product implementation lens, but custom Markdown prompts and YAML manifests in this repository are **portable framework artifacts unless explicitly marked as verified Bob-native syntax**.
+## Framework playbooks, not duplicate Bob Skills
 
-## Two reference estates
+The portable framework assets previously called `skills/` are now called **playbooks**:
+
+- `playbooks/discovery/`
+- `playbooks/dependency-analysis/`
+- `playbooks/rule-extraction/`
+
+A framework playbook is a vendor-neutral execution/evidence contract. It may map to one or more native PP4Z workflows, skills, commands, and tools. It is **not** a replacement for an IBM Bob Skill and is not claimed to use Bob-native extension syntax.
+
+Supplemental prompts remain under `prompts/`. They should be used to close evidence gaps or standardize outputs after native capabilities are used, not to replace verified PP4Z functionality.
+
+## UNDERSTAND on IBM Bob
+
+For the first controlled AtlasPay experiment, the native-first sequence is:
+
+1. prepare an isolated AtlasPay workspace that does not contain evaluator ground truth;
+2. configure Z Understand where available;
+3. generate the data dictionary / `DD.json` using PP4Z;
+4. run `/init` to generate native `AGENTS.md`;
+5. merge `examples/atlaspay/AGENTS.framework.md` governance requirements into the generated instructions;
+6. use PP4Z native impact-analysis, explanation, and documentation/business-rule capabilities;
+7. use framework prompts only for unresolved evidence gaps;
+8. freeze outputs;
+9. score against `evals/atlaspay/ground-truth.yaml` outside the Bob workspace.
+
+Detailed procedure: `integrations/ibm-bob/understand/atlaspay-experiment-001.md`.
+
+## Reference estates
 
 ### AtlasPay — canonical teaching + evaluation estate
 
 `examples/atlaspay/`
 
-Use AtlasPay when known answers and repeatable evaluation are required. Do not expose `evals/atlaspay/ground-truth.yaml` to the model before an evaluation run.
+Use AtlasPay when known answers and repeatable evaluation are required. The evaluation ground truth must not be present in the model's experiment workspace.
 
 ### AWS CardDemo — external benchmark estate
 
 `benchmarks/aws-carddemo/`
 
-Use CardDemo after the UNDERSTAND pack performs acceptably against AtlasPay. CardDemo remains upstream; this repository provides a pinned fetch/benchmark adapter rather than repackaging AWS source.
-
-## Recommended v0.3 workflow
-
-1. Read `integrations/ibm-bob/VERIFIED-CAPABILITIES.md`.
-2. Open the AtlasPay workspace and review `examples/atlaspay/AGENTS.md`.
-3. Follow `examples/atlaspay/modernization/understand/README.md`.
-4. Save model outputs outside the ground-truth directory.
-5. Score the run with `evals/understanding/eval-config.yaml` and `scoring-rubric.md`.
-6. Refine prompts/skills only after examining missed dependencies, unsupported claims, and evidence gaps.
-7. Once AtlasPay is stable, repeat against AWS CardDemo.
-8. In an authorized IBM Bob environment, capture observed outputs/screenshots using only synthetic or approved content.
+Use CardDemo after the framework performs acceptably against AtlasPay. CardDemo remains upstream; this repository provides a pinned benchmark adapter rather than repackaging AWS source.
 
 ## IBM relationship
 

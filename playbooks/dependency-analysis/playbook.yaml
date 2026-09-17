@@ -1,13 +1,25 @@
 name: dependency-analysis
-version: 0.3.0
+version: 0.3.1
+artifact_type: framework-playbook
 framework_stage: UNDERSTAND
 portable: true
-ibm_bob_native_syntax: false
+native_capability_first: true
 purpose: Determine direct and transitive capability/change dependencies with evidence.
+
+ibm_bob_mapping:
+  strategy: native-preferred
+  preferred_mode: Z Architect
+  verified_capabilities:
+    - impact-analysis skill
+    - /impact-analysis command
+    - Z Understand analysis
+  supplemental_prompt: prompts/impact-analysis/change-impact.md
+
 inputs:
   - capability_or_change_request
   - source_artifacts
   - optional_z_understand_or_static_analysis_metadata
+
 outputs:
   - direct_impact_set
   - transitive_impact_set
@@ -16,21 +28,25 @@ outputs:
   - middleware_impact
   - test_impact
   - unresolved_dependencies
+
 permissions:
   read_only: true
   modify_source: false
   deploy: false
+
 prohibited_actions:
   - infer_unseen_runtime_dependencies_as_fact
   - select_final_modernization_disposition
   - read_evaluation_ground_truth_during_scored_run
-evidence_required:
+
+required_evidence:
   - source_relationships
   - dependency_relationships
   - confidence_classification
-human_gate:
-  required: false
-  note: SMEs validate unresolved or business-critical dependencies before DECIDE.
+
+human_validation:
+  required_for_ambiguous_or_business_critical_dependencies: true
+
 evaluation:
   - dependency_recall
   - category_coverage

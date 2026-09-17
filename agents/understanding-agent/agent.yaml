@@ -1,22 +1,30 @@
 name: understanding-agent
-version: 0.3.0
+version: 0.3.1
+artifact_type: framework-agent-contract
 framework_stage: UNDERSTAND
 portable: true
 ibm_bob_native_syntax: false
-mission: Produce decision-grade, evidence-linked understanding of a capability.
+native_capability_first: true
+mission: Produce decision-grade, evidence-linked understanding of a capability by orchestrating framework playbooks over verified native execution capabilities.
 
-orchestrates:
-  - discovery
-  - dependency-analysis
-  - rule-extraction
+orchestrates_playbooks:
+  - playbooks/discovery/playbook.yaml
+  - playbooks/dependency-analysis/playbook.yaml
+  - playbooks/rule-extraction/playbook.yaml
   - known-unknown-detection
   - sme-question-generation
+
+ibm_bob_reference_implementation:
+  preferred_mode: Z Architect
+  capability_mapping: integrations/ibm-bob/capability-mapping.yaml
+  principle: use verified PP4Z native workflows/skills/tools before supplemental prompts
 
 inputs:
   - capability
   - business_request
   - workspace_source
-  - optional_static_analysis_metadata
+  - optional_z_understand_metadata
+  - optional_data_dictionary
   - optional_runtime_evidence
 
 outputs:
@@ -34,6 +42,7 @@ prohibited_actions:
   - claim_unseen_runtime_behavior_as_fact
   - hide_uncertainty
   - read_evaluation_ground_truth_during_scored_run
+  - reimplement_a_verified_native_capability_without_documented_reason
 
 required_output_sections:
   - capability_definition
@@ -44,6 +53,8 @@ required_output_sections:
   - known_unknowns
   - sme_questions
   - evidence_inventory
+  - native_capabilities_used
+  - supplemental_assets_used
   - stage_exit_assessment
 
 confidence_classes:
@@ -54,7 +65,8 @@ confidence_classes:
 stage_exit:
   condition: >
     Capability scope is sufficiently understood to evaluate modernization options,
-    material unknowns are explicit, and substantive claims are evidence-linked.
+    material unknowns are explicit, substantive claims are evidence-linked, and a
+    named human confirms that the evidence is sufficient to enter DECIDE.
   human_validation_required: true
 
 evaluation:

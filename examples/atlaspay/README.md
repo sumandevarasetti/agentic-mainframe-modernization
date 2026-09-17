@@ -27,7 +27,11 @@ The modernization question is not "convert COBOL to Java." It is: **what is the 
 - `tests/` — characterization/Golden Master cases
 - `docs/` — intentionally incomplete documentation
 - `modernization/` — book/framework walkthroughs
-- `AGENTS.md` — repository instructions for AI agents
+- `AGENTS.framework.md` — Agentic Strangler governance overlay to merge into Bob-generated `AGENTS.md` after `/init`
+
+## IBM Bob experiment note
+
+For scored PP4Z experiments, do not open the complete framework repository as the Bob workspace because evaluator ground truth exists outside this directory. Use the isolated-workspace procedure in `integrations/ibm-bob/understand/atlaspay-experiment-001.md`.
 
 ## Important
 
@@ -35,4 +39,4 @@ All names, code, records, and business rules are synthetic. No U.S. Bank or othe
 
 ## Evaluation truth
 
-The framework maintains a separate ground-truth specification under `evals/atlaspay/`. That file exists to measure dependency discovery, business-rule recovery, evidence traceability, unsupported claims, and known-unknown quality.
+The framework maintains a separate ground-truth specification under `evals/atlaspay/`. That file exists only for post-run evaluation and must not be exposed to the model during a scored run.
