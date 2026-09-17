@@ -1,12 +1,24 @@
 # Agentic Mainframe Modernization Framework
 
-**Version:** 0.3.1  
-**Status:** PP4Z-aligned UNDERSTAND foundation  
+**Version:** 0.3.2  
+**Status:** Z-focused PP4Z-aligned foundation  
 **Companion project:** *Project Bob — Accelerating Mainframe Modernization with Agentic AI*
 
 > **Read it in the book. Run it in the repo.**
 
 This repository is the open companion implementation for *Project Bob*. It turns the book's modernization methodology into inspectable, reusable assets: lifecycle definitions, human approval gates, evidence models, synthetic mainframe estates, framework playbooks, supplemental prompts, evaluations, and verified product mappings.
+
+## Scope
+
+**Project Bob is Z-focused in implementation, portable in methodology.**
+
+The current book, reference implementation, experiments, and evidence are intentionally centered on **IBM Z** and **IBM Bob Premium Package for Z (PP4Z)**. AtlasPay remains the canonical synthetic estate.
+
+IBM Bob also has Premium Packages for other modernization domains, including IBM i and Java modernization. Those packages are acknowledged, but they are **out of scope for the current implementation**. This repository does not currently claim IBM i- or Java-specific playbooks, mappings, experiments, or benchmark results.
+
+The framework core remains product-neutral where practical so a future implementation could map the same lifecycle, evidence contracts, human gates, and evaluation model to other execution products without changing the methodology.
+
+See `docs/architecture/scope-and-package-strategy.md`.
 
 ## Core lifecycle
 
@@ -45,6 +57,7 @@ Instead, the framework defines:
 See:
 
 - `docs/architecture/native-capability-first.md`
+- `docs/architecture/scope-and-package-strategy.md`
 - `integrations/ibm-bob/capability-mapping.yaml`
 - `integrations/ibm-bob/VERIFIED-CAPABILITIES.md`
 
