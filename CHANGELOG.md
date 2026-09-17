@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.2 — Z Scope Clarification
+
+- Locked the current book and repository implementation scope to IBM Z and IBM Bob Premium Package for Z
+- Added `docs/architecture/scope-and-package-strategy.md`
+- Clarified that IBM i and Java modernization Premium Packages are acknowledged but out of scope for current playbooks, mappings, experiments, and benchmarks
+- Preserved methodology portability without implying equivalent product mappings have been implemented or tested
+- Added explicit guidance not to generalize PP4Z experiment results to other Premium Packages
+
 ## 0.3.1 — PP4Z Alignment
 
 - Adopted **Native Capability First** as a framework design rule
