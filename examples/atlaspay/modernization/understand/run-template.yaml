@@ -1,0 +1,28 @@
+run_id: REPLACE_ME
+framework_version: 0.3.0
+estate: atlaspay
+estate_version: 0.1.0
+capability: dynamic-transaction-limit
+status: not-run
+
+harness:
+  product: REPLACE_ME
+  product_version: REPLACE_ME
+  model: REPLACE_ME
+  z_understand_enabled: unknown
+  data_dictionary_available: unknown
+  agents_md_loaded: true
+
+isolation:
+  ground_truth_hidden_from_model: true
+  prior_scored_outputs_hidden: true
+
+outputs:
+  capability_discovery: null
+  change_impact: null
+  business_rules: null
+  known_unknowns: null
+  sme_questions: null
+  current_state_evidence_pack: null
+
+notes: []

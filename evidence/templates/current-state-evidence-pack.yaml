@@ -1,0 +1,38 @@
+artifact: current_state_evidence_pack
+version: 0.3.0
+framework_stage: UNDERSTAND
+status: template
+
+capability:
+  name: REPLACE_ME
+  business_request: REPLACE_ME
+  definition: null
+
+entry_points: []
+
+artifacts:
+  programs: []
+  copybooks: []
+  batch_jcl: []
+  transactions: []
+  data_stores: []
+  files: []
+  middleware: []
+  apis: []
+  tests: []
+  external_or_unknown: []
+
+dependencies: []
+
+candidate_business_rules: []
+
+known_unknowns: []
+
+sme_questions: []
+
+evidence_inventory: []
+
+stage_exit_assessment:
+  ready_for_decide: false
+  rationale: null
+  human_validation_required: true

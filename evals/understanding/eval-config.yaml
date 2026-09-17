@@ -1,0 +1,44 @@
+evaluation: understand-pack
+version: 0.3.0
+estate: atlaspay
+ground_truth: ../atlaspay/ground-truth.yaml
+
+isolation_requirements:
+  ground_truth_hidden_from_model: true
+  prior_scored_outputs_hidden: true
+
+metrics:
+  dependency_recall:
+    weight: 0.25
+    direction: higher_is_better
+    target: 0.80
+  business_rule_recall:
+    weight: 0.20
+    direction: higher_is_better
+    target: 0.78
+  evidence_traceability:
+    weight: 0.20
+    direction: higher_is_better
+    target: 0.90
+  unsupported_claim_rate:
+    weight: 0.15
+    direction: lower_is_better
+    target_max: 0.05
+  known_unknown_detection:
+    weight: 0.10
+    direction: higher_is_better
+    target: 0.60
+  impact_analysis_completeness:
+    weight: 0.10
+    direction: higher_is_better
+    target: 0.80
+
+acceptance:
+  required:
+    - evidence_traceability_target_met
+    - unsupported_claim_rate_target_met
+  overall_weighted_target: 0.80
+
+notes:
+  - Targets are provisional framework thresholds, not vendor benchmarks.
+  - Do not publish cross-vendor conclusions from a single run.

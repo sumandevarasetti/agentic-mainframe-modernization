@@ -1,0 +1,21 @@
+artifact: current_state_evidence_pack
+version: 0.3.0
+estate: atlaspay
+capability: dynamic-transaction-limit
+status: model-output-template
+
+instructions: >
+  Populate this file only from model analysis produced without access to
+  evals/atlaspay/ground-truth.yaml. Score after outputs are frozen.
+
+capability_definition: null
+entry_points: []
+artifact_inventory: []
+dependency_map: []
+candidate_business_rules: []
+known_unknowns: []
+sme_questions: []
+evidence_inventory: []
+stage_exit_assessment:
+  ready_for_decide: false
+  rationale: null

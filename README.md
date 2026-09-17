@@ -1,21 +1,19 @@
 # Agentic Mainframe Modernization Framework
 
-**Version:** 0.2.0  
-**Status:** Reference-estate and benchmark foundation  
+**Version:** 0.3.0  
+**Status:** UNDERSTAND Pack  
 **Companion project:** *Project Bob — Accelerating Mainframe Modernization with Agentic AI*
 
 > **Read it in the book. Run it in the repo.**
 
-This repository is the open companion implementation for *Project Bob*. It turns the book's modernization methodology into inspectable, reusable artifacts: lifecycle definitions, human approval gates, workflows, evidence models, synthetic mainframe examples, evaluations, and product-specific integrations as they are verified.
+This repository is the open companion implementation for *Project Bob*. It turns the book's modernization methodology into inspectable, reusable assets: lifecycle definitions, human approval gates, evidence models, synthetic mainframe estates, prompts, skills, agents, evaluations, and verified product integrations.
 
 ## Core lifecycle
 
-**Project Strangler architecture:**
-
+**Project Strangler architecture:**  
 **Observe → Encapsulate → Extract → Redirect → Retire**
 
-**Project Bob execution:**
-
+**Project Bob execution:**  
 **UNDERSTAND → DECIDE → PLAN → TRANSFORM → PROVE → SHIFT → LEARN**
 
 Core rules:
@@ -26,45 +24,67 @@ Core rules:
 4. **Modernization is decision-first, not generation-first.**
 5. **KEEP is a valid modernization decision.**
 
+## v0.3.0 — UNDERSTAND Pack
+
+This release makes the first Agentic Strangler stage operational as a portable framework package.
+
+### Prompts
+
+- `prompts/understanding/capability-discovery.md`
+- `prompts/impact-analysis/change-impact.md`
+- `prompts/business-rules/extract-business-rules.md`
+- `prompts/understanding/known-unknowns.md`
+- `prompts/understanding/sme-questions.md`
+
+### Skills
+
+- `skills/discovery/`
+- `skills/dependency-analysis/`
+- `skills/rule-extraction/`
+
+### Agent
+
+- `agents/understanding-agent/`
+
+### AtlasPay runbook
+
+- `examples/atlaspay/modernization/understand/`
+
+### Evaluation
+
+- `evals/understanding/`
+- canonical synthetic truth remains isolated in `evals/atlaspay/ground-truth.yaml`
+
+### IBM Bob grounding
+
+- `integrations/ibm-bob/VERIFIED-CAPABILITIES.md`
+
+IBM Bob Premium Package for Z is the primary product implementation lens, but custom Markdown prompts and YAML manifests in this repository are **portable framework artifacts unless explicitly marked as verified Bob-native syntax**.
+
 ## Two reference estates
 
 ### AtlasPay — canonical teaching + evaluation estate
 
 `examples/atlaspay/`
 
-AtlasPay is a fully synthetic card authorization/mainframe estate designed specifically for the Project Bob methodology. It now includes online COBOL, copybooks, CICS metadata, batch JCL, Db2, VSAM-style exceptions, MQ contracts, characterization tests, intentionally incomplete documentation, and a separate evaluation ground truth.
-
-Use AtlasPay when we need known answers and repeatable evaluation.
+Use AtlasPay when known answers and repeatable evaluation are required. Do not expose `evals/atlaspay/ground-truth.yaml` to the model before an evaluation run.
 
 ### AWS CardDemo — external benchmark estate
 
 `benchmarks/aws-carddemo/`
 
-CardDemo remains in its official upstream repository. This project provides a fetch/pin adapter rather than repackaging AWS source. Use CardDemo to stress-test the same framework against an independently developed public mainframe application.
+Use CardDemo after the UNDERSTAND pack performs acceptably against AtlasPay. CardDemo remains upstream; this repository provides a pinned fetch/benchmark adapter rather than repackaging AWS source.
 
-## v0.2.0 highlights
+## Recommended v0.3 workflow
 
-- AtlasPay Mainframe Reference Estate v0.1.0
-- 15 synthetic COBOL programs
-- 6 copybooks
-- CICS, JCL, Db2, VSAM-style and MQ artifacts
-- 12 Golden Master scenarios
-- AtlasPay UNDERSTAND ground truth
-- common evaluation metrics
-- AWS CardDemo external benchmark adapter
-
-## Start here
-
-1. Read `docs/agentic-strangler.md`.
-2. Review `governance/human-gates.yaml`.
-3. Explore `examples/atlaspay/`.
-4. Inspect `evals/atlaspay/ground-truth.yaml` — but do **not** feed it to the model being evaluated.
-5. Fetch the external CardDemo benchmark with `benchmarks/aws-carddemo/fetch-carddemo.sh`.
-6. Next milestone: build the v0.3 UNDERSTAND prompt/skill/agent pack and run it against AtlasPay first.
-
-## IBM Bob
-
-IBM Bob is the primary product implementation lens for the book, but the portable framework is kept separate from product-specific syntax. Bob-specific assets will be added under `integrations/ibm-bob/` only after they are verified against current IBM documentation and authorized product access.
+1. Read `integrations/ibm-bob/VERIFIED-CAPABILITIES.md`.
+2. Open the AtlasPay workspace and review `examples/atlaspay/AGENTS.md`.
+3. Follow `examples/atlaspay/modernization/understand/README.md`.
+4. Save model outputs outside the ground-truth directory.
+5. Score the run with `evals/understanding/eval-config.yaml` and `scoring-rubric.md`.
+6. Refine prompts/skills only after examining missed dependencies, unsupported claims, and evidence gaps.
+7. Once AtlasPay is stable, repeat against AWS CardDemo.
+8. In an authorized IBM Bob environment, capture observed outputs/screenshots using only synthetic or approved content.
 
 ## IBM relationship
 
