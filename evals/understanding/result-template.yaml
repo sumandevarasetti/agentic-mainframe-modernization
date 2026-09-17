@@ -1,0 +1,29 @@
+run_id: REPLACE_ME
+status: unscored
+harness:
+  product: REPLACE_ME
+  version: REPLACE_ME
+  model: REPLACE_ME
+  context_notes: null
+
+isolation_valid: true
+
+scores:
+  dependency_recall: null
+  business_rule_recall: null
+  evidence_traceability: null
+  unsupported_claim_rate: null
+  known_unknown_detection: null
+  impact_analysis_completeness: null
+  overall_weighted_score: null
+
+findings:
+  strongest_observations: []
+  missed_dependencies: []
+  missed_rules: []
+  unsupported_claims: []
+  useful_unknowns: []
+  prompt_or_skill_improvements: []
+
+publication_note: >
+  One synthetic run does not establish product superiority or generalized vendor performance.

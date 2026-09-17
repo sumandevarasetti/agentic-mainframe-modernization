@@ -1,0 +1,67 @@
+name: understanding-agent
+version: 0.3.0
+framework_stage: UNDERSTAND
+portable: true
+ibm_bob_native_syntax: false
+mission: Produce decision-grade, evidence-linked understanding of a capability.
+
+orchestrates:
+  - discovery
+  - dependency-analysis
+  - rule-extraction
+  - known-unknown-detection
+  - sme-question-generation
+
+inputs:
+  - capability
+  - business_request
+  - workspace_source
+  - optional_static_analysis_metadata
+  - optional_runtime_evidence
+
+outputs:
+  - current_state_evidence_pack
+
+permissions:
+  read_only: true
+  modify_source: false
+  write_analysis_outputs: true
+  deploy: false
+
+prohibited_actions:
+  - select_final_modernization_disposition
+  - modify_application_source
+  - claim_unseen_runtime_behavior_as_fact
+  - hide_uncertainty
+  - read_evaluation_ground_truth_during_scored_run
+
+required_output_sections:
+  - capability_definition
+  - entry_points
+  - artifact_inventory
+  - dependency_map
+  - candidate_business_rules
+  - known_unknowns
+  - sme_questions
+  - evidence_inventory
+  - stage_exit_assessment
+
+confidence_classes:
+  - proven
+  - strongly-supported
+  - unresolved
+
+stage_exit:
+  condition: >
+    Capability scope is sufficiently understood to evaluate modernization options,
+    material unknowns are explicit, and substantive claims are evidence-linked.
+  human_validation_required: true
+
+evaluation:
+  metrics:
+    - dependency_recall
+    - business_rule_recall
+    - evidence_traceability
+    - unsupported_claim_rate
+    - known_unknown_detection
+    - impact_analysis_completeness

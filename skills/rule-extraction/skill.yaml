@@ -1,0 +1,38 @@
+name: rule-extraction
+version: 0.3.0
+framework_stage: UNDERSTAND
+portable: true
+ibm_bob_native_syntax: false
+purpose: Recover business rules, precedence, exceptions, and evidence from cross-artifact implementation.
+inputs:
+  - capability
+  - source_artifacts
+  - data_definitions
+  - middleware_contracts
+  - tests
+outputs:
+  - candidate_business_rules
+  - rule_precedence
+  - exception_paths
+  - unresolved_business_intent
+permissions:
+  read_only: true
+  modify_source: false
+  deploy: false
+prohibited_actions:
+  - invent_regulatory_intent
+  - promote_hypothesis_to_fact_without_evidence
+  - read_evaluation_ground_truth_during_scored_run
+evidence_required:
+  - implementing_artifacts
+  - conditions
+  - outcomes
+  - confidence_classification
+human_gate:
+  required: false
+  note: Human/domain validation is required for ambiguous business meaning.
+evaluation:
+  - business_rule_recall
+  - evidence_traceability
+  - exception_recall
+  - unsupported_claim_rate

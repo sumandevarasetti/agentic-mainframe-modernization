@@ -1,0 +1,38 @@
+name: dependency-analysis
+version: 0.3.0
+framework_stage: UNDERSTAND
+portable: true
+ibm_bob_native_syntax: false
+purpose: Determine direct and transitive capability/change dependencies with evidence.
+inputs:
+  - capability_or_change_request
+  - source_artifacts
+  - optional_z_understand_or_static_analysis_metadata
+outputs:
+  - direct_impact_set
+  - transitive_impact_set
+  - data_impact
+  - batch_impact
+  - middleware_impact
+  - test_impact
+  - unresolved_dependencies
+permissions:
+  read_only: true
+  modify_source: false
+  deploy: false
+prohibited_actions:
+  - infer_unseen_runtime_dependencies_as_fact
+  - select_final_modernization_disposition
+  - read_evaluation_ground_truth_during_scored_run
+evidence_required:
+  - source_relationships
+  - dependency_relationships
+  - confidence_classification
+human_gate:
+  required: false
+  note: SMEs validate unresolved or business-critical dependencies before DECIDE.
+evaluation:
+  - dependency_recall
+  - category_coverage
+  - evidence_traceability
+  - unsupported_claim_rate
