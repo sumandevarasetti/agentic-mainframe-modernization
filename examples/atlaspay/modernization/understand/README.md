@@ -1,89 +1,59 @@
 # AtlasPay UNDERSTAND Runbook
 
-**Framework release:** v0.3.0  
+**Framework release:** v0.3.1  
 **Capability:** Dynamic Transaction Limit  
 **Mode:** read-only evaluation / experimentation
 
-This runbook exercises the first Agentic Strangler stage against the synthetic AtlasPay estate.
+This runbook defines the framework evidence sequence for UNDERSTAND. For IBM Bob Premium Package for Z, use the native-first procedure in:
+
+`integrations/ibm-bob/understand/atlaspay-experiment-001.md`
 
 ## Critical evaluation rule
 
-Do **not** expose `evals/atlaspay/ground-truth.yaml` to the model before the run is complete. Ground truth is an evaluator input, not model context.
+Do **not** expose `evals/atlaspay/ground-truth.yaml` to the model before the run is complete. For scored Bob runs, use a physically isolated AtlasPay workspace, not just a prompt instruction.
 
-## Recommended sequence
+## IBM Bob / PP4Z sequence
 
-### Step 0 — Environment preparation
+1. prepare isolated AtlasPay workspace;
+2. configure Z Understand where available;
+3. generate native data-dictionary context / `DD.json`;
+4. run `/init` to generate `AGENTS.md`;
+5. merge `AGENTS.framework.md` governance requirements;
+6. run native PP4Z impact/explanation/documentation capabilities;
+7. check outputs against framework playbook evidence contracts;
+8. use supplemental prompts only for identified gaps;
+9. synthesize Current-State Evidence Pack;
+10. freeze all outputs;
+11. evaluate outside the Bob workspace.
 
-In an authorized IBM Bob Premium Package for Z environment, consult `integrations/ibm-bob/VERIFIED-CAPABILITIES.md` and current IBM documentation. Where available, configure Z Understand, generate/review `DD.json`, and initialize repository guidance appropriately.
+## Framework playbooks
 
-The portable prompts below may be copied into Bob or another capable AI harness. They are not claimed to be Bob-native extension syntax.
+- `playbooks/discovery/playbook.yaml`
+- `playbooks/dependency-analysis/playbook.yaml`
+- `playbooks/rule-extraction/playbook.yaml`
 
-### Step 1 — Capability discovery
+## Supplemental prompts
 
-Use:
+- `prompts/understanding/capability-discovery.md`
+- `prompts/impact-analysis/change-impact.md`
+- `prompts/business-rules/extract-business-rules.md`
+- `prompts/understanding/known-unknowns.md`
+- `prompts/understanding/sme-questions.md`
 
-`prompts/understanding/capability-discovery.md`
+These prompts are not the primary PP4Z implementation of discovery, impact analysis, or business-rule extraction. They exist for evidence gaps, normalization and portability.
 
-Inputs:
+## Current-State Evidence Pack
 
-- Capability: `Dynamic Transaction Limit`
-- Business request: `Make transaction limits dynamic using account/product context, jurisdiction, temporary controls, merchant category, exceptions, and current risk context.`
+Use the Understanding Agent contract at `agents/understanding-agent/agent.yaml` and the evidence template in this directory.
 
-Save output as `runs/<RUN_ID>/01-capability-discovery.md`.
+Record which native PP4Z capabilities were used and which supplemental framework assets were required.
 
-### Step 2 — Change impact
+## Evaluation
 
-Use:
+After outputs are frozen, score against:
 
-`prompts/impact-analysis/change-impact.md`
-
-Proposed change:
-
-`Extract/evolve Dynamic Transaction Limit behind a stable capability boundary while preserving unchanged behavior.`
-
-Save as `02-change-impact.md`.
-
-### Step 3 — Business-rule recovery
-
-Use:
-
-`prompts/business-rules/extract-business-rules.md`
-
-Save as `03-business-rules.md`.
-
-### Step 4 — Known unknowns
-
-Use:
-
-`prompts/understanding/known-unknowns.md`
-
-Save as `04-known-unknowns.md`.
-
-### Step 5 — SME questions
-
-Use:
-
-`prompts/understanding/sme-questions.md`
-
-Save as `05-sme-questions.md`.
-
-### Step 6 — Current-State Evidence Pack
-
-Synthesize the preceding outputs using the Understanding Agent contract in `agents/understanding-agent/agent.yaml`.
-
-Save as `06-current-state-evidence-pack.md`.
-
-### Step 7 — Score after isolation boundary
-
-Only after all model outputs are frozen, compare them with:
-
-`evals/atlaspay/ground-truth.yaml`
-
-Use:
-
+- `evals/atlaspay/ground-truth.yaml`
 - `evals/understanding/eval-config.yaml`
 - `evals/understanding/scoring-rubric.md`
 
-## Expected outcome
-
-The goal is not a perfect narrative. The goal is decision-grade understanding with high dependency/rule recall, strong evidence traceability, few unsupported claims, and useful unknown detection.
+The goal is decision-grade understanding with high dependency/rule recall, strong evidence traceability, low unsupported-claim rate, and useful unknown detection.

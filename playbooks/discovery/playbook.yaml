@@ -1,34 +1,51 @@
 name: discovery
-version: 0.3.0
+version: 0.3.1
+artifact_type: framework-playbook
 framework_stage: UNDERSTAND
 portable: true
-ibm_bob_native_syntax: false
+native_capability_first: true
 purpose: Build a capability-scoped inventory of entry points, artifacts, and dependency categories.
+
+ibm_bob_mapping:
+  strategy: compose-native-capabilities
+  preferred_mode: Z Architect
+  verified_capabilities:
+    - /init
+    - Generate data dictionary workflow
+    - explain skill/command
+    - Z Understand analysis
+  supplemental_prompt: prompts/understanding/capability-discovery.md
+
 inputs:
   - capability
   - business_request
   - workspace_source
   - optional_static_analysis_metadata
+
 outputs:
   - capability_definition
   - entry_points
   - artifact_inventory
   - dependency_candidates
   - known_unknowns
+
 permissions:
   read_only: true
   modify_source: false
   deploy: false
+
 prohibited_actions:
   - select_modernization_disposition
-  - modify_repository
+  - modify_application_source
   - read_evaluation_ground_truth_during_scored_run
-evidence_required:
+
+required_evidence:
   - artifact_references
   - relationship_references
-human_gate:
-  required: false
-  note: Human validation is required before UNDERSTAND stage exit.
+
+human_validation:
+  required_before_stage_exit: true
+
 evaluation:
   - entry_point_recall
   - dependency_recall

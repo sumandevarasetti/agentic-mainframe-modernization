@@ -1,37 +1,45 @@
 # IBM Bob Integration
 
-IBM Bob Premium Package for Z is the primary product implementation lens for *Project Bob*.
+IBM Bob Premium Package for Z (PP4Z) is the primary IBM Z reference implementation for *Project Bob*.
 
-## Start with verified facts
+## Design rule
 
-Read:
+> **Do not rebuild a verified PP4Z capability in the framework. Compose it.**
 
-`VERIFIED-CAPABILITIES.md`
+The Agentic Strangler layer defines lifecycle, evidence contracts, human gates, evaluation and progression criteria. PP4Z supplies Z-specific execution capabilities.
 
-before creating or publishing any Bob-specific artifact.
+Read these first:
 
-## v0.3.0 status
+- `VERIFIED-CAPABILITIES.md`
+- `capability-mapping.yaml`
+- `../../docs/architecture/native-capability-first.md`
 
-The UNDERSTAND Pack includes portable prompts, skill contracts, an Understanding Agent contract, an AtlasPay runbook, and evaluations.
+## Framework vs product
 
-These artifacts may be used manually with IBM Bob where appropriate, but their Markdown/YAML formats are **not claimed to be Bob-native extension syntax**.
+Framework assets such as playbook YAML, framework-agent YAML and Markdown prompts are **not** claimed to be Bob-native extension syntax.
 
-## Future product-specific work
+Use native PP4Z capabilities when verified. Use framework assets to:
 
-After supported extension/skill/workflow packaging is verified, this directory may contain:
+- sequence capabilities;
+- state evidence requirements;
+- expose uncertainty;
+- normalize outputs;
+- evaluate quality;
+- preserve human authority.
 
-- Bob-native prompt/skill packaging
-- workflow adapters
-- Z Understand query patterns
-- DD.json guidance/examples
-- observed AtlasPay outputs
-- screenshot metadata
+## UNDERSTAND experiment
+
+The first controlled IBM Bob experiment is documented at:
+
+`understand/atlaspay-experiment-001.md`
+
+It uses PP4Z-native setup and analysis first, then supplemental framework prompts only if evidence gaps remain.
 
 ## Rules
 
-- Do not invent Bob syntax.
+- Do not invent Bob syntax or capability names.
 - Record verification date/version context.
 - Use synthetic/authorized data.
-- Keep portable framework definitions outside this directory.
-- Separate observed behavior from author interpretation.
+- Keep portable framework definitions outside product integration directories.
+- Separate observed Bob output from framework interpretation.
 - Do not imply IBM endorsement.

@@ -1,58 +1,83 @@
 # IBM Bob Premium Package for Z — Verified Capabilities
 
 **Verification date:** 2026-09-16  
-**Framework release:** v0.3.0 UNDERSTAND Pack  
+**Framework release:** v0.3.1  
 **Status:** Source-backed capability dossier
 
-This file records only IBM Bob / Bob Premium Package for Z capabilities supported by current IBM documentation or public IBM announcements. It exists to prevent the framework from silently inventing product behavior.
+This file records IBM Bob / Bob Premium Package for Z capabilities supported by current IBM documentation or public IBM announcements. Re-check the source documentation before publication or product-specific execution because capabilities and prerequisites can change.
 
 ## Primary sources
 
-- IBM announcement: https://www.ibm.com/new/announcements/announcing-the-ibm-bob-premium-package-for-z
-- IBM Bob for Z overview: https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index
-- IBM Bob for Z prerequisites: https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/prerequisites
+- Bob for Z overview: https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index
+- Bob for Z prerequisites: https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/prerequisites
+- IBM Bob 3.0.0 overview: https://www.ibm.com/docs/en/bobz/3.0.0?topic=overview-discover-whats-inside-bob-premium-package-z
+- Commands: https://www.ibm.com/docs/en/bobz/3.0.0?topic=commands-using
+- Skills: https://www.ibm.com/docs/en/bobz/3.0.0?topic=commands-using-skills
+- Workflows/skills/tools/commands: https://www.ibm.com/docs/en/bobz/3.0.0?topic=z-using-workflows-skills-tools-commands
+- IBM GA announcement: https://www.ibm.com/new/announcements/announcing-the-ibm-bob-premium-package-for-z
 - IBM Bob blog — Bob meets the mainframe: https://bob.ibm.com/blog/bob-for-z-announcement/
+
+## Native Capability First
+
+PP4Z already provides Z-specific modes, workflows, skills, tools and commands. The framework should use those native capabilities when they satisfy a framework task, then adapt/evaluate their outputs against Agentic Strangler evidence contracts.
+
+The framework must not describe a portable YAML playbook as a replacement "Bob Skill."
 
 ## Verified UNDERSTAND-relevant capabilities
 
 ### Z Understand-backed application analysis
-IBM documents Z Understand as the static-analysis foundation beneath the Premium Package for Z. It builds a queryable representation of application estates and supports deterministic analysis rather than requiring the model to infer everything from source text alone.
+IBM documents Z Understand as a static-analysis foundation for large mainframe estates and as a source of queryable, deterministic application metadata.
 
 **Framework mapping:** UNDERSTAND
+
+### Z Architect mode
+IBM documents Z Architect mode for architecture/design activities including impact analysis, implementation planning, system analysis and technical documentation.
+
+**Framework mapping:** UNDERSTAND / DECIDE / PLAN support
 
 ### Impact analysis
-IBM lists impact analysis as a built-in Bob skill for Z and positions Z Architect mode around impact analysis, dependency assessment, business-context discovery, and modernization planning.
+IBM documents `impact-analysis` as a built-in skill and `/impact-analysis` as a command for proposed changes across COBOL, PL/I, JCL, Assembler and REXX artifacts.
 
-**Framework mapping:** UNDERSTAND → DECIDE
+**Framework mapping:** primarily UNDERSTAND; its output may inform DECIDE
 
 ### Code explanation
-IBM lists code explanation as a built-in skill and documents workflows for explaining legacy code from multiple stakeholder perspectives.
+IBM documents the `explain` skill and `/explain` command for multi-perspective source explanations.
 
 **Framework mapping:** UNDERSTAND
-
-### Business-rule/documentation support
-IBM documents program/application documentation workflows and states that business rules can be extracted alongside documentation and modernization work.
-
-**Framework mapping:** UNDERSTAND → LEARN
 
 ### Data dictionary
-IBM documents data-dictionary generation with JSON-based metadata storage and strongly recommends generating `DD.json` before starting Bob for Z workflows.
+IBM documents data-dictionary generation/management and local `DD.json`; prerequisites strongly recommend generating `DD.json` before Bob for Z workflows.
 
-**Framework mapping:** UNDERSTAND
+**Framework mapping:** UNDERSTAND semantic context
 
-### AGENTS.md repository guidance
-IBM documents repository-level `AGENTS.md` rules for standards/governance and strongly recommends generating `AGENTS.md` through `/init` as part of project setup.
+### Documentation and business-rule extraction
+IBM documents program/application documentation workflows and business-rule extraction as part of its documentation/application-understanding capabilities.
 
-**Framework mapping:** cross-cutting governance
+**Framework mapping:** UNDERSTAND / LEARN
 
-### Supported language / middleware context
-IBM's Bob for Z documentation lists COBOL, PL/I, JCL, REXX, and HLASM, with middleware support for CICS, IMS, MQ, and Db2.
+### AGENTS.md via /init
+IBM documents `/init` as a command that analyzes the IBM Z codebase and generates `AGENTS.md`. Current prerequisites strongly recommend generating `AGENTS.md` with `/init`.
 
-**Framework mapping:** UNDERSTAND / TRANSFORM
+**Framework mapping:** cross-cutting repository governance/context
+
+### Implementation planning
+IBM documents `implementation-planning` as a native skill and `/implementation-planning` as a command in Z Architect mode.
+
+**Framework mapping:** PLAN; do not rebuild as a generic framework planning engine
+
+### Refactoring and transformation
+IBM documents refactoring/service-extraction and end-to-end transformation workflows.
+
+**Framework mapping:** TRANSFORM, with framework evidence/human gates applied around native execution
+
+### Validation and coding standards
+IBM documents validation in transformation workflows and integrations such as ZCodeScan/coding-standards capabilities.
+
+**Framework mapping:** PROVE support; evidence sufficiency remains a framework/human decision
 
 ## Verified prerequisite guidance
 
-IBM currently documents:
+Current Bob for Z prerequisites document:
 
 - IBM Bob IDE 2.0.3 or later
 - Z Open Editor 6.7.0 or later
@@ -62,37 +87,21 @@ IBM currently documents:
 - `DD.json` generated — strongly recommended
 - `AGENTS.md` generated with `/init` — strongly recommended
 
-Re-check IBM documentation before relying on version numbers because product requirements may change.
+Re-check these values before relying on them.
 
-## Framework portability warning
+## Portable artifact warning
 
-The Markdown prompts, `skill.yaml` files, and `agent.yaml` file in v0.3.0 are **portable framework artifacts**. They are not claimed to be IBM Bob-native extension syntax.
+Files under `playbooks/`, `agents/` and `prompts/` are framework artifacts unless explicitly marked otherwise. Their syntax is not presented as IBM Bob-native packaging.
 
-Use them as:
+## AtlasPay execution rule
 
-1. copy/paste prompt patterns;
-2. architecture/specification contracts;
-3. inputs for future Bob-native packaging after supported extension formats are verified.
+For scored PP4Z experiments:
 
-## AtlasPay execution guidance
-
-For an authorized Bob for Z environment:
-
-1. open the synthetic AtlasPay workspace;
-2. configure Z Understand if available;
-3. generate/review `DD.json` if supported in the environment;
-4. run `/init` if appropriate and reconcile generated project guidance with the repository's curated `AGENTS.md` rather than silently discarding framework rules;
-5. do not expose `evals/atlaspay/ground-truth.yaml` to the model being evaluated;
-6. execute the UNDERSTAND runbook;
-7. save outputs under an isolated run directory;
-8. score outputs against ground truth only after the run is complete.
-
-## Screenshot / book evidence rule
-
-When Bob screenshots or observed outputs are added:
-
-- use only synthetic or authorized data;
-- record capture date and product context;
-- distinguish observed Bob output from framework interpretation;
-- link the screenshot to the relevant prompt/skill/eval artifact;
-- do not imply IBM endorsement.
+1. create a workspace containing AtlasPay but not evaluator ground truth;
+2. configure native PP4Z/Z Understand context;
+3. generate data dictionary context and run `/init`;
+4. merge the framework governance overlay into generated `AGENTS.md`;
+5. use native PP4Z analysis/documentation capabilities first;
+6. use supplemental prompts only for evidence gaps;
+7. freeze outputs before evaluation;
+8. score outside the Bob workspace against the evaluator-only ground truth.

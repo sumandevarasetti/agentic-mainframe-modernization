@@ -1,0 +1,100 @@
+mapping_name: agentic-strangler-to-ibm-bob-pp4z
+version: 0.3.1
+verification_date: 2026-09-16
+product: IBM Bob Premium Package for Z
+principle: native-capability-first
+
+sources:
+  - https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index
+  - https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/prerequisites
+  - https://www.ibm.com/docs/en/bobz/3.0.0?topic=commands-using
+  - https://www.ibm.com/docs/en/bobz/3.0.0?topic=commands-using-skills
+  - https://www.ibm.com/docs/en/bobz/3.0.0?topic=z-using-workflows-skills-tools-commands
+
+mappings:
+  UNDERSTAND:
+    preferred_mode: Z Architect
+    native_capabilities:
+      initialization:
+        - /init
+      semantic_context:
+        - Generate data dictionary workflow
+        - data-dictionary-management skill
+        - /data-dictionary-management
+        - /sync-data-dictionary
+      dependency_and_change_analysis:
+        - impact-analysis skill
+        - /impact-analysis
+        - Z Understand analysis
+      explanation:
+        - explain skill
+        - /explain
+      business_rule_context:
+        - Generate program documentation workflow
+        - Generate application documentation workflow
+    framework_responsibility:
+      - define evidence contract
+      - identify known unknowns
+      - normalize evidence
+      - evaluate recall and traceability
+      - require human stage-exit validation
+
+  DECIDE:
+    native_capabilities_used_as_inputs:
+      - impact-analysis
+      - Z Understand analysis
+    framework_responsibility:
+      - apply modernization decision matrix
+      - preserve KEEP as valid outcome
+      - require named human decision owner
+    human_authority: required
+
+  PLAN:
+    preferred_mode: Z Architect
+    native_capabilities:
+      - implementation-planning skill
+      - /implementation-planning
+    framework_responsibility:
+      - bound scope
+      - define rollback and proof requirements
+      - require plan/risk acceptance
+
+  TRANSFORM:
+    preferred_mode: Z Code
+    native_capabilities:
+      - Refactor COBOL or PL/I program workflow
+      - Generate refactored service program workflow
+      - End-to-end transformation workflow
+    framework_responsibility:
+      - enforce approved scope
+      - maintain Objective-to-Evidence-to-Decision-to-Plan-to-Change traceability
+
+  PROVE:
+    native_capabilities:
+      - transformation validation
+      - coding standards enforcement
+      - ZCodeScan integration
+    framework_responsibility:
+      - assemble modernization proof package
+      - classify expected differences vs regressions
+      - determine evidence sufficiency through human gate
+
+  SHIFT:
+    native_mapping_status: not_claimed_as_complete
+    framework_responsibility:
+      - define progressive exposure
+      - telemetry thresholds
+      - rollback bounds
+      - human production authority
+
+  LEARN:
+    native_mapping_status: compositional
+    framework_responsibility:
+      - convert outcomes into reusable knowledge
+      - update tests, evidence and guidance
+      - feed next UNDERSTAND cycle
+
+warnings:
+  - Framework playbooks are not IBM Bob Skills.
+  - Framework agent YAML is not claimed to be IBM Bob-native agent syntax.
+  - Product behavior must be re-verified before publication.
