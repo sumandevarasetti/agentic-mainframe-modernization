@@ -2,6 +2,12 @@
 
 **Framework rule:** When a target product already provides a verified capability, the Agentic Strangler Framework should compose, govern, evaluate, or extend that capability rather than rebuild it.
 
+## Current implementation scope
+
+The current book and repository implementation are intentionally focused on **IBM Z**, using **IBM Bob Premium Package for Z (PP4Z)** as the primary product execution layer.
+
+The methodology is designed to remain portable, but this repository does not currently implement or benchmark IBM Bob Premium Packages for IBM i or Java modernization. See `scope-and-package-strategy.md`.
+
 ## Why this rule exists
 
 Agentic Mainframe Modernization is a methodology layer, not an alternative mainframe-analysis product. IBM Bob Premium Package for Z already provides purpose-built IBM Z modes, workflows, skills and tools, including Z Understand-backed analysis. Recreating those functions with generic prompts would reduce fidelity and blur the boundary between framework and product.
@@ -22,7 +28,7 @@ Defines:
 
 ### 2. Native execution product
 
-For the IBM Z reference implementation, this is IBM Bob Premium Package for Z and its verified native capabilities, including Z Understand-backed analysis, Z Architect/Z Code modes, workflows, skills, tools, commands, data dictionary and repository instructions.
+For the current IBM Z reference implementation, this is IBM Bob Premium Package for Z and its verified native capabilities, including Z Understand-backed analysis, Z Architect/Z Code modes, workflows, skills, tools, commands, data dictionary and repository instructions.
 
 ### 3. Supplemental framework assets
 
@@ -59,4 +65,6 @@ Instead of implementing a separate dependency-analysis engine:
 
 ## Product independence
 
-Native Capability First does not make the framework IBM-only. The methodology remains portable. Another product can implement the same playbook contract using its own native capabilities.
+Native Capability First does not make the framework IBM-only. The methodology remains portable. Another product could implement the same playbook contract using its own native capabilities.
+
+That portability is architectural, not a claim that all products or IBM Bob Premium Packages currently have equivalent mappings or have been tested by this project.

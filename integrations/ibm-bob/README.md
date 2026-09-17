@@ -2,6 +2,17 @@
 
 IBM Bob Premium Package for Z (PP4Z) is the primary IBM Z reference implementation for *Project Bob*.
 
+## Scope
+
+This repository is intentionally **Z-focused** for the current book and implementation. IBM Bob Premium Packages for IBM i and Java modernization are acknowledged, but they are not implemented, benchmarked, or mapped here yet.
+
+The methodology remains portable; the current execution evidence is PP4Z-specific.
+
+See:
+
+- `../../docs/architecture/scope-and-package-strategy.md`
+- `../../docs/architecture/native-capability-first.md`
+
 ## Design rule
 
 > **Do not rebuild a verified PP4Z capability in the framework. Compose it.**
@@ -43,3 +54,4 @@ It uses PP4Z-native setup and analysis first, then supplemental framework prompt
 - Keep portable framework definitions outside product integration directories.
 - Separate observed Bob output from framework interpretation.
 - Do not imply IBM endorsement.
+- Do not generalize PP4Z experiment results to IBM i or Java Premium Packages.
