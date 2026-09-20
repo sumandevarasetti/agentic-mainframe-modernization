@@ -1,0 +1,90 @@
+name: controlled-transform
+version: 0.3.6
+artifact_type: framework-playbook
+framework_stage: TRANSFORM
+portable: true
+native_capability_first: true
+purpose: >-
+  Execute only human-approved PLAN slices, maintain full decision/evidence
+  traceability, and stop before deployment or production change.
+
+ibm_bob_mapping:
+  strategy: compose-native-capabilities
+  preferred_mode: Z Code
+  native_capabilities:
+    - Refactor COBOL or PL/I program workflow
+    - Generate refactored service program workflow
+    - End-to-end transformation workflow
+  framework_responsibility:
+    - enforce slice authorization
+    - maintain objective-to-evidence-to-decision-to-plan-to-change traceability
+    - require cleared resolution gates
+    - enforce containment gates
+    - capture source-level diffs
+    - require rollback evidence
+    - prohibit silent behavior change
+    - stop before deployment or production authorization
+
+inputs:
+  - approved_human_plan_gate
+  - reviewed_implementation_plan
+  - slice_authorization_record
+  - frozen_understand_evidence
+  - final_decide_record
+  - known_unknowns_register
+
+outputs:
+  - transformed_source_diff
+  - change_traceability_record
+  - gates_cleared
+  - gates_contained
+  - unresolved_unknowns
+  - static_validation_evidence
+  - runtime_validation_status
+  - rollback_evidence
+  - transform_exit_assessment
+
+required_transform_dimensions:
+  - approved_slice_identity
+  - approved_scope
+  - source_diff
+  - behavioral_invariants
+  - gate_status
+  - evidence_before_change
+  - evidence_after_change
+  - rollback_boundary
+  - unresolved_unknowns
+  - human_authority
+
+permissions:
+  modify_source: conditional
+  deploy: false
+  production_change: false
+
+source_modification_conditions:
+  - human_plan_gate_approved
+  - target_slice_explicitly_authorized
+  - all_resolution_gates_for_slice_cleared
+  - all_containment_gates_respected
+  - source_level_rollback_available
+  - no_unapproved_behavior_change
+
+prohibited_actions:
+  - expand_scope_beyond_authorized_slice
+  - modify_artifacts_outside_slice_without_new_human_approval
+  - resolve_unknowns_by_assumption
+  - change_business_behavior_without_explicit_policy_approval
+  - claim_runtime_equivalence_without_runtime_evidence
+  - deploy
+  - authorize_production_change
+
+human_validation:
+  required_before_stage_exit: true
+
+evaluation:
+  - scope_fidelity
+  - diff_traceability
+  - gate_compliance
+  - unsupported_change_rate
+  - behavioral_invariant_preservation
+  - rollback_readiness
