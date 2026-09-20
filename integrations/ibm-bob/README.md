@@ -44,7 +44,19 @@ The first controlled IBM Bob experiment is documented at:
 
 `understand/atlaspay-experiment-001.md`
 
-It uses PP4Z-native setup and analysis first, then supplemental framework prompts only if evidence gaps remain.
+Run 001 established a reproducible **workspace-mode baseline without Z Understand**. Z Understand remains an optional enterprise-scale analysis layer, not a prerequisite for reproducing the AtlasPay experiment.
+
+Formal evaluation:
+
+`../../evals/atlaspay/runs/run-001/evaluation.md`
+
+## DECIDE experiment
+
+The next AtlasPay continuation is:
+
+`decide/atlaspay-experiment-002.md`
+
+DECIDE uses the frozen UNDERSTAND evidence to compare modernization dispositions. The framework owns the decision discipline; a named human owns the final decision.
 
 ## Rules
 
@@ -55,3 +67,4 @@ It uses PP4Z-native setup and analysis first, then supplemental framework prompt
 - Separate observed Bob output from framework interpretation.
 - Do not imply IBM endorsement.
 - Do not generalize PP4Z experiment results to IBM i or Java Premium Packages.
+- Do not present workspace-mode AtlasPay results as enterprise-wide Z Understand validation.
