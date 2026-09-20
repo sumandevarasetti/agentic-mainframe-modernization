@@ -1,7 +1,7 @@
 # Agentic Mainframe Modernization Framework
 
-**Version:** 0.3.2  
-**Status:** Z-focused PP4Z-aligned foundation  
+**Version:** 0.3.4  
+**Status:** Z-focused PP4Z framework with validated AtlasPay UNDERSTAND baseline and DECIDE starter  
 **Companion project:** *Project Bob — Accelerating Mainframe Modernization with Agentic AI*
 
 > **Read it in the book. Run it in the repo.**
@@ -12,7 +12,7 @@ This repository is the open companion implementation for *Project Bob*. It turns
 
 **Project Bob is Z-focused in implementation, portable in methodology.**
 
-The current book, reference implementation, experiments, and evidence are intentionally centered on **IBM Z** and **IBM Bob Premium Package for Z (PP4Z)**. AtlasPay remains the canonical synthetic estate.
+The current book, reference implementation, experiments, and evidence are intentionally centered on **IBM Z** and **IBM Bob Premium Package for Z (PP4Z)**. AtlasPay remains the canonical synthetic teaching estate.
 
 IBM Bob also has Premium Packages for other modernization domains, including IBM i and Java modernization. Those packages are acknowledged, but they are **out of scope for the current implementation**. This repository does not currently claim IBM i- or Java-specific playbooks, mappings, experiments, or benchmark results.
 
@@ -39,11 +39,9 @@ Core rules:
 
 ## IBM Bob Premium Package for Z alignment
 
-IBM Bob Premium Package for Z (PP4Z) is the primary IBM Z reference implementation for this project. PP4Z already provides Z-specific modes, workflows, skills, tools, Z Understand-backed analysis, repository guidance through `AGENTS.md`, data-dictionary support, impact analysis, implementation planning, explanation, documentation/business-rule extraction, refactoring, and transformation workflows.
+IBM Bob Premium Package for Z (PP4Z) is the primary IBM Z reference implementation for this project.
 
-The Agentic Strangler Framework does **not** attempt to recreate those product capabilities.
-
-Instead, the framework defines:
+The Agentic Strangler Framework does **not** attempt to recreate PP4Z product capabilities. Instead, the framework defines:
 
 - which capability should run at each modernization stage;
 - what evidence it must produce;
@@ -63,45 +61,66 @@ See:
 
 ## Framework playbooks, not duplicate Bob Skills
 
-The portable framework assets previously called `skills/` are now called **playbooks**:
+Framework playbooks are vendor-neutral execution/evidence contracts. They are not IBM Bob Skills and are not claimed to use Bob-native extension syntax.
+
+Current playbooks:
+
+### UNDERSTAND
 
 - `playbooks/discovery/`
 - `playbooks/dependency-analysis/`
 - `playbooks/rule-extraction/`
+- `playbooks/known-unknowns/`
 
-A framework playbook is a vendor-neutral execution/evidence contract. It may map to one or more native PP4Z workflows, skills, commands, and tools. It is **not** a replacement for an IBM Bob Skill and is not claimed to use Bob-native extension syntax.
+### DECIDE
 
-Supplemental prompts remain under `prompts/`. They should be used to close evidence gaps or standardize outputs after native capabilities are used, not to replace verified PP4Z functionality.
+- `playbooks/modernization-decision/`
 
-## UNDERSTAND on IBM Bob
+Supplemental prompts remain under `prompts/`. They should close evidence gaps or normalize outputs after native capabilities are used, not replace verified PP4Z functionality.
 
-For the first controlled AtlasPay experiment, the native-first sequence is:
+## AtlasPay UNDERSTAND validation
 
-1. prepare an isolated AtlasPay workspace that does not contain evaluator ground truth;
-2. configure Z Understand where available;
-3. generate the data dictionary / `DD.json` using PP4Z;
-4. run `/init` to generate native `AGENTS.md`;
-5. merge `examples/atlaspay/AGENTS.framework.md` governance requirements into the generated instructions;
-6. use PP4Z native impact-analysis, explanation, and documentation/business-rule capabilities;
-7. use framework prompts only for unresolved evidence gaps;
-8. freeze outputs;
-9. score against `evals/atlaspay/ground-truth.yaml` outside the Bob workspace.
+Run 001 evaluated PP4Z in **workspace mode without Z Understand** against AtlasPay's hidden synthetic ground truth.
+
+The formal report is:
+
+`evals/atlaspay/runs/run-001/evaluation.md`
+
+Key findings:
+
+- canonical dependency recall: 21/21;
+- canonical business-rule recall: 9/9;
+- planted cross-artifact impact relationships: 4/4;
+- canonical evidence traceability: 30/30;
+- principal weakness: broader evidence-boundary known-unknown coverage.
+
+v0.3.4 responds by adding a dedicated Known Unknowns playbook and strengthening the portable uncertainty prompt.
+
+These results are limited to the synthetic AtlasPay workspace. They are not evidence of enterprise-wide estate coverage and should not be generalized to Z Understand-backed analysis.
 
 Detailed procedure: `integrations/ibm-bob/understand/atlaspay-experiment-001.md`.
 
+## DECIDE starter
+
+AtlasPay now continues into DECIDE as a methodology/regression exercise:
+
+`integrations/ibm-bob/decide/atlaspay-experiment-002.md`
+
+The DECIDE stage compares **KEEP → REFACTOR → EXPOSE → EXTRACT → TRANSFORM → REPLATFORM → RETIRE** using frozen evidence, carries unresolved unknowns forward, and requires a named human decision owner.
+
 ## Reference estates
 
-### AtlasPay — canonical teaching + evaluation estate
+### AtlasPay — canonical teaching + regression estate
 
 `examples/atlaspay/`
 
-Use AtlasPay when known answers and repeatable evaluation are required. The evaluation ground truth must not be present in the model's experiment workspace.
+AtlasPay has known ground truth and remains the canonical teaching/reference estate. Because Run 001 has now been scored against the answer key, future AtlasPay runs are **regression tests**, not clean blind benchmarks.
 
-### AWS CardDemo — external benchmark estate
+### AWS CardDemo — external holdout / stress-test estate
 
 `benchmarks/aws-carddemo/`
 
-Use CardDemo after the framework performs acceptably against AtlasPay. CardDemo remains upstream; this repository provides a pinned benchmark adapter rather than repackaging AWS source.
+Use CardDemo as the next independent validation estate. CardDemo remains upstream; this repository provides a pinned benchmark adapter rather than repackaging AWS source.
 
 ## IBM relationship
 
