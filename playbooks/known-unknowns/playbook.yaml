@@ -1,0 +1,79 @@
+name: known-unknowns
+version: 0.3.4
+artifact_type: framework-playbook
+framework_stage: UNDERSTAND
+portable: true
+native_capability_first: true
+purpose: >-
+  Make uncertainty explicit at both the application-artifact level and the
+  evidence-boundary level before progression to DECIDE.
+
+ibm_bob_mapping:
+  strategy: compose-native-capabilities
+  preferred_mode: Z Architect
+  native_inputs:
+    - repository/application context
+    - explanation/documentation output
+    - impact-analysis output
+    - available static-analysis metadata
+  supplemental_prompt: prompts/understanding/known-unknowns.md
+
+inputs:
+  - capability
+  - current_state_analysis
+  - workspace_source
+  - dependency_analysis
+  - business_rule_analysis
+  - optional_runtime_evidence
+  - optional_external_documentation
+
+outputs:
+  - source_and_dependency_unknowns
+  - runtime_and_nonfunctional_unknowns
+  - external_policy_and_regulatory_unknowns
+  - build_and_environment_unknowns
+  - production_data_and_configuration_unknowns
+  - human_intent_unknowns
+  - resolution_evidence_plan
+  - stage_exit_assessment
+
+mandatory_uncertainty_sweep:
+  - missing_source_or_implementation
+  - missing_external_system_contract
+  - runtime_behavior_not_observable_statically
+  - performance_scale_latency_capacity_not_represented
+  - resilience_operability_and_failure_mode_evidence_missing
+  - security_and_operational_runtime_evidence_missing
+  - regulatory_network_contractual_or_external_business_policy_missing
+  - build_compiler_link_deploy_or_runtime_environment_assumptions
+  - production_data_configuration_and_state_not_represented
+  - human_business_intent_not_provable_from_code
+  - conflicting_or_ambiguous_test_evidence
+
+permissions:
+  read_only: true
+  modify_source: false
+  deploy: false
+
+prohibited_actions:
+  - invent_missing_behavior
+  - resolve_conflicts_by_assumption
+  - select_modernization_disposition
+  - treat_static_workspace_evidence_as_production_runtime_proof
+  - read_evaluation_ground_truth_during_scored_run
+
+required_evidence:
+  - current_evidence_for_each_unknown
+  - explicit_reason_the_unknown_cannot_be_resolved
+  - minimum_additional_evidence_needed
+  - proposed_validator
+  - blocking_or_non_blocking_classification
+
+human_validation:
+  required_before_stage_exit: true
+
+evaluation:
+  - known_unknown_detection
+  - evidence_boundary_coverage
+  - unsupported_claim_rate
+  - stage_exit_quality
