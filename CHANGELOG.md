@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.5 — PLAN Stage Foundation
+
+- Added `playbooks/implementation-plan/` for evidence-bounded PLAN execution
+- Added a portable implementation-planning prompt that keeps PLAN read-only
+- Added AtlasPay PLAN Experiment 003 for the human-approved REFACTOR disposition
+- Mapped PLAN to PP4Z native `implementation-planning` / `/implementation-planning`
+- Required sequenced change slices, explicit out-of-scope boundaries, proof obligations, rollback, abort conditions, and known-unknown resolution gates
+- Added a named Human Plan Approver gate before TRANSFORM
+- Preserved the rule that no source modification is authorized during PLAN
+
 ## 0.3.4 — Run 001 Evaluation & Evidence-Boundary Refinement
 
 - Added the formal AtlasPay UNDERSTAND Run 001 evaluation report and artifact manifest
