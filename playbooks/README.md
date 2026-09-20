@@ -22,7 +22,7 @@ For IBM Z, the preferred approach is:
 
 **Framework Playbook → verified PP4Z native capability → evidence adapter/evaluation**
 
-If PP4Z already provides impact analysis, the Dependency Analysis Playbook specifies what evidence we need from that analysis; it does not create a competing impact-analysis engine.
+If PP4Z already provides impact analysis or implementation planning, the framework specifies the evidence contract around that native capability rather than creating a competing engine.
 
 ## Current UNDERSTAND playbooks
 
@@ -31,12 +31,14 @@ If PP4Z already provides impact analysis, the Dependency Analysis Playbook speci
 - `rule-extraction/`
 - `known-unknowns/`
 
-The Known Unknowns playbook adds an explicit **evidence-boundary sweep** so static analysis records not only missing code/behavior but also unavailable performance, production-state, regulatory/policy, and build/runtime evidence.
-
 ## Current DECIDE playbooks
 
 - `modernization-decision/`
 
-The DECIDE playbook requires alternatives to be compared before a disposition is proposed and preserves a named human decision owner.
+## Current PLAN playbooks
+
+- `implementation-plan/`
+
+The PLAN playbook converts an approved disposition into bounded, reversible change slices with evidence, rollback, unknown-resolution gates, and a human plan gate. It does not modify application source.
 
 See `integrations/ibm-bob/capability-mapping.yaml` for the IBM Bob mapping.
