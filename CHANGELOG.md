@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.7 — PROVE Stage Foundation
+
+- Added `playbooks/proof-package/` for evidence-classified PROVE execution
+- Added portable `prove-change.md` verification prompt
+- Added AtlasPay PROVE Experiment 005
+- Added explicit proof vocabulary: STATICALLY_VERIFIED, RUNTIME_VERIFIED,
+  RUNTIME_UNAVAILABLE, NOT_VERIFIED, DIFFERENCE_EXPLAINED, and
+  DIFFERENCE_UNEXPLAINED
+- Required pre/post change traceability and authorization mapping
+- Added unsupported-change and unexplained-difference detection
+- Preserved unresolved known unknowns and containment gates through PROVE
+- Made PROVE read-only: no source/test repair during evidence evaluation
+- Prohibited proof by plausibility and runtime-equivalence claims without
+  authorized execution evidence
+
 ## 0.3.6 — TRANSFORM Stage Foundation
 
 - Added `playbooks/controlled-transform/` for one-slice-at-a-time source transformation

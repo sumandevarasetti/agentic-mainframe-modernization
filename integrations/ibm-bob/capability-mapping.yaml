@@ -1,5 +1,5 @@
 mapping_name: agentic-strangler-to-ibm-bob-pp4z
-version: 0.3.6
+version: 0.3.7
 verification_date: 2026-09-16
 product: IBM Bob Premium Package for Z
 principle: native-capability-first
@@ -71,14 +71,25 @@ mappings:
     production_change_allowed: false
 
   PROVE:
-    native_capabilities:
+    preferred_mode: Z Code
+    native_capabilities_used_when_available:
       - transformation validation
       - coding standards enforcement
       - ZCodeScan integration
     framework_responsibility:
       - assemble modernization proof package
-      - classify expected differences vs regressions
-      - determine evidence sufficiency through human gate
+      - compare approved pre-change and post-change artifacts
+      - trace every material difference to authorization
+      - classify static and runtime evidence separately
+      - classify expected differences vs unexplained differences
+      - preserve unresolved known unknowns and containment gates
+      - detect unsupported changes
+      - prohibit proof by plausibility
+      - require named human PROVE exit authority
+    human_authority: required
+    source_modification_allowed: false
+    deploy_allowed: false
+    production_change_allowed: false
 
   SHIFT:
     native_mapping_status: not_claimed_as_complete
