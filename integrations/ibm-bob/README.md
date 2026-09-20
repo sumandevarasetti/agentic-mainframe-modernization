@@ -27,7 +27,7 @@ Read these first:
 
 ## Framework vs product
 
-Framework assets such as playbook YAML, framework-agent YAML and Markdown prompts are **not** claimed to be Bob-native extension syntax.
+Framework playbook YAML and Markdown prompts are **not** claimed to be Bob-native extension syntax.
 
 Use native PP4Z capabilities when verified. Use framework assets to:
 
@@ -38,25 +38,29 @@ Use native PP4Z capabilities when verified. Use framework assets to:
 - evaluate quality;
 - preserve human authority.
 
-## UNDERSTAND experiment
-
-The first controlled IBM Bob experiment is documented at:
+## UNDERSTAND
 
 `understand/atlaspay-experiment-001.md`
 
-Run 001 established a reproducible **workspace-mode baseline without Z Understand**. Z Understand remains an optional enterprise-scale analysis layer, not a prerequisite for reproducing the AtlasPay experiment.
+Run 001 established a reproducible PP4Z workspace-mode baseline without Z Understand.
 
 Formal evaluation:
 
 `../../evals/atlaspay/runs/run-001/evaluation.md`
 
-## DECIDE experiment
-
-The next AtlasPay continuation is:
+## DECIDE
 
 `decide/atlaspay-experiment-002.md`
 
-DECIDE uses the frozen UNDERSTAND evidence to compare modernization dispositions. The framework owns the decision discipline; a named human owns the final decision.
+DECIDE compares modernization dispositions from frozen evidence and requires a named human decision owner.
+
+## PLAN
+
+`plan/atlaspay-experiment-003.md`
+
+PLAN uses the human-approved disposition and PP4Z native implementation-planning capability to build a bounded, reversible plan. The framework requires change-slice scope, unknown-resolution gates, proof obligations, rollback, and a named human plan approver.
+
+PLAN remains read-only. No source modification is authorized until the plan itself passes the human gate.
 
 ## Rules
 
