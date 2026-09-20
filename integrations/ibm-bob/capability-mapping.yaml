@@ -1,15 +1,8 @@
 mapping_name: agentic-strangler-to-ibm-bob-pp4z
-version: 0.3.5
+version: 0.3.6
 verification_date: 2026-09-16
 product: IBM Bob Premium Package for Z
 principle: native-capability-first
-
-sources:
-  - https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/bob-for-z-index
-  - https://bob.ibm.com/docs/ide/premium-packages/bob-for-z/prerequisites
-  - https://www.ibm.com/docs/en/bobz/3.0.0?topic=commands-using
-  - https://www.ibm.com/docs/en/bobz/3.0.0?topic=commands-using-skills
-  - https://www.ibm.com/docs/en/bobz/3.0.0?topic=z-using-workflows-skills-tools-commands
 
 mappings:
   UNDERSTAND:
@@ -17,11 +10,6 @@ mappings:
     native_capabilities:
       initialization:
         - /init
-      semantic_context:
-        - Generate data dictionary workflow
-        - data-dictionary-management skill
-        - /data-dictionary-management
-        - /sync-data-dictionary
       dependency_and_change_analysis:
         - impact-analysis skill
         - /impact-analysis
@@ -29,14 +17,10 @@ mappings:
       explanation:
         - explain skill
         - /explain
-      business_rule_context:
-        - Generate program documentation workflow
-        - Generate application documentation workflow
     framework_responsibility:
       - define evidence contract
       - identify known unknowns
       - normalize evidence
-      - evaluate recall and traceability
       - require human stage-exit validation
 
   DECIDE:
@@ -73,8 +57,18 @@ mappings:
       - Generate refactored service program workflow
       - End-to-end transformation workflow
     framework_responsibility:
-      - enforce approved scope
-      - maintain Objective-to-Evidence-to-Decision-to-Plan-to-Change traceability
+      - require slice-specific human authorization
+      - enforce resolution and containment gates
+      - constrain changes to approved artifacts
+      - capture source-level diffs
+      - preserve Objective-to-Evidence-to-Decision-to-Plan-to-Change traceability
+      - record static and runtime validation status separately
+      - require rollback evidence
+      - prohibit deployment and production authorization
+    human_authority: required
+    source_modification_allowed: conditional
+    deploy_allowed: false
+    production_change_allowed: false
 
   PROVE:
     native_capabilities:
@@ -105,3 +99,4 @@ warnings:
   - Framework playbooks are not IBM Bob Skills.
   - Framework agent YAML is not claimed to be IBM Bob-native agent syntax.
   - Product behavior must be re-verified before publication.
+  - Runtime validation must not be claimed without authorized execution evidence.
