@@ -1,0 +1,87 @@
+name: implementation-plan
+version: 0.3.5
+artifact_type: framework-playbook
+framework_stage: PLAN
+portable: true
+native_capability_first: true
+purpose: >-
+  Convert an approved modernization disposition into an evidence-bounded,
+  reversible implementation plan without modifying application source.
+
+ibm_bob_mapping:
+  strategy: compose-native-capabilities
+  preferred_mode: Z Architect
+  native_capabilities:
+    - implementation-planning skill
+    - /implementation-planning
+  framework_responsibility:
+    - enforce approved disposition
+    - bound change scope
+    - sequence change slices
+    - carry forward known unknowns
+    - define evidence and proof obligations
+    - define rollback and abort criteria
+    - require named human plan approver
+
+inputs:
+  - approved_human_decision_gate
+  - final_modernization_decision_record
+  - current_state_evidence_pack
+  - impact_analysis
+  - business_rule_catalog
+  - known_unknowns_register
+  - approved_business_objective
+
+outputs:
+  - plan_scope
+  - out_of_scope
+  - change_slices
+  - dependency_order
+  - affected_artifacts
+  - unknown_resolution_gates
+  - proof_plan
+  - rollback_plan
+  - risk_register
+  - acceptance_criteria
+  - human_plan_gate
+
+required_plan_dimensions:
+  - approved_disposition_traceability
+  - objective_to_change_traceability
+  - artifact_scope
+  - dependency_sequence
+  - behavioral_invariants
+  - unresolved_unknowns
+  - preconditions
+  - validation_evidence
+  - rollback
+  - reversibility
+  - failure_and_abort_conditions
+  - human_authority
+
+permissions:
+  read_only: true
+  modify_source: false
+  deploy: false
+
+prohibited_actions:
+  - change_application_source
+  - implement_refactoring
+  - begin_transformation
+  - resolve_unknowns_by_assumption
+  - expand_scope_beyond_approved_disposition
+  - introduce_unapproved_business_behavior_change
+  - mark_plan_approved_without_human_owner
+
+human_validation:
+  required_before_stage_exit: true
+  named_plan_approver_required: true
+
+evaluation:
+  - scope_fidelity
+  - evidence_traceability
+  - known_unknown_carry_forward
+  - proof_obligation_coverage
+  - rollback_completeness
+  - unsupported_assumption_rate
+  - human_authority_preservation
