@@ -1,6 +1,7 @@
 name: atlaspay-understand-eval
-version: 0.1.0
+version: 0.2.0
 ground_truth: ground-truth.yaml
+
 metrics:
   - dependency_recall
   - dependency_precision
@@ -16,8 +17,30 @@ minimum_evidence_expectations:
   each_business_rule_requires_artifact_reference: true
   inference_must_be_labeled: true
   unknowns_must_be_explicit: true
+  evidence_boundary_unknowns_must_be_considered: true
+
+known_unknown_dimensions:
+  - missing_source_or_implementation
+  - external_system_contract
+  - runtime_behavior
+  - performance_scale_latency_capacity
+  - resilience_and_operability
+  - security_and_production_controls
+  - regulatory_network_contractual_business_policy
+  - build_compiler_link_deploy_runtime_environment
+  - production_data_configuration_state
+  - human_business_intent
+  - conflicting_test_or_specification_evidence
+
+precision_guidance:
+  note: >-
+    The canonical synthetic ground truth is not necessarily an exhaustive list of
+    every valid finer-grained dependency or rule. Do not automatically count a
+    source-backed additional finding as a false positive. Review unsupported
+    additions manually.
 
 score_interpretation:
-  note: >
-    No single aggregate score should substitute for review of unsupported claims
-    and evidence gaps. High recall with hallucinated dependencies is not acceptable.
+  note: >-
+    No single aggregate score should substitute for review of unsupported claims,
+    evidence gaps, and known-unknown coverage. High recall with hallucinated
+    dependencies is not acceptable.

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.4 — Run 001 Evaluation & Evidence-Boundary Refinement
+
+- Added the formal AtlasPay UNDERSTAND Run 001 evaluation report and artifact manifest
+- Recorded the PP4Z workspace-mode baseline: 21/21 canonical dependencies, 9/9 canonical rule families, 4/4 planted cross-artifact relationships, and 30/30 canonical claims with evidence traceability
+- Recorded the main weakness: incomplete coverage of broad evidence-boundary known unknowns
+- Added a dedicated `playbooks/known-unknowns/` evidence contract
+- Strengthened `prompts/understanding/known-unknowns.md` with mandatory sweeps for performance/scale, runtime/nonfunctional behavior, external policy/regulatory evidence, build/runtime environment, production state, and human intent
+- Refined UNDERSTAND evaluation guidance so source-backed extra findings are not automatically treated as false positives
+- Updated AtlasPay experiment guidance to make PP4Z workspace mode reproducible without requiring Z Understand
+- Declared future AtlasPay runs regression-only after ground-truth exposure; reserved AWS CardDemo as the next independent holdout
+- Added the first DECIDE playbook and AtlasPay DECIDE Experiment 002 runbook
+- Preserved human authority: DECIDE requires a named human decision owner before progression to PLAN
+
 ## 0.3.2 — Z Scope Clarification
 
 - Locked the current book and repository implementation scope to IBM Z and IBM Bob Premium Package for Z

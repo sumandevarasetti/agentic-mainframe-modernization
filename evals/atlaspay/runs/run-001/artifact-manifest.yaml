@@ -1,0 +1,55 @@
+run_id: atlaspay-understand-001
+run_date: 2026-09-16
+evaluation_date: 2026-09-19
+framework_under_test: v0.3.2
+product:
+  name: IBM Bob
+  package: Premium Package for Z
+  version: 2.1.0
+execution:
+  mode: pp4z-workspace
+  z_understand_configured: false
+  ground_truth_hidden_during_run: true
+ground_truth:
+  ref: v0.3.2
+  path: evals/atlaspay/ground-truth.yaml
+  sha: 4d94c29c32d8c53f26189c1729be52f120defff7
+scores:
+  entry_point_recall:
+    numerator: 3
+    denominator: 3
+  dependency_recall:
+    numerator: 21
+    denominator: 21
+  business_rule_recall:
+    numerator: 9
+    denominator: 9
+  evidence_traceability:
+    numerator: 30
+    denominator: 30
+  known_unknown_detection_strict:
+    numerator: 2
+    denominator: 5
+  known_unknown_detection_weighted:
+    numerator: 2.5
+    denominator: 5
+  planted_impact_completeness:
+    numerator: 4
+    denominator: 4
+precision_note: >-
+  Canonical ground truth is positive-only and non-exhaustive. Numeric precision is
+  therefore not asserted for additional source-backed findings. Manual review found
+  no unsupported material dependency or business rule.
+unsupported_claim_note: >-
+  Zero critical unsupported canonical claims were found. Nonessential descriptive
+  domain labels should be sourced or omitted in publication artifacts.
+stage_exit: pass
+future_atlaspay_runs: regression_only
+independent_holdout: aws-carddemo
+artifact_hashes:
+  01-broad-analysis-raw.md: da9aab1029a125c68fe7c1dd872fd119f2c339f5f49b8b35035d8b782372d2fd
+  02-impact-analysis-raw.md: cd54f49cb9ced1e53a7c3f51a624c8cdb15426e74d26484b3da96069d619a64e
+  03-business-rules-raw.md: 9423f83a4d61a8d4b9ef2c37c843a7ee64c06b4c804ae4041efaf66bd98d424b
+  04-known-unknowns-raw.md: 2b63ed5b1dbfbb797aa57534b80283e0ed5b5a36fc6c4ac4a1d1d921780dcc1b
+  05-playbook-gap-analysis.md: b3707bd3b245649d8044ccc238728ca68c8dc0853f2d7f192079893b25845ce5
+  06-current-state-evidence-pack.md: fc52214dec3a1b586856bc89c54f38247c4cbf4322ee1def95a2f68f302a00bb
