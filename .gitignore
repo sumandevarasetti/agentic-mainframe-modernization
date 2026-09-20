@@ -34,3 +34,6 @@ benchmarks/aws-carddemo/worktree/
 
 # Local evaluation results
 evals/results/local/
+
+# Local isolated experiment workspaces
+.work/

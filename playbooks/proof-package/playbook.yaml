@@ -1,0 +1,135 @@
+name: proof-package
+version: 0.3.7
+artifact_type: framework-playbook
+framework_stage: PROVE
+portable: true
+native_capability_first: true
+
+purpose: >-
+  Accumulate objective evidence for an approved transformed change set,
+  classify what is actually verified, expose unexplained differences and
+  unresolved evidence gaps, and prohibit progression by plausibility.
+
+inputs:
+  - approved_transform_exit_gate
+  - transform_evidence_pack
+  - traceable_change_set
+  - pre_change_source_snapshots
+  - post_change_source
+  - characterization_baseline
+  - behavioral_invariants
+  - known_unknowns_register
+  - containment_and_resolution_gates
+
+outputs:
+  - modernization_proof_package
+  - evidence_classification_matrix
+  - change_to_evidence_traceability
+  - difference_register
+  - unresolved_proof_gaps
+  - prove_exit_assessment
+
+proof_status_vocabulary:
+  STATICALLY_VERIFIED: >-
+    Supported by inspectable source, diff, interface, configuration, or other
+    static evidence without claiming executable behavior.
+  RUNTIME_VERIFIED: >-
+    Supported by execution evidence from an authorized runtime.
+  RUNTIME_UNAVAILABLE: >-
+    Runtime evidence could not be produced because no authorized executable
+    environment was available.
+  NOT_VERIFIED: >-
+    Required evidence is absent or insufficient.
+  DIFFERENCE_EXPLAINED: >-
+    A before/after difference exists and is traceable to an explicitly
+    authorized change.
+  DIFFERENCE_UNEXPLAINED: >-
+    A before/after difference exists without sufficient approved explanation.
+
+required_proof_dimensions:
+  - scope_fidelity
+  - source_diff_traceability
+  - approved_change_traceability
+  - behavioral_invariant_preservation
+  - interface_compatibility
+  - known_unknown_containment
+  - unsupported_change_detection
+  - rollback_evidence
+  - static_validation
+  - runtime_validation_status
+  - unexplained_difference_detection
+
+evidence_rules:
+  - every proof claim must identify its evidence source
+  - static evidence must not be promoted to runtime evidence
+  - absence of a detected difference is not runtime-equivalence proof
+  - unresolved known unknowns remain visible
+  - containment gates remain open unless separately resolved
+  - approved interface changes must be classified as intentional differences
+  - unavailable runtime evidence must be labeled RUNTIME_UNAVAILABLE
+  - unsupported changes must be surfaced, not rationalized after the fact
+
+difference_classification:
+  expected:
+    - explicitly approved source restructuring
+    - explicitly approved interface change
+    - explicitly approved policy change
+  unexpected:
+    - out_of_scope_file_change
+    - unapproved_business_rule_change
+    - unapproved_interface_change
+    - unapproved_call_order_change
+    - new_runtime_assumption
+    - silent_known_unknown_resolution
+
+permissions:
+  read: true
+  compare: true
+  execute_tests: conditional
+  modify_source: false
+  modify_tests: false
+  deploy: false
+  production_change: false
+  approve_risk: false
+
+runtime_execution_conditions:
+  - authorized_runtime_available
+  - execution_is_within_approved_scope
+  - test_or_validation_command_is_known
+  - execution_does_not_modify_production
+
+prohibited_actions:
+  - proof_by_plausibility
+  - infer_runtime_equivalence_from_static_similarity
+  - hide_unresolved_unknowns
+  - resolve_known_unknowns_by_assumption
+  - modify_source_to_make_proof_pass
+  - modify_expected_results_to_match_transformed_behavior
+  - expand_scope_during_proof
+  - deploy
+  - authorize_production_change
+
+evaluation:
+  - evidence_completeness
+  - traceability_completeness
+  - unsupported_change_rate
+  - behavioral_invariant_coverage
+  - unexplained_difference_count
+  - known_unknown_visibility
+  - evidence_classification_accuracy
+
+human_validation:
+  required_before_stage_exit: true
+
+exit_criteria:
+  - required_static_evidence_complete_for_available_environment
+  - all_detected_differences_classified
+  - no_unexplained_high_impact_difference_accepted
+  - unresolved_runtime_dimensions_explicit
+  - human_prove_gate_recorded
+
+failure_modes:
+  - proof_by_plausibility
+  - evidence_classification_inflation
+  - silent_regression_acceptance
+  - runtime_claim_without_runtime_evidence

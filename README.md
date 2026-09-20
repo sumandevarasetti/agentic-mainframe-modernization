@@ -1,7 +1,7 @@
 # Agentic Mainframe Modernization Framework
 
-**Version:** 0.3.6  
-**Status:** Z-focused PP4Z framework through TRANSFORM  
+**Version:** 0.3.7
+**Status:** Z-focused PP4Z framework through PROVE foundation
 **Companion project:** *Project Bob — Accelerating Mainframe Modernization with Agentic AI*
 
 > **Read it in the book. Run it in the repo.**
@@ -37,6 +37,11 @@ Core rules:
 
 TRANSFORM executes one approved PLAN slice at a time. Every source change must be traceable to the human-approved decision and plan, respect resolution/containment gates, capture a diff, and preserve rollback evidence. Runtime behavior is not considered verified unless executed in an authorized runtime.
 
+### PROVE
+- `playbooks/proof-package/`
+
+PROVE is read-only. It classifies what the available evidence actually establishes, traces differences to authorization, exposes unsupported or unexplained changes, and keeps static verification separate from runtime verification.
+
 ## IBM Bob PP4Z mapping
 
 See:
@@ -51,6 +56,7 @@ See:
 - DECIDE: `integrations/ibm-bob/decide/atlaspay-experiment-002.md`
 - PLAN: `integrations/ibm-bob/plan/atlaspay-experiment-003.md`
 - TRANSFORM: `integrations/ibm-bob/transform/atlaspay-experiment-004.md`
+- PROVE: `integrations/ibm-bob/prove/atlaspay-experiment-005.md`
 
 AtlasPay is a synthetic teaching/regression estate. AWS CardDemo remains the independent holdout.
 

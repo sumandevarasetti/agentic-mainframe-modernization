@@ -14,8 +14,9 @@ The Agentic Strangler layer defines lifecycle, evidence contracts, human gates, 
 - DECIDE: `decide/atlaspay-experiment-002.md`
 - PLAN: `plan/atlaspay-experiment-003.md`
 - TRANSFORM: `transform/atlaspay-experiment-004.md`
+- PROVE: `prove/atlaspay-experiment-005.md`
 
-TRANSFORM uses Z Code where appropriate, but source modification is authorized only per human-approved PLAN slice. Runtime validation must be reported honestly; AtlasPay workspace results must not be presented as production/zOS execution evidence.
+TRANSFORM uses Z Code where appropriate, but source modification is authorized only per human-approved PLAN slice. PROVE is read-only and classifies exactly what static and runtime evidence establishes. Runtime validation must be reported honestly; AtlasPay workspace results must not be presented as production/zOS execution evidence.
 
 ## Rules
 

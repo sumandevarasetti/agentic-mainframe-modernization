@@ -30,3 +30,11 @@ For IBM Z, the preferred approach is:
 The TRANSFORM playbook authorizes one approved slice at a time, requires cleared/contained gates, captures source diffs and rollback evidence, and explicitly prohibits deployment or runtime-equivalence claims without runtime evidence.
 
 See `integrations/ibm-bob/capability-mapping.yaml` for the IBM Bob mapping.
+
+## Current PROVE playbooks
+
+- `proof-package/`
+
+The PROVE playbook classifies evidence explicitly, traces every material
+difference to authorization, preserves unresolved evidence gaps, and prohibits
+runtime-equivalence claims without authorized runtime evidence.
