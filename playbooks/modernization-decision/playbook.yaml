@@ -1,0 +1,86 @@
+name: modernization-decision
+version: 0.3.4
+artifact_type: framework-playbook
+framework_stage: DECIDE
+portable: true
+native_capability_first: true
+purpose: >-
+  Choose and justify a modernization disposition from evidence without turning
+  the decision stage into premature implementation planning.
+
+decision_options:
+  - KEEP
+  - REFACTOR
+  - EXPOSE
+  - EXTRACT
+  - TRANSFORM
+  - REPLATFORM
+  - RETIRE
+
+ibm_bob_mapping:
+  strategy: compose-native-capabilities
+  preferred_mode: Z Architect
+  native_inputs:
+    - impact-analysis
+    - application explanation/documentation
+    - optional Z Understand analysis
+  framework_responsibility:
+    - apply decision matrix
+    - compare alternatives
+    - preserve KEEP as a valid outcome
+    - carry known unknowns forward as constraints
+    - require named human decision owner
+
+inputs:
+  - business_objective
+  - current_state_evidence_pack
+  - known_unknowns_register
+  - impact_analysis
+  - constraints
+  - optional_nonfunctional_requirements
+
+outputs:
+  - options_considered
+  - evidence_for_each_option
+  - rejected_options_and_reasons
+  - proposed_disposition
+  - decision_constraints
+  - proof_obligations
+  - unresolved_questions
+  - named_human_decision_owner
+  - human_approval_status
+
+required_decision_dimensions:
+  - business_value
+  - coupling_reduction
+  - change_surface
+  - behavioral_risk
+  - data_and_transaction_coupling
+  - operational_and_runtime_constraints
+  - testability_and_provability
+  - reversibility
+  - unresolved_unknowns
+  - cost_and_complexity_evidence_when_available
+
+permissions:
+  read_only: true
+  modify_source: false
+  deploy: false
+
+prohibited_actions:
+  - generate_implementation_plan
+  - modify_application_source
+  - resolve_known_unknowns_by_assumption
+  - select_option_without_comparing_alternatives
+  - treat_agent_recommendation_as_final_human_decision
+
+human_validation:
+  required_before_stage_exit: true
+  named_decision_owner_required: true
+
+evaluation:
+  - alternative_completeness
+  - evidence_traceability
+  - unsupported_assumption_rate
+  - known_unknown_carry_forward
+  - human_authority_preservation
