@@ -29,5 +29,14 @@ If PP4Z already provides impact analysis, the Dependency Analysis Playbook speci
 - `discovery/`
 - `dependency-analysis/`
 - `rule-extraction/`
+- `known-unknowns/`
+
+The Known Unknowns playbook adds an explicit **evidence-boundary sweep** so static analysis records not only missing code/behavior but also unavailable performance, production-state, regulatory/policy, and build/runtime evidence.
+
+## Current DECIDE playbooks
+
+- `modernization-decision/`
+
+The DECIDE playbook requires alternatives to be compared before a disposition is proposed and preserves a named human decision owner.
 
 See `integrations/ibm-bob/capability-mapping.yaml` for the IBM Bob mapping.
