@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — v0.3.8 PROVE Evidence-Precision Hardening
+## 0.3.8 — PROVE Evidence-Precision Hardening
 
 - Hardened PROVE claim provenance and evidence-boundary rules
 - Added baseline requirements for historical no-change claims
@@ -12,8 +12,11 @@
 - Separated PROVE completion from SHIFT authorization
 - Separated artifact-persistence reliability from semantic proof
 - Added AtlasPay Experiment 006 as an adversarial validation specification
-- Experiment 006 remains `NOT_RUN` and `NOT_EVALUATED`
-- No deployment, production change, or SHIFT progression is authorized by this candidate
+- Executed AtlasPay Experiment 006; the initial full run identified failures in Test A and Test C while Tests B, D, E, F, G, and H passed
+- Applied one bounded corrective iteration for package-wide historical provenance and logical-layout versus physical-byte evidence precision
+- Revalidated Test A and Test C successfully against the corrected candidate
+- Final release validation: `PASS_WITH_DOCUMENTED_EVIDENCE_LIMITATIONS`
+- Runtime validation remains unavailable; no deployment, production change, or SHIFT progression is authorized by v0.3.8
 
 ## 0.3.7 — PROVE Stage Foundation
 

@@ -1,9 +1,9 @@
 # AtlasPay PROVE Experiment 006
 
-**Framework candidate:** v0.3.8
+**Framework version:** v0.3.8
 **Stage:** PROVE
 **Experiment type:** Adversarial evidence-precision validation
-**Status:** NOT_RUN
+**Status:** COMPLETED_WITH_CORRECTIVE_ITERATION
 
 ## Purpose
 
@@ -310,11 +310,59 @@ credited back to Bob when evaluating the effectiveness of the v0.3.8 controls.
 
 ## Result record
 
-Until the experiment is actually executed:
+### Initial full execution
 
-`experiment_status: NOT_RUN`
+`experiment_status: EXECUTED`
 
-`experiment_result: NOT_EVALUATED`
+`initial_candidate_commit: cc5dc2b43120a9ced35f332231f48fb3e4cbaaf7`
+
+`initial_experiment_result: FAIL`
+
+The initial full Experiment 006 execution produced:
+
+- A — FAIL_AT_PACKAGE_LEVEL;
+- B — PASS;
+- C — NEEDS_CORRECTION;
+- D — PASS;
+- E — PASS;
+- F — PASS;
+- G — PASS;
+- H — PASS.
+
+The generated Bob proof artifact was frozen without human repair.
+
+### Authorized corrective iteration
+
+The framework received one narrowly scoped corrective iteration addressing:
+
+1. package-wide historical-change provenance;
+2. logical PIC versus physical-byte evidence separation;
+3. final consistency checks for those controls.
+
+`corrected_candidate_commit: ab860c400e1e8ef9df1a993e24c666e30106b110`
+
+A targeted corrective regression reran Tests A and C plus the final package
+consistency scan against the corrected candidate.
+
+`test_a_after_correction: PASS`
+
+`test_c_after_correction: PASS`
+
+`corrective_regression_result: PASS`
+
+`final_release_validation: PASS_WITH_DOCUMENTED_EVIDENCE_LIMITATIONS`
+
+`human_release_gate: APPROVE_V0.3.8_RELEASE`
+
+The corrective regression does not rewrite the initial Experiment 006 result.
+It records that the two failed evidence-precision controls were corrected and
+successfully revalidated before the v0.3.8 human release decision.
+
+Remaining limitations include unavailable runtime validation, unverified
+historical non-change for evidence without authorized baselines, and unverified
+physical/runtime record compatibility where the required evidence is absent.
+
+`runtime_validation: RUNTIME_UNAVAILABLE`
 
 `progression_to_shift_authorized: false`
 

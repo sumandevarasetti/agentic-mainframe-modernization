@@ -42,7 +42,7 @@ TRANSFORM executes one approved PLAN slice at a time. Every source change must b
 
 PROVE is read-only. It classifies what the available evidence actually establishes, traces differences to authorization, exposes unsupported or unexplained changes, and keeps static verification separate from runtime verification.
 
-The v0.3.8 candidate hardens PROVE around claim provenance, baseline-aware historical change claims, caller/callee evidence boundaries, exact COBOL record-layout evidence, known-unknown consistency, artifact integrity, evidence-proportional validation language, explicit PROVE-to-SHIFT authorization, and artifact-persistence metadata. This candidate remains subject to Experiment 006 validation and is not yet a released framework version.
+v0.3.8 hardens PROVE around claim provenance, baseline-aware historical change claims, caller/callee evidence boundaries, exact COBOL record-layout evidence, known-unknown consistency, artifact integrity, evidence-proportional validation language, explicit PROVE-to-SHIFT authorization, and artifact-persistence metadata. Experiment 006 completed with one bounded corrective iteration and passed release validation with documented evidence limitations. Runtime validation remains unavailable, and v0.3.8 does not authorize SHIFT, deployment, or production change.
 
 ## IBM Bob PP4Z mapping
 
@@ -60,7 +60,7 @@ See:
 - TRANSFORM: `integrations/ibm-bob/transform/atlaspay-experiment-004.md`
 - PROVE: `integrations/ibm-bob/prove/atlaspay-experiment-005.md`
 
-- PROVE hardening validation — v0.3.8 candidate, `NOT_RUN`: `integrations/ibm-bob/prove/atlaspay-experiment-006.md`
+- PROVE hardening validation — v0.3.8, `COMPLETED_WITH_CORRECTIVE_ITERATION`: `integrations/ibm-bob/prove/atlaspay-experiment-006.md`
 
 AtlasPay is a synthetic teaching/regression estate. AWS CardDemo remains the independent holdout.
 
