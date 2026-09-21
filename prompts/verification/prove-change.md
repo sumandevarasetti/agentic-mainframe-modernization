@@ -79,19 +79,34 @@ Do not imply a stronger provenance class than the evidence actually provides.
 
 ## Historical change rule
 
-Current-state inspection alone cannot prove that an artifact was unchanged
-during TRANSFORM.
+This rule applies package-wide, not only to artifacts explicitly identified as
+historical-change test cases.
 
-A historical no-change claim requires a frozen pre-change baseline,
-authenticated source-control diff covering the relevant interval, or equivalent
-provenance evidence.
+Current-state inspection alone can establish that source text or behavior is
+present in the inspected artifact. It cannot establish that the artifact was
+unchanged during TRANSFORM.
 
-If that evidence is absent, classify the historical claim as:
+Any historical claim using language such as:
+
+- unchanged;
+- preserved;
+- identical;
+- same as before;
+- retained unchanged;
+
+requires a frozen pre-change baseline, authenticated source-control diff covering
+the relevant interval, or equivalent authorized historical provenance.
+
+If that provenance is absent, classify the historical claim as:
 
 `NOT_VERIFIED`
 
-Do not convert "no difference observed in the current evidence set" into
-"unchanged during TRANSFORM."
+Do not convert "present in current source" or "no anomaly observed" into
+historical non-change.
+
+Before completing the proof package, scan the complete package for historical
+change language and verify that every such claim has adequate historical
+provenance.
 
 ## Caller/callee semantic boundary
 
@@ -114,8 +129,14 @@ callee-semantic conclusions as:
 
 ## COBOL record-layout rule
 
-Before making a COBOL storage-representation or record-length claim, inspect the
-exact relevant source evidence.
+Before making a COBOL representation or record-length claim, distinguish the
+different evidence layers explicitly:
+
+1. logical positions implied by PIC clauses;
+2. declared COBOL representation such as USAGE;
+3. physical encoded byte size;
+4. dataset or file declared record size;
+5. runtime record compatibility.
 
 Where applicable, inspect:
 
@@ -124,14 +145,20 @@ Where applicable, inspect:
 - REDEFINES;
 - OCCURS;
 - synchronization or alignment clauses;
-- calculated copybook record length;
+- compiler or representation environment evidence;
 - dataset or file record length.
 
-Do not infer packed, display, binary, alignment, or physical record size from
-field names or apparent numeric length alone.
+PIC clauses may support calculation of logical positions. They do not, by
+themselves, prove physical encoded byte size or runtime compatibility.
 
-If the required representation evidence is absent, classify the unsupported
-conclusion as:
+Do not infer packed, display, binary, alignment, physical byte size, or runtime
+record compatibility from field names or apparent numeric length alone.
+
+A dataset record-size declaration establishes the declared dataset size. It does
+not by itself prove that a copybook layout is physically compatible at runtime.
+
+If representation or environment evidence required for a physical-byte or
+runtime-compatibility claim is absent, classify that claim as:
 
 `NOT_VERIFIED`
 
@@ -249,6 +276,21 @@ Produce a Modernization Proof Package containing:
 13. proof gaps and artifact-persistence status;
 14. PROVE exit recommendation for human review, including separate SHIFT authorization status.
 
+## Final consistency checks
+
+Before producing the final PROVE recommendation:
+
+1. scan the complete package for historical-change terms such as `unchanged`,
+   `preserved`, `identical`, `same as before`, and `retained unchanged`;
+2. verify that every historical claim is supported by `PRE_POST_DIFF`,
+   authenticated version history, or equivalent authorized historical evidence;
+3. where such evidence is absent, replace the historical conclusion with
+   `NOT_VERIFIED`;
+4. verify that logical PIC positions are not presented as proven physical byte
+   size without representation and environment evidence;
+5. verify that dataset record size is not presented as proof of runtime record
+   compatibility.
+
 ## Rules
 
 - Do not modify source.
@@ -259,7 +301,7 @@ Produce a Modernization Proof Package containing:
 - Do not extend claims beyond the authorized evidence boundary.
 - Do not infer historical non-change without valid baseline evidence.
 - Do not infer callee-internal semantics from caller-only evidence.
-- Do not infer COBOL storage representation without exact source evidence.
+- Do not promote logical PIC layout to physical byte size or runtime compatibility without exact representation and environment evidence.
 - Do not hide or silently reconcile conflicting known-unknown states.
 - Do not abbreviate or fabricate integrity hashes.
 - Do not describe static inspection as syntax, compile, link-edit, or runtime verification.

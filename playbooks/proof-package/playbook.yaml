@@ -76,9 +76,21 @@ claim_provenance:
     - OPERATIONAL_EVIDENCE
 
 historical_change_claims:
+  scope: package_wide
   pre_change_baseline_or_equivalent_diff_required: true
   current_state_alone_cannot_prove_unchanged: true
+  historical_terms_require_provenance_check:
+    - unchanged
+    - preserved
+    - identical
+    - same_as_before
+    - retained_unchanged
+  accepted_historical_provenance:
+    - PRE_POST_DIFF
+    - authenticated_version_history
+    - equivalent_authorized_historical_evidence
   otherwise_classify: NOT_VERIFIED
+  final_package_historical_claim_scan_required: true
 
 callee_semantic_boundaries:
   caller_only_evidence_can_verify:
@@ -97,8 +109,19 @@ record_layout_evidence:
     - USAGE
     - REDEFINES
     - OCCURS
+    - synchronization_or_alignment
     - relevant_record_length
   infer_packed_or_display_without_source_evidence: false
+  distinguish:
+    - logical_pic_positions
+    - declared_cobol_representation
+    - physical_encoded_byte_size
+    - dataset_declared_record_size
+    - runtime_record_compatibility
+  logical_pic_positions_may_be_calculated_from_pic: true
+  physical_byte_size_requires_representation_and_environment_evidence: true
+  dataset_record_size_does_not_prove_runtime_compatibility: true
+  otherwise_classify_physical_or_runtime_claim: NOT_VERIFIED
 
 known_unknown_consistency:
   final_reconciliation_required: true
@@ -219,6 +242,8 @@ exit_criteria:
   - no_unexplained_high_impact_difference_accepted
   - unresolved_runtime_dimensions_explicit
   - known_unknown_consistency_check_passed_or_conflicts_explicit
+  - package_wide_historical_claim_scan_passed_or_unsupported_claims_marked_not_verified
+  - logical_layout_and_physical_byte_claims_distinguished
   - artifact_integrity_status_explicit
   - prove_completion_and_shift_authorization_recorded_separately
   - human_prove_gate_recorded
