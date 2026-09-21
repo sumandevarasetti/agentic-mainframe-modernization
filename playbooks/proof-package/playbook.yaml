@@ -1,5 +1,5 @@
 name: proof-package
-version: 0.3.7
+version: 0.3.8
 artifact_type: framework-playbook
 framework_stage: PROVE
 portable: true
@@ -28,6 +28,7 @@ outputs:
   - difference_register
   - unresolved_proof_gaps
   - prove_exit_assessment
+  - artifact_persistence_record
 
 proof_status_vocabulary:
   STATICALLY_VERIFIED: >-
@@ -58,16 +59,97 @@ required_proof_dimensions:
   - static_validation
   - runtime_validation_status
   - unexplained_difference_detection
+  - evidence_provenance
+  - artifact_integrity
+  - progression_authorization
+
+claim_provenance:
+  required_for_material_claims: true
+  allowed_classes:
+    - PRE_POST_DIFF
+    - CURRENT_STATE_INSPECTION
+    - AUTHORIZATION_RECORD
+    - STATIC_CALL_PATH
+    - STATIC_DATA_CONTRACT
+    - BUILD_RESULT
+    - RUNTIME_TEST
+    - OPERATIONAL_EVIDENCE
+
+historical_change_claims:
+  pre_change_baseline_or_equivalent_diff_required: true
+  current_state_alone_cannot_prove_unchanged: true
+  otherwise_classify: NOT_VERIFIED
+
+callee_semantic_boundaries:
+  caller_only_evidence_can_verify:
+    - call_presence
+    - call_order
+    - parameter_mapping
+    - caller_handling
+  caller_only_evidence_cannot_verify:
+    - callee_internal_business_semantics
+    - callee_historical_non_change
+  direct_callee_evidence_required_for_semantic_claims: true
+
+record_layout_evidence:
+  required_before_storage_representation_claims:
+    - PIC
+    - USAGE
+    - REDEFINES
+    - OCCURS
+    - relevant_record_length
+  infer_packed_or_display_without_source_evidence: false
+
+known_unknown_consistency:
+  final_reconciliation_required: true
+  reconcile_across:
+    - known_unknown_register
+    - evidence_matrices
+    - narrative_findings
+    - risk_highlights
+    - final_summary
+  conflict_classification: INTERNAL_STATUS_CONFLICT
+
+artifact_integrity:
+  changed_artifact_sha256_required_when_available: true
+  preserve_pre_change_hash_when_available: true
+  hash_absence_must_be_explicit: true
+
+static_validation_vocabulary:
+  source_review_only: STATICALLY_INSPECTED
+  parser_or_precompiler_required_for: SYNTAX_VALIDATED
+  compiler_required_for: COMPILE_VERIFIED
+  link_edit_required_for: LINK_EDIT_VERIFIED
+  runtime_required_for: RUNTIME_VERIFIED
+
+progression_contract:
+  prove_completion_independent_of_shift_authorization: true
+  prove_may_close_for_available_evidence: true
+  shift_requires_action_appropriate_evidence: true
+  human_shift_authorization_required: true
+
+artifact_persistence:
+  semantic_classification_independent_of_persistence: true
+  record_generation_success: true
+  record_persistence_success: true
+  record_persistence_method: true
+  record_integrity_hash_when_persisted: true
 
 evidence_rules:
-  - every proof claim must identify its evidence source
+  - every material proof claim must identify its evidence source and provenance class
   - static evidence must not be promoted to runtime evidence
   - absence of a detected difference is not runtime-equivalence proof
+  - current-state inspection alone must not prove historical non-change
+  - caller evidence must not be promoted to uninspected callee semantics
+  - record-layout claims require exact source-level representation evidence
   - unresolved known unknowns remain visible
+  - known-unknown status must be internally consistent across the final package
   - containment gates remain open unless separately resolved
   - approved interface changes must be classified as intentional differences
   - unavailable runtime evidence must be labeled RUNTIME_UNAVAILABLE
   - unsupported changes must be surfaced, not rationalized after the fact
+  - proof completion and SHIFT authorization must be represented independently
+  - artifact-persistence failures must not alter semantic proof classifications
 
 difference_classification:
   expected:
@@ -101,11 +183,16 @@ runtime_execution_conditions:
 prohibited_actions:
   - proof_by_plausibility
   - infer_runtime_equivalence_from_static_similarity
+  - infer_historical_non_change_from_current_state
+  - infer_uninspected_callee_semantics_from_caller_behavior
+  - infer_storage_representation_without_exact_source_evidence
+  - hide_known_unknown_status_conflicts
   - hide_unresolved_unknowns
   - resolve_known_unknowns_by_assumption
   - modify_source_to_make_proof_pass
   - modify_expected_results_to_match_transformed_behavior
   - expand_scope_during_proof
+  - treat_prove_completion_as_shift_authorization
   - deploy
   - authorize_production_change
 
@@ -116,20 +203,34 @@ evaluation:
   - behavioral_invariant_coverage
   - unexplained_difference_count
   - known_unknown_visibility
+  - known_unknown_consistency
   - evidence_classification_accuracy
+  - claim_provenance_accuracy
+  - artifact_integrity_completeness
+  - persistence_reliability
 
 human_validation:
   required_before_stage_exit: true
+  required_for_shift_authorization: true
 
 exit_criteria:
   - required_static_evidence_complete_for_available_environment
   - all_detected_differences_classified
   - no_unexplained_high_impact_difference_accepted
   - unresolved_runtime_dimensions_explicit
+  - known_unknown_consistency_check_passed_or_conflicts_explicit
+  - artifact_integrity_status_explicit
+  - prove_completion_and_shift_authorization_recorded_separately
   - human_prove_gate_recorded
 
 failure_modes:
   - proof_by_plausibility
   - evidence_classification_inflation
+  - historical_non_change_without_baseline
+  - caller_to_callee_semantic_overreach
+  - record_layout_inference_without_source_evidence
+  - known_unknown_status_conflict
+  - static_validation_vocabulary_inflation
+  - persistence_failure_hidden_as_reasoning_failure
   - silent_regression_acceptance
   - runtime_claim_without_runtime_evidence

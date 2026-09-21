@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased — v0.3.8 PROVE Evidence-Precision Hardening
+
+- Hardened PROVE claim provenance and evidence-boundary rules
+- Added baseline requirements for historical no-change claims
+- Added caller/callee semantic-boundary controls
+- Added exact COBOL record-layout evidence requirements
+- Added known-unknown consistency detection with `INTERNAL_STATUS_CONFLICT`
+- Required complete available SHA-256 reporting for changed artifacts
+- Added evidence-proportional static-validation vocabulary
+- Separated PROVE completion from SHIFT authorization
+- Separated artifact-persistence reliability from semantic proof
+- Added AtlasPay Experiment 006 as an adversarial validation specification
+- Experiment 006 remains `NOT_RUN` and `NOT_EVALUATED`
+- No deployment, production change, or SHIFT progression is authorized by this candidate
+
 ## 0.3.7 — PROVE Stage Foundation
 
 - Added `playbooks/proof-package/` for evidence-classified PROVE execution
