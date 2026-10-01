@@ -1,8 +1,8 @@
 # Run 002 — DECIDE Evidence
 
-**Lifecycle stage:** DECIDE  
-**Original local source path:** `.work/atlaspay-understand-001/runs/atlaspay/decide/run-002/`  
-**Framework version:** v0.3.4 (executed); published under v0.3.9
+**Lifecycle stage:** DECIDE
+**Original local source path:** `.work/atlaspay-understand-001/runs/atlaspay/decide/run-002/`
+**Framework version:** v0.3.4 (executed); published under v0.3.10
 
 ---
 
@@ -10,10 +10,10 @@
 
 | File | Artifact role | Source SHA-256 | Published SHA-256 | Byte-identical | Sanitization | Book citation | Screenshot |
 |---|---|---|---|---|---|---|---|
-| `01-modernization-decision-record.md` | Raw initial Modernization Decision Record | `b78d09a2` | `b78d09a2` | YES | None | YES | YES |
-| `02-modernization-decision-record-reviewed.md` | Human-reviewed MDR (intermediate) | `d608dc6b` | `d608dc6b` | YES | None | YES | YES |
-| `03-modernization-decision-record-final.md` | Final MDR — canonical DECIDE artifact | `39bf333f` | `39bf333f` | YES | None | YES | YES |
-| `04-human-decision-gate.md` | Human decision gate — REFACTOR APPROVED | `5af28085` | `5af28085` | YES | None | YES | YES |
+| `01-modernization-decision-record.md` | Raw initial Modernization Decision Record | `b78d09a236adaca9a95d2932e05d91f7efe92e3fae280f74ffc464dc527e2c3d` | `b78d09a236adaca9a95d2932e05d91f7efe92e3fae280f74ffc464dc527e2c3d` | YES | None | YES | YES |
+| `02-modernization-decision-record-reviewed.md` | Human-reviewed MDR (intermediate) | `d608dc6bc69384abe3fd52bd8edba3e29cc1fccc5b74e95120d7a62878227124` | `d608dc6bc69384abe3fd52bd8edba3e29cc1fccc5b74e95120d7a62878227124` | YES | None | YES | YES |
+| `03-modernization-decision-record-final.md` | Final MDR — canonical DECIDE artifact | `39bf333f3a113fc1b728ecbb56560834e50b1460d31efb3369b86da0f5dddb54` | `39bf333f3a113fc1b728ecbb56560834e50b1460d31efb3369b86da0f5dddb54` | YES | None | YES | YES |
+| `04-human-decision-gate.md` | Human decision gate — REFACTOR APPROVED | `5af28085cc901aab7fce9e1af3081e6ab95ed14f3d1a5cc5497227bc874fe49d` | `5af28085cc901aab7fce9e1af3081e6ab95ed14f3d1a5cc5497227bc874fe49d` | YES | None | YES | YES |
 
 ---
 

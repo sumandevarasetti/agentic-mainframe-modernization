@@ -1,7 +1,7 @@
 # Book Reference Baseline
 
-**Book:** *Project Bob — Accelerating Mainframe Modernization with Agentic AI*  
-**Repository release:** v0.3.9  
+**Book:** *Project Bob — Accelerating Mainframe Modernization with Agentic AI*
+**Repository release:** v0.3.10
 **Document purpose:** Canonical reference anchors for the Project Bob companion repository
 
 ---
@@ -107,7 +107,7 @@ SHIFT and LEARN are defined in the framework but are not exercised in the refere
 
 **Runtime validation is unavailable.**
 
-The reference progression is conducted entirely through static analysis, evidence review, and characterization testing. No authorized runtime environment exists for the AtlasPay estate at this repository version.
+The reference progression is conducted through static analysis, evidence review, and inspection of characterization artifacts. No authorized executable runtime or executable characterization harness is established by the published reference progression. No authorized runtime environment exists for the AtlasPay estate at this repository version.
 
 Claims of runtime equivalence or production readiness are not supported by the available evidence. PROVE completion establishes static verification only.
 
@@ -123,19 +123,19 @@ SHIFT requires:
 - production-grade runtime evidence;
 - explicit PROVE-to-SHIFT gate passage.
 
-None of these exist for AtlasPay at v0.3.9.
+None of these exist for AtlasPay at v0.3.10.
 
 ---
 
 ## Deployment authorization
 
-**Deployment is not authorized** by this repository or any artifact within it at v0.3.9.
+**Deployment is not authorized** by this repository or any artifact within it at v0.3.10.
 
 ---
 
 ## Production change authorization
 
-**No production change is authorized** by any artifact in this repository at v0.3.9.
+**No production change is authorized** by any artifact in this repository at v0.3.10.
 
 ---
 
@@ -149,13 +149,13 @@ AtlasPay is no longer a blind holdout after Run 001 evaluation. Later runs are r
 
 ## Native Capability First
 
-The framework uses verified IBM Bob Premium Package for Z / Z Understand capabilities before substituting a framework prompt for the same task. The framework does not describe portable YAML playbooks as replacements for native Bob capabilities.
+The framework uses verified IBM Bob Premium Package for Z capabilities before substituting a framework prompt for the same task. Z Understand-backed analysis may be used when it is configured, available, and authorized. The published Run 001 reference execution used PP4Z workspace mode and did not configure Z Understand (`z_understand.configured: false`). The framework does not describe portable YAML playbooks as replacements for native Bob capabilities.
 
 ---
 
 ## Read it in the book. Run it in the repo.
 
-Book prose describes what the framework does and why. Repository artifacts at v0.3.9 are the runnable, inspectable reference implementation.
+Book prose describes what the framework does and why. Repository artifacts at v0.3.10 are the runnable, inspectable reference implementation.
 
 ---
 

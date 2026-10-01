@@ -1,7 +1,7 @@
 {
   "repository": "agentic-mainframe-modernization",
-  "version": "0.3.9",
-  "status": "book-reference-baseline",
+  "version": "0.3.10",
+  "status": "book-authoring-baseline",
   "key_assets": [
     "docs/agentic-mainframe-modernization.md",
     "docs/book/book-reference-baseline.md",

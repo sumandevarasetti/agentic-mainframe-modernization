@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # scripts/validate-book-baseline.sh
 #
-# Validates invariants for the v0.3.9 Book Reference Baseline.
+# Validates invariants for the v0.3.10 Book Authoring Baseline.
+# Preserves all v0.3.9 checks and adds v0.3.10 checks.
 # Exits non-zero if any required invariant fails.
 #
 # Usage:
@@ -32,159 +33,192 @@ _L2="Strangler"
 LEGACY_TERM="${_L1} ${_L2}"
 
 echo "========================================"
-echo " Book Baseline Validation — v0.3.9"
+echo " Book Baseline Validation — v0.3.10"
 echo "========================================"
 echo ""
 
 # -----------------------------------------------------------------------
-# 1. VERSION == 0.3.9
+# 1. VERSION == 0.3.10
 # -----------------------------------------------------------------------
-echo "[1] VERSION == 0.3.9"
-if [[ -f VERSION ]] && grep -q "^0\.3\.9" VERSION; then
-  pass "VERSION is 0.3.9"
+echo "[1] VERSION == 0.3.10"
+if [[ -f VERSION ]] && grep -q "^0\.3\.10" VERSION; then
+  pass "VERSION is 0.3.10"
 else
-  fail "VERSION is not 0.3.9 (found: $(cat VERSION 2>/dev/null || echo 'MISSING'))"
+  fail "VERSION is not 0.3.10 (found: $(cat VERSION 2>/dev/null || echo 'MISSING'))"
 fi
 
 # -----------------------------------------------------------------------
-# 2. README repository version == 0.3.9
+# 2. README repository version == 0.3.10
 # -----------------------------------------------------------------------
-echo "[2] README repository version == 0.3.9"
-if grep -q "Version.*0\.3\.9" README.md 2>/dev/null; then
-  pass "README.md contains Version 0.3.9"
+echo "[2] README repository version == 0.3.10"
+if grep -q "Version.*0\.3\.10" README.md 2>/dev/null; then
+  pass "README.md contains Version 0.3.10"
 else
-  fail "README.md does not contain Version 0.3.9"
+  fail "README.md does not contain Version 0.3.10"
 fi
 
 # -----------------------------------------------------------------------
-# 3. MANIFEST repository version == 0.3.9
+# 3. MANIFEST repository version == 0.3.10
 # -----------------------------------------------------------------------
-echo "[3] MANIFEST.json repository version == 0.3.9"
-if grep -q '"version".*"0\.3\.9"' MANIFEST.json 2>/dev/null; then
-  pass "MANIFEST.json version is 0.3.9"
+echo "[3] MANIFEST.json repository version == 0.3.10"
+if grep -q '"version".*"0\.3\.10"' MANIFEST.json 2>/dev/null; then
+  pass "MANIFEST.json version is 0.3.10"
 else
-  fail "MANIFEST.json version is not 0.3.9"
+  fail "MANIFEST.json version is not 0.3.10"
 fi
 
 # -----------------------------------------------------------------------
-# 4. docs/book/book-baseline.yaml says 0.3.9
+# 4. docs/book/book-baseline.yaml repository_version == 0.3.10
 # -----------------------------------------------------------------------
-echo "[4] docs/book/book-baseline.yaml repository_version == 0.3.9"
-if grep -q 'repository_version.*0\.3\.9' docs/book/book-baseline.yaml 2>/dev/null; then
-  pass "docs/book/book-baseline.yaml has repository_version 0.3.9"
+echo "[4] docs/book/book-baseline.yaml repository_version == 0.3.10"
+if grep -q 'repository_version.*0\.3\.10' docs/book/book-baseline.yaml 2>/dev/null; then
+  pass "docs/book/book-baseline.yaml has repository_version 0.3.10"
 else
-  fail "docs/book/book-baseline.yaml missing or does not have repository_version 0.3.9"
+  fail "docs/book/book-baseline.yaml missing or does not have repository_version 0.3.10"
 fi
 
 # -----------------------------------------------------------------------
-# 5. Canonical source root exists
+# 5. docs/book/book-baseline.yaml reference_tag == v0.3.10
 # -----------------------------------------------------------------------
-echo "[5] Canonical source root exists: examples/atlaspay/src/"
-if [[ -d examples/atlaspay/src ]]; then
-  pass "examples/atlaspay/src/ exists"
+echo "[5] docs/book/book-baseline.yaml reference_tag == v0.3.10"
+if grep -q 'reference_tag.*v0\.3\.10' docs/book/book-baseline.yaml 2>/dev/null; then
+  pass "docs/book/book-baseline.yaml has reference_tag v0.3.10"
 else
-  fail "examples/atlaspay/src/ does not exist"
+  fail "docs/book/book-baseline.yaml missing reference_tag v0.3.10"
 fi
 
 # -----------------------------------------------------------------------
-# 6. Canonical tests exist
+# 6. PROVENANCE-NOTE.md exists
 # -----------------------------------------------------------------------
-echo "[6] Canonical tests exist: examples/atlaspay/tests/golden-master/cases.yaml"
-if [[ -f examples/atlaspay/tests/golden-master/cases.yaml ]]; then
-  pass "examples/atlaspay/tests/golden-master/cases.yaml exists"
+echo "[6] PROVENANCE-NOTE.md exists"
+if [[ -f evidence/atlaspay/runs/run-001-understand/PROVENANCE-NOTE.md ]]; then
+  pass "evidence/atlaspay/runs/run-001-understand/PROVENANCE-NOTE.md exists"
 else
-  fail "examples/atlaspay/tests/golden-master/cases.yaml does not exist"
+  fail "evidence/atlaspay/runs/run-001-understand/PROVENANCE-NOTE.md is missing"
 fi
 
 # -----------------------------------------------------------------------
-# 7. Old current source path does not exist: examples/atlaspay/cobol/
+# 7. KU13-SCOPE-NOTE.md exists
 # -----------------------------------------------------------------------
-echo "[7] Old source path does NOT exist: examples/atlaspay/cobol/"
-if [[ ! -d examples/atlaspay/cobol ]]; then
-  pass "examples/atlaspay/cobol/ correctly absent"
+echo "[7] KU13-SCOPE-NOTE.md exists"
+if [[ -f evidence/atlaspay/runs/run-004-transform/KU13-SCOPE-NOTE.md ]]; then
+  pass "evidence/atlaspay/runs/run-004-transform/KU13-SCOPE-NOTE.md exists"
 else
-  fail "examples/atlaspay/cobol/ still exists at old path (should be archived)"
+  fail "evidence/atlaspay/runs/run-004-transform/KU13-SCOPE-NOTE.md is missing"
 fi
 
 # -----------------------------------------------------------------------
-# 8. Old chapter-03 path does not exist
+# 8. book-reference-baseline.md does not contain "characterization testing"
+#    in the inaccurate runtime/reference-progression sense
 # -----------------------------------------------------------------------
-echo "[8] Old chapter-03 path does NOT exist: examples/atlaspay/modernization/chapter-03/"
-if [[ ! -d "examples/atlaspay/modernization/chapter-03" ]]; then
-  pass "examples/atlaspay/modernization/chapter-03/ correctly absent"
+echo "[8] book-reference-baseline.md does not use inaccurate 'characterization testing' phrase"
+if grep -q "characterization testing" docs/book/book-reference-baseline.md 2>/dev/null; then
+  fail "docs/book/book-reference-baseline.md still contains 'characterization testing'"
 else
-  fail "examples/atlaspay/modernization/chapter-03/ still exists (should be archived)"
+  pass "docs/book/book-reference-baseline.md does not contain inaccurate 'characterization testing'"
 fi
 
 # -----------------------------------------------------------------------
-# 9. Archive root exists
+# 9. book-reference-baseline.md does not imply Z Understand configured for Run 001
 # -----------------------------------------------------------------------
-echo "[9] Archive root exists: examples/atlaspay/archive/v0.1/"
-if [[ -d examples/atlaspay/archive/v0.1 ]]; then
-  pass "examples/atlaspay/archive/v0.1/ exists"
-else
-  fail "examples/atlaspay/archive/v0.1/ does not exist"
-fi
-
-# -----------------------------------------------------------------------
-# 10. Current workflow path exists
-# -----------------------------------------------------------------------
-echo "[10] Current workflow path exists: workflows/full-agentic-modernization/"
-if [[ -d workflows/full-agentic-modernization ]]; then
-  pass "workflows/full-agentic-modernization/ exists"
-else
-  fail "workflows/full-agentic-modernization/ does not exist"
-fi
-
-# -----------------------------------------------------------------------
-# 11. Old workflow path does NOT exist
-# -----------------------------------------------------------------------
-echo "[11] Old workflow path does NOT exist: workflows/full-agentic-strangler/"
-if [[ ! -d workflows/full-agentic-strangler ]]; then
-  pass "workflows/full-agentic-strangler/ correctly absent"
-else
-  fail "workflows/full-agentic-strangler/ still exists (should be renamed)"
-fi
-
-# -----------------------------------------------------------------------
-# 12. Current framework definition exists
-# -----------------------------------------------------------------------
-echo "[12] Current framework definition exists: docs/agentic-mainframe-modernization.md"
-if [[ -f docs/agentic-mainframe-modernization.md ]]; then
-  pass "docs/agentic-mainframe-modernization.md exists"
-else
-  fail "docs/agentic-mainframe-modernization.md does not exist"
-fi
-
-# -----------------------------------------------------------------------
-# 13. Old framework definition path does NOT exist
-# -----------------------------------------------------------------------
-echo "[13] Old framework definition does NOT exist: docs/agentic-strangler.md"
-if [[ ! -f docs/agentic-strangler.md ]]; then
-  pass "docs/agentic-strangler.md correctly absent"
-else
-  fail "docs/agentic-strangler.md still exists (should be renamed)"
-fi
-
-# -----------------------------------------------------------------------
-# 14. prepare-atlaspay-run.sh excludes archive and prior modernization answers
-# -----------------------------------------------------------------------
-echo "[14] prepare-atlaspay-run.sh excludes archive and prior modernization artifacts"
-SCRIPT="integrations/ibm-bob/understand/prepare-atlaspay-run.sh"
-if [[ -f "$SCRIPT" ]]; then
-  if grep -q "archive" "$SCRIPT" && grep -q "modernization" "$SCRIPT"; then
-    pass "prepare-atlaspay-run.sh references archive and modernization exclusions"
+echo "[9] book-reference-baseline.md does not imply Z Understand was configured for Run 001"
+if grep -q "Z Understand.*configured\|configured.*Z Understand" docs/book/book-reference-baseline.md 2>/dev/null; then
+  # Check if it's affirmatively claiming it WAS configured (not documenting that it was NOT)
+  if grep -q "did not configure Z Understand\|Z Understand.*not configured\|z_understand.configured: false" docs/book/book-reference-baseline.md 2>/dev/null; then
+    pass "book-reference-baseline.md correctly states Z Understand was NOT configured for Run 001"
   else
-    fail "prepare-atlaspay-run.sh does not reference archive/modernization exclusions"
+    fail "book-reference-baseline.md may imply Z Understand was configured for Run 001"
   fi
 else
-  fail "$SCRIPT does not exist"
+  warn "book-reference-baseline.md does not mention Z Understand configuration status — verify manually"
 fi
 
 # -----------------------------------------------------------------------
-# 15. Protected evaluator ground truth NOT copied under examples/ or evidence/
+# 10. Chapter 1 mapping contains required AtlasPay/evidence paths
 # -----------------------------------------------------------------------
-echo "[15] Protected evaluator ground truth not copied to examples/ or evidence/"
+echo "[10] Chapter 1 book mapping contains required paths"
+CH1_REQUIRED=(
+  "examples/atlaspay/README.md"
+  "examples/atlaspay/src/cobol/TRNLIM01.cbl"
+  "examples/atlaspay/tests/golden-master/cases.yaml"
+  "examples/atlaspay/archive/v0.1/tests/golden-master-cases.yaml"
+  "evidence/atlaspay/runs/run-001-understand/"
+  "evidence/atlaspay/runs/run-001-understand/PROVENANCE-NOTE.md"
+  "evidence/atlaspay/runs/run-004-transform/00-ku13-authority-decision.md"
+  "evidence/atlaspay/runs/run-004-transform/KU13-SCOPE-NOTE.md"
+)
+for req in "${CH1_REQUIRED[@]}"; do
+  if grep -q "$req" docs/book-mapping.md 2>/dev/null; then
+    pass "Chapter 1 mapping contains: $req"
+  else
+    fail "Chapter 1 mapping missing: $req"
+  fi
+done
+
+# -----------------------------------------------------------------------
+# 11. No abbreviated SHA-256 hashes (< 64 hex chars) in evidence READMEs
+#     labeled as Source SHA-256, Published SHA-256, or SHA-256
+# -----------------------------------------------------------------------
+echo "[11] Evidence README SHA-256 values are full 64-character hashes"
+HASH_FAIL=0
+for readme in evidence/atlaspay/runs/*/README.md; do
+  # Extract lines that have SHA-256 column labels and check for short hex values
+  # A full SHA-256 is 64 hex characters; abbreviated would be 7-16 chars
+  if grep -E '`[0-9a-f]{8,63}`' "$readme" 2>/dev/null | grep -qE 'SHA-256|sha-256'; then
+    MATCHES=$(grep -E '`[0-9a-f]{8,63}`' "$readme" 2>/dev/null | grep -E 'SHA-256|sha-256' | head -3)
+    fail "Abbreviated SHA-256 hash found in $readme"
+    echo "    Evidence: $MATCHES" >&2
+    HASH_FAIL=1
+  fi
+done
+if [[ $HASH_FAIL -eq 0 ]]; then
+  pass "All evidence README SHA-256 fields contain full hashes (no abbreviations found)"
+fi
+
+# -----------------------------------------------------------------------
+# 12. Active framework/book files use no legacy term (same as v0.3.9 check 21)
+# -----------------------------------------------------------------------
+echo "[12] Active book/framework files contain no legacy term"
+ACTIVE_DIRS=(
+  "docs"
+  "agents"
+  "playbooks"
+  "prompts"
+  "governance"
+  "integrations"
+  "workflows/full-agentic-modernization"
+  "examples/atlaspay/AGENTS.framework.md"
+  "examples/atlaspay/README.md"
+  "README.md"
+)
+LEGACY_FOUND=0
+for target in "${ACTIVE_DIRS[@]}"; do
+  if [[ -e "$target" ]]; then
+    if grep -rn "$LEGACY_TERM" "$target" \
+        --include="*.md" --include="*.yaml" --include="*.json" --include="*.sh" \
+        --exclude-dir="archive" \
+        --exclude="CHANGELOG.md" \
+        2>/dev/null | grep -q .; then
+      MATCHES=$(grep -rn "$LEGACY_TERM" "$target" \
+        --include="*.md" --include="*.yaml" --include="*.json" --include="*.sh" \
+        --exclude-dir="archive" \
+        --exclude="CHANGELOG.md" \
+        2>/dev/null)
+      echo "  FAIL: Legacy term found in active material:" >&2
+      echo "$MATCHES" >&2
+      FAIL=$((FAIL+1))
+      LEGACY_FOUND=1
+    fi
+  fi
+done
+if [[ $LEGACY_FOUND -eq 0 ]]; then
+  pass "No legacy term found in active book/framework files"
+fi
+
+# -----------------------------------------------------------------------
+# 13. Protected evaluator ground truth not copied under examples/ or evidence/
+# -----------------------------------------------------------------------
+echo "[13] Protected evaluator ground truth not copied to examples/ or evidence/"
 GT_FOUND=0
 if find examples/ -name "ground-truth.yaml" 2>/dev/null | grep -q .; then
   fail "ground-truth.yaml found under examples/"
@@ -199,9 +233,94 @@ if [[ $GT_FOUND -eq 0 ]]; then
 fi
 
 # -----------------------------------------------------------------------
-# 16. Evidence run directories required by the book exist
+# 14. git diff --check is clean
 # -----------------------------------------------------------------------
-echo "[16] Required evidence run directories exist"
+echo "[14] git diff --check is clean"
+if git diff --check 2>/dev/null; then
+  pass "git diff --check is clean"
+else
+  fail "git diff --check found whitespace issues"
+fi
+
+# -----------------------------------------------------------------------
+# Preserved v0.3.9 structural checks (renumbered 15-36)
+# -----------------------------------------------------------------------
+echo "[15] Canonical source root exists: examples/atlaspay/src/"
+if [[ -d examples/atlaspay/src ]]; then
+  pass "examples/atlaspay/src/ exists"
+else
+  fail "examples/atlaspay/src/ does not exist"
+fi
+
+echo "[16] Canonical tests exist: examples/atlaspay/tests/golden-master/cases.yaml"
+if [[ -f examples/atlaspay/tests/golden-master/cases.yaml ]]; then
+  pass "examples/atlaspay/tests/golden-master/cases.yaml exists"
+else
+  fail "examples/atlaspay/tests/golden-master/cases.yaml does not exist"
+fi
+
+echo "[17] Old source path does NOT exist: examples/atlaspay/cobol/"
+if [[ ! -d examples/atlaspay/cobol ]]; then
+  pass "examples/atlaspay/cobol/ correctly absent"
+else
+  fail "examples/atlaspay/cobol/ still exists at old path (should be archived)"
+fi
+
+echo "[18] Old chapter-03 path does NOT exist: examples/atlaspay/modernization/chapter-03/"
+if [[ ! -d "examples/atlaspay/modernization/chapter-03" ]]; then
+  pass "examples/atlaspay/modernization/chapter-03/ correctly absent"
+else
+  fail "examples/atlaspay/modernization/chapter-03/ still exists (should be archived)"
+fi
+
+echo "[19] Archive root exists: examples/atlaspay/archive/v0.1/"
+if [[ -d examples/atlaspay/archive/v0.1 ]]; then
+  pass "examples/atlaspay/archive/v0.1/ exists"
+else
+  fail "examples/atlaspay/archive/v0.1/ does not exist"
+fi
+
+echo "[20] Current workflow path exists: workflows/full-agentic-modernization/"
+if [[ -d workflows/full-agentic-modernization ]]; then
+  pass "workflows/full-agentic-modernization/ exists"
+else
+  fail "workflows/full-agentic-modernization/ does not exist"
+fi
+
+echo "[21] Old workflow path does NOT exist: workflows/full-agentic-strangler/"
+if [[ ! -d workflows/full-agentic-strangler ]]; then
+  pass "workflows/full-agentic-strangler/ correctly absent"
+else
+  fail "workflows/full-agentic-strangler/ still exists (should be renamed)"
+fi
+
+echo "[22] Current framework definition exists: docs/agentic-mainframe-modernization.md"
+if [[ -f docs/agentic-mainframe-modernization.md ]]; then
+  pass "docs/agentic-mainframe-modernization.md exists"
+else
+  fail "docs/agentic-mainframe-modernization.md does not exist"
+fi
+
+echo "[23] Old framework definition does NOT exist: docs/agentic-strangler.md"
+if [[ ! -f docs/agentic-strangler.md ]]; then
+  pass "docs/agentic-strangler.md correctly absent"
+else
+  fail "docs/agentic-strangler.md still exists (should be renamed)"
+fi
+
+echo "[24] prepare-atlaspay-run.sh excludes archive and prior modernization artifacts"
+SCRIPT="integrations/ibm-bob/understand/prepare-atlaspay-run.sh"
+if [[ -f "$SCRIPT" ]]; then
+  if grep -q "archive" "$SCRIPT" && grep -q "modernization" "$SCRIPT"; then
+    pass "prepare-atlaspay-run.sh references archive and modernization exclusions"
+  else
+    fail "prepare-atlaspay-run.sh does not reference archive/modernization exclusions"
+  fi
+else
+  fail "$SCRIPT does not exist"
+fi
+
+echo "[25] Required evidence run directories exist"
 REQUIRED_RUNS=(
   "evidence/atlaspay/runs/run-001-understand"
   "evidence/atlaspay/runs/run-002-decide"
@@ -218,10 +337,7 @@ for dir in "${REQUIRED_RUNS[@]}"; do
   fi
 done
 
-# -----------------------------------------------------------------------
-# 17. README and book-mapping links point to existing files where practical
-# -----------------------------------------------------------------------
-echo "[17] Key linked files exist"
+echo "[26] Key linked files exist"
 KEY_FILES=(
   "docs/agentic-mainframe-modernization.md"
   "docs/book/book-reference-baseline.md"
@@ -233,6 +349,8 @@ KEY_FILES=(
   "examples/atlaspay/README.md"
   "examples/atlaspay/AGENTS.framework.md"
   "examples/atlaspay/tests/golden-master/cases.yaml"
+  "evidence/atlaspay/runs/run-001-understand/PROVENANCE-NOTE.md"
+  "evidence/atlaspay/runs/run-004-transform/KU13-SCOPE-NOTE.md"
 )
 for f in "${KEY_FILES[@]}"; do
   if [[ -e "$f" ]]; then
@@ -242,10 +360,7 @@ for f in "${KEY_FILES[@]}"; do
   fi
 done
 
-# -----------------------------------------------------------------------
-# 18. JSON files touched by this change parse successfully
-# -----------------------------------------------------------------------
-echo "[18] JSON files parse successfully"
+echo "[27] JSON files parse successfully"
 JSON_FILES=(
   "MANIFEST.json"
 )
@@ -263,10 +378,7 @@ for f in "${JSON_FILES[@]}"; do
   fi
 done
 
-# -----------------------------------------------------------------------
-# 19. YAML files touched by this change parse successfully
-# -----------------------------------------------------------------------
-echo "[19] YAML files parse successfully (if python3/PyYAML available)"
+echo "[28] YAML files parse successfully (if python3/PyYAML available)"
 YAML_FILES=(
   "docs/book/book-baseline.yaml"
   "governance/autonomy-policy.yaml"
@@ -289,62 +401,7 @@ else
   warn "python3 PyYAML not available — YAML parsing skipped"
 fi
 
-# -----------------------------------------------------------------------
-# 20. git diff --check is clean
-# -----------------------------------------------------------------------
-echo "[20] git diff --check is clean"
-if git diff --check 2>/dev/null; then
-  pass "git diff --check is clean"
-else
-  fail "git diff --check found whitespace issues"
-fi
-
-# -----------------------------------------------------------------------
-# 21. Active book/framework files contain no old framework term
-# -----------------------------------------------------------------------
-echo "[21] Active book/framework files contain no legacy term"
-ACTIVE_DIRS=(
-  "docs"
-  "agents"
-  "playbooks"
-  "prompts"
-  "governance"
-  "integrations"
-  "workflows/full-agentic-modernization"
-  "examples/atlaspay/AGENTS.framework.md"
-  "examples/atlaspay/README.md"
-  "README.md"
-)
-LEGACY_FOUND=0
-for target in "${ACTIVE_DIRS[@]}"; do
-  if [[ -e "$target" ]]; then
-    # Exclude CHANGELOG.md (historical facts), archive dirs, evidence dirs
-    if grep -rn "$LEGACY_TERM" "$target" \
-        --include="*.md" --include="*.yaml" --include="*.json" --include="*.sh" \
-        --exclude-dir="archive" \
-        --exclude="CHANGELOG.md" \
-        2>/dev/null | grep -q .; then
-      MATCHES=$(grep -rn "$LEGACY_TERM" "$target" \
-        --include="*.md" --include="*.yaml" --include="*.json" --include="*.sh" \
-        --exclude-dir="archive" \
-        --exclude="CHANGELOG.md" \
-        2>/dev/null)
-      echo "  FAIL: Legacy term found in active material:" >&2
-      echo "$MATCHES" >&2
-      ((FAIL++))
-      LEGACY_FOUND=1
-    fi
-  fi
-done
-if [[ $LEGACY_FOUND -eq 0 ]]; then
-  pass "No legacy term found in active book/framework files"
-fi
-
-# -----------------------------------------------------------------------
-# 22. Synthetic AtlasPay active docs contain no real employer/institution name
-# -----------------------------------------------------------------------
-echo "[22] Active AtlasPay docs contain no real employer/institution name"
-# Check for the specific real employer name that was removed
+echo "[29] Active AtlasPay docs contain no real employer/institution name"
 if grep -rn "U\.S\. Bank\|USBank" \
     examples/atlaspay/README.md \
     examples/atlaspay/AGENTS.framework.md \
@@ -376,6 +433,6 @@ if [[ $FAIL -gt 0 ]]; then
   echo "RESULT: VALIDATION_FAILED ($FAIL failures)"
   exit 1
 else
-  echo "RESULT: BOOK_BASELINE_READY_FOR_HUMAN_REVIEW"
+  echo "RESULT: BOOK_AUTHORING_BASELINE_READY_FOR_HUMAN_REVIEW"
   exit 0
 fi

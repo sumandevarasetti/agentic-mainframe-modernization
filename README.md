@@ -1,7 +1,7 @@
 # Agentic Mainframe Modernization Framework
 
-**Version:** 0.3.9
-**Status:** Book-reference baseline through PROVE
+**Version:** 0.3.10
+**Status:** Book Authoring Baseline
 **Companion project:** *Project Bob — Accelerating Mainframe Modernization with Agentic AI*
 
 > **Read it in the book. Run it in the repo.**
@@ -81,6 +81,7 @@ Frozen evidence from AtlasPay Runs 001–006 is published under `evidence/atlasp
 
 ## Version history
 
+- **v0.3.10** — Book Authoring Baseline: Run 001 provenance clarification, preserved evidence defects documented, KU-13 scope note, wording corrections, full SHA-256 hashes in evidence READMEs. No framework semantic expansion. No application-source change. No frozen evidence mutation. No runtime evidence added. No SHIFT, deployment, or production authorization.
 - **v0.3.9** — Book Reference Baseline & Repository Hygiene: terminology cleanup, canonical AtlasPay source-root clarification, v0.1 archive, isolated-workspace hardening, book mapping refresh, frozen evidence publication, metadata/version alignment.
 - **v0.3.8** — PROVE Evidence-Precision Hardening: hardened claim provenance, baseline-aware historical change claims, caller/callee evidence boundaries, evidence-proportional validation language, PROVE-to-SHIFT separation. AtlasPay Experiment 006 completed with one bounded corrective iteration; `PASS_WITH_DOCUMENTED_EVIDENCE_LIMITATIONS`.
 - **v0.3.7** — PROVE Stage Foundation.

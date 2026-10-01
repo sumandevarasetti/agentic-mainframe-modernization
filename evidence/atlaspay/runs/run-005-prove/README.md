@@ -1,8 +1,10 @@
 # Run 005 — PROVE Evidence
 
-**Lifecycle stage:** PROVE  
-**Original local source path:** `.work/atlaspay-understand-001/runs/atlaspay/prove/run-005/`  
-**Framework version:** v0.3.7 (executed); published under v0.3.9
+**Lifecycle stage:** PROVE
+**Original local source path:** `.work/atlaspay-understand-001/runs/atlaspay/prove/run-005/`
+**Framework version:** v0.3.7 (executed); published under v0.3.10
+
+> **See also:** [KU13-SCOPE-NOTE.md](../run-004-transform/KU13-SCOPE-NOTE.md) — PROVE references to KU-13 as open refer to unresolved historical/business intent (Dimension B), not to regression-oracle authority (which was resolved in Run 004).
 
 ---
 
@@ -10,10 +12,10 @@
 
 | File | Artifact role | Source SHA-256 | Published SHA-256 | Byte-identical | Sanitization | Book citation | Screenshot |
 |---|---|---|---|---|---|---|---|
-| `00-prove-input-manifest.md` | PROVE input artifact manifest | `c0417963` | `c0417963` | YES | None | YES | NO |
-| `01-modernization-proof-package.md` | Raw frozen Modernization Proof Package | `f8629bb6` | `f8629bb6` | YES | None | YES | YES |
-| `02-human-prove-review.md` | Human PROVE review notes | `6676d550` | `6676d550` | YES | None | YES | NO |
-| `03-human-prove-exit-gate.md` | Human PROVE exit gate | `87c25721` | `87c25721` | YES | None | YES | YES |
+| `00-prove-input-manifest.md` | PROVE input artifact manifest | `c0417963ecc5696fa220483fb61e73201e595209e641777c9db868d5f27dd9ec` | `c0417963ecc5696fa220483fb61e73201e595209e641777c9db868d5f27dd9ec` | YES | None | YES | NO |
+| `01-modernization-proof-package.md` | Raw frozen Modernization Proof Package | `f8629bb63629c5dd7c298aa1dc5e067377b902f5692f0edab985818c20cea6df` | `f8629bb63629c5dd7c298aa1dc5e067377b902f5692f0edab985818c20cea6df` | YES | None | YES | YES |
+| `02-human-prove-review.md` | Human PROVE review notes | `6676d55021800c7aa28756690489a7f176d9c4a74c2d41a53f9c602ec9743bcf` | `6676d55021800c7aa28756690489a7f176d9c4a74c2d41a53f9c602ec9743bcf` | YES | None | YES | NO |
+| `03-human-prove-exit-gate.md` | Human PROVE exit gate | `87c25721ae2bac17823dce09431b7bdf5b3fe717be10494a28dd18355ec0ad8b` | `87c25721ae2bac17823dce09431b7bdf5b3fe717be10494a28dd18355ec0ad8b` | YES | None | YES | YES |
 
 ---
 
@@ -21,7 +23,7 @@
 
 **00-prove-input-manifest.md** — Records input artifact hashes fed into the PROVE run, establishing traceability from TRANSFORM output to PROVE input.
 
-**01-modernization-proof-package.md** — The frozen raw Modernization Proof Package produced by IBM Bob / framework before human review. This is the primary PROVE artifact. It was subsequently replaced by the hardened Run 006 version, but this frozen copy represents the initial PROVE attempt.
+**01-modernization-proof-package.md** — The frozen raw Modernization Proof Package produced by IBM Bob / framework before human review. This is the primary PROVE artifact. It was subsequently replaced by the hardened Run 006 version, but this frozen copy represents the initial PROVE attempt. References KU-13 as open — that refers to unresolved business intent (Dimension B); see KU13-SCOPE-NOTE.md.
 
 **02-human-prove-review.md** — Human reviewer notes identifying gaps and issues prior to the Run 006 hardening experiment.
 

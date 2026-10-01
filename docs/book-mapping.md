@@ -1,11 +1,11 @@
 # Book-to-Repository Mapping
 
-**Repository version:** v0.3.9
-**Reference tag:** v0.3.9
+**Repository version:** v0.3.10
+**Reference tag:** v0.3.10
 **Book project:** *Project Bob — Accelerating Mainframe Modernization with Agentic AI*
 **Framework:** Agentic Mainframe Modernization Framework
 
-This file maps book concepts to current logical repository paths. Book prose may cite logical paths for readability; reproduction must be pinned to the v0.3.9 reference tag. Evaluator ground truth is not listed as a reader or book asset.
+This file maps book concepts to current logical repository paths. Book prose may cite logical paths for readability; reproduction must be pinned to the v0.3.10 reference tag. Evaluator ground truth is not listed as a reader or book asset.
 
 ---
 
@@ -18,6 +18,15 @@ This file maps book concepts to current logical repository paths. Book prose may
 | Framework lifecycle overview | `docs/agentic-mainframe-modernization.md` |
 | Core rules | `docs/agentic-mainframe-modernization.md` |
 | Human authority model | `governance/autonomy-policy.yaml` |
+| AtlasPay estate overview | `examples/atlaspay/README.md` |
+| Canonical orchestration source | `examples/atlaspay/src/cobol/TRNLIM01.cbl` |
+| Risk/limit calculation source | `examples/atlaspay/src/cobol/LIMUTIL.cbl` |
+| Active characterization suite | `examples/atlaspay/tests/golden-master/cases.yaml` |
+| Historical characterization artifact (HISTORICAL / PROVENANCE ONLY — NOT CURRENT SOURCE OF TRUTH) | `examples/atlaspay/archive/v0.1/tests/golden-master-cases.yaml` |
+| Frozen Run 001 evidence | `evidence/atlaspay/runs/run-001-understand/` |
+| Run 001 provenance note | `evidence/atlaspay/runs/run-001-understand/PROVENANCE-NOTE.md` |
+| KU-13 human authority evidence | `evidence/atlaspay/runs/run-004-transform/00-ku13-authority-decision.md` |
+| KU-13 scope clarification | `evidence/atlaspay/runs/run-004-transform/KU13-SCOPE-NOTE.md` |
 
 ### Chapter 2 — From AI Coding to Agentic Modernization
 

@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.3.10 — Book Authoring Baseline
+
+- Run 001 provenance clarification: `run-metadata.yaml` documented as supplementary execution context not included in original six-artifact SHA256SUMS freeze set
+- Preserved off-by-one historical evidence citation in `04-known-unknowns-raw.md` (KU-13 line 12 vs. line 13) documented in PROVENANCE-NOTE.md; frozen artifact not repaired
+- Preserved cross-run metadata defect in `run-metadata.yaml` `artifact_persistence.file` field documented in PROVENANCE-NOTE.md; frozen file not modified
+- KU-13 scope clarification: regression-oracle authority (`RESOLVED_FOR_SYNTHETIC_REGRESSION_BASELINE`) distinguished from historical/business intent (`UNRESOLVED / NOT CLAIMED`); KU13-SCOPE-NOTE.md created
+- Book-reference wording corrected: "characterization testing" → "inspection of characterization artifacts"; no executable harness claimed
+- Z Understand wording corrected in book-reference-baseline.md to match actual Run 001 execution (PP4Z workspace mode, Z Understand not configured)
+- Chapter 1 book mapping expanded with AtlasPay source, characterization, and evidence paths
+- Evidence README SHA-256 values expanded to full 64-character hashes in all six run directories
+- Version metadata aligned to 0.3.10 in VERSION, README, MANIFEST, book-baseline.yaml, book-reference-baseline.md, book-mapping.md
+
+No framework semantic expansion.
+No application-source change.
+No frozen evidence mutation.
+No runtime evidence added.
+No SHIFT, deployment, or production authorization.
+
 ## 0.3.9 — Book Reference Baseline & Repository Hygiene
 
 - No framework semantic expansion; lifecycle, evidence gates, and human authority unchanged
