@@ -1,0 +1,31 @@
+book_title: "Project Bob"
+book_subtitle: "Accelerating Mainframe Modernization with Agentic AI"
+repository_version: "0.3.9"
+reference_tag: "v0.3.9"
+
+canonical_estate: "AtlasPay"
+canonical_capability: "Dynamic Transaction Limit"
+canonical_source_root: "examples/atlaspay/src/"
+canonical_test_root: "examples/atlaspay/tests/golden-master/cases.yaml"
+canonical_disposition: "REFACTOR — APPROVED WITH CONDITIONS"
+
+validated_through_stage: "PROVE"
+
+runtime_validation: false
+shift_authorized: false
+deployment_authorized: false
+production_change_authorized: false
+
+framework_name: "Agentic Mainframe Modernization Framework"
+lifecycle:
+  - UNDERSTAND
+  - DECIDE
+  - PLAN
+  - TRANSFORM
+  - PROVE
+  - SHIFT
+  - LEARN
+
+protected_evaluator_asset: "evals/atlaspay/ground-truth.yaml"
+
+historical_archive_root: "examples/atlaspay/archive/v0.1/"

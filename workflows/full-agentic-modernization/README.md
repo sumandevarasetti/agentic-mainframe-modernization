@@ -1,9 +1,9 @@
-# Full Agentic Strangler Workflow
+# Full Agentic Modernization Workflow
 
 **Version:** 0.1.0  
 **Status:** Portable framework skeleton
 
-This directory encodes the seven-stage Agentic Strangler lifecycle as a product-neutral workflow model. It is **not IBM Bob-native syntax**.
+This directory encodes the seven-stage Agentic Mainframe Modernization Framework lifecycle as a product-neutral workflow model. It is **not IBM Bob-native syntax**.
 
 Stages: UNDERSTAND → DECIDE → PLAN → TRANSFORM → PROVE → SHIFT → LEARN → UNDERSTAND.
 

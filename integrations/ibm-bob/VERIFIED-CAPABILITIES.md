@@ -1,8 +1,10 @@
 # IBM Bob Premium Package for Z — Verified Capabilities
 
-**Verification date:** 2026-09-16  
-**Framework release:** v0.3.1  
+**Capability verification date:** 2026-09-16
+**Repository book baseline:** v0.3.9
 **Status:** Source-backed capability dossier
+
+**Important:** Capability statements in this file were verified against IBM documentation at the date shown. Product capabilities and prerequisites can change. All product-specific statements must be rechecked against current IBM documentation before publication or production use.
 
 This file records IBM Bob / Bob Premium Package for Z capabilities supported by current IBM documentation or public IBM announcements. Re-check the source documentation before publication or product-specific execution because capabilities and prerequisites can change.
 
@@ -19,7 +21,7 @@ This file records IBM Bob / Bob Premium Package for Z capabilities supported by 
 
 ## Native Capability First
 
-PP4Z already provides Z-specific modes, workflows, skills, tools and commands. The framework should use those native capabilities when they satisfy a framework task, then adapt/evaluate their outputs against Agentic Strangler evidence contracts.
+PP4Z already provides Z-specific modes, workflows, skills, tools and commands. The framework should use those native capabilities when they satisfy a framework task, then adapt/evaluate their outputs against Agentic Mainframe Modernization Framework evidence contracts.
 
 The framework must not describe a portable YAML playbook as a replacement "Bob Skill."
 

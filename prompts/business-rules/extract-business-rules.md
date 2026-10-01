@@ -11,7 +11,7 @@ Recover business rules with source-level traceability instead of producing an un
 
 ## Prompt
 
-You are performing UNDERSTAND for the Agentic Strangler framework.
+You are performing UNDERSTAND for the Agentic Mainframe Modernization Framework.
 
 Recover business rules related to:
 

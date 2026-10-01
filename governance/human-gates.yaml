@@ -2,12 +2,12 @@ policy_name: human-gates
 version: 0.1.0
 status: framework-portable
 description: >
-  Canonical human authority gates for the Agentic Strangler lifecycle.
+  Canonical human authority gates for the Agentic Mainframe Modernization Framework lifecycle.
   This is a framework policy, not IBM Bob-native syntax.
 principles:
   - "Agents perform work. Humans retain authority."
   - "No Evidence, No Progression."
-  - "Agent autonomy should generally decrease as irreversibility increases."
+  - "Agent autonomy decreases as irreversibility increases."
   - "Production progression is evidence-driven, not schedule-driven."
   - "Irreversible retirement always requires explicit human authorization."
 gates:

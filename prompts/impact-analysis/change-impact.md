@@ -11,7 +11,7 @@ Determine the blast radius of a proposed change without yet selecting a moderniz
 
 ## Prompt
 
-You are performing UNDERSTAND for the Agentic Strangler framework.
+You are performing UNDERSTAND for the Agentic Mainframe Modernization Framework.
 
 Analyze the impact of the proposed change below. Use deterministic/static-analysis metadata when available and source evidence otherwise. Do not treat model inference as fact.
 

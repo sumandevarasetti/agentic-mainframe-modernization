@@ -19,7 +19,7 @@ The source is **not vendored into this repository** in v0.2.0. Use `fetch-cardde
 - preserves clear source attribution
 - avoids repackaging an AWS sample as AtlasPay
 - keeps upstream licensing/NOTICE boundaries obvious
-- lets us evaluate the same Agentic Strangler UNDERSTAND methodology on an independently built estate
+- lets us evaluate the same Agentic Mainframe Modernization Framework UNDERSTAND methodology on an independently built estate
 
 ## Intended use
 

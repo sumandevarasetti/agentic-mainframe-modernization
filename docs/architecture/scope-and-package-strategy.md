@@ -14,7 +14,7 @@ The canonical reference estate is:
 
 ## Other IBM Bob Premium Packages
 
-IBM also offers Premium Packages for other modernization domains, including IBM i and Java modernization. Those packages reinforce that the broader Agentic Strangler concepts may be applicable beyond IBM Z.
+IBM also offers Premium Packages for other modernization domains, including IBM i and Java modernization. Those packages reinforce that the broader Agentic Mainframe Modernization Framework concepts may be applicable beyond IBM Z.
 
 They are **acknowledged but out of scope for the current implementation**.
 
@@ -49,4 +49,4 @@ This means future implementations may map the same framework contracts to other 
 
 For the current book and repository:
 
-> **IBM Bob Premium Package for Z is the primary execution engine; Agentic Strangler is the evidence-driven modernization discipline that governs and evaluates how those capabilities are used.**
+> **IBM Bob Premium Package for Z is the primary execution engine; Agentic Mainframe Modernization Framework is the evidence-driven modernization discipline that governs and evaluates how those capabilities are used.**

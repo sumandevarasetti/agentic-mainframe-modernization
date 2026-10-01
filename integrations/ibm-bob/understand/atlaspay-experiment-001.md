@@ -8,7 +8,7 @@
 
 ## Principle
 
-This experiment tests whether PP4Z capabilities, composed through Agentic Strangler evidence contracts, produce decision-grade understanding.
+This experiment tests whether PP4Z capabilities, composed through Agentic Mainframe Modernization Framework evidence contracts, produce decision-grade understanding.
 
 The reproducible baseline is **PP4Z workspace mode**. Z Understand may be added when independently available and authorized, but it is not required for this experiment and must not be simulated.
 

@@ -11,7 +11,7 @@ Discover the full technical footprint of a business capability before any modern
 
 ## Prompt
 
-You are performing the UNDERSTAND stage of the Agentic Strangler framework.
+You are performing the UNDERSTAND stage of the Agentic Mainframe Modernization Framework.
 
 Analyze the requested business capability across the available workspace. Do not assume the capability is implemented in a single program or language.
 

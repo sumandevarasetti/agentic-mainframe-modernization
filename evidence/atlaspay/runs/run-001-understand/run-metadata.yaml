@@ -1,0 +1,71 @@
+run_id: atlaspay-understand-001
+
+experiment:
+  name: AtlasPay UNDERSTAND Experiment 001
+  capability: Dynamic Transaction Limit
+  estate: AtlasPay
+  execution_mode: pp4z-workspace
+
+framework:
+  name: Agentic Mainframe Modernization Framework
+  version: v0.3.2
+  lifecycle_stage: UNDERSTAND
+
+product:
+  name: IBM Bob
+  package: Premium Package for Z
+  bob_version: 2.1.0
+  run_date: 2026-09-16
+
+environment:
+  workspace_isolated: true
+
+  z_understand:
+    configured: false
+    reason: server_not_available_for_this_experiment
+
+  data_dictionary:
+    dd_json_available: false
+
+  agents:
+    generated_via_init: true
+    framework_overlay_merged: true
+
+evaluation:
+  ground_truth_hidden_from_bob: true
+  ground_truth_path: evals/atlaspay/ground-truth.yaml
+  ground_truth_present_in_workspace: false
+
+constraints:
+  read_only_understand_stage: true
+  modernization_recommendation_allowed: false
+  manual_correction_before_scoring: false
+  proprietary_data_allowed: false
+
+outputs:
+  broad_analysis: completed
+  impact_analysis: completed
+  business_rules: completed
+  known_unknowns: completed_recovered
+  playbook_gap_analysis: completed
+  evidence_pack: completed
+
+supplemental_prompting:
+  required: false
+
+understand_stage:
+  frozen: true
+  ground_truth_used: false
+  exit_assessment: pending_external_evaluation
+
+status: frozen_before_ground_truth
+
+artifact_persistence:
+  file: 03-modernization-decision-record-final.md
+  bob_analysis_completed: true
+  bob_file_write_completed: false
+  failure: AI_APICallError
+  recovery_method: manual_patch_from_bob_explicit_correction_map
+  semantic_reanalysis_performed: false
+  advisory_disposition_changed: false
+  

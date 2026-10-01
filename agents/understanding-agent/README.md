@@ -1,6 +1,6 @@
 # Understanding Agent
 
-The Understanding Agent is the **framework-level read-only orchestrator** for the UNDERSTAND stage of the Agentic Strangler.
+The Understanding Agent is the **framework-level read-only orchestrator** for the UNDERSTAND stage of the Agentic Mainframe Modernization Framework.
 
 It does not replace IBM Bob Premium Package for Z modes, skills, workflows, tools, or Z Understand. On IBM Z, it maps framework playbooks to verified native PP4Z capabilities and adapts the resulting evidence into a Current-State Evidence Pack.
 

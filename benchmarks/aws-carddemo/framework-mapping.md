@@ -1,4 +1,4 @@
-# CardDemo -> Agentic Strangler Mapping
+# CardDemo -> Agentic Mainframe Modernization Framework Mapping
 
 CardDemo is an external benchmark, so the framework should discover its structure rather than importing AtlasPay assumptions.
 

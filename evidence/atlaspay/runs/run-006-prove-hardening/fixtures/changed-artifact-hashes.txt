@@ -1,0 +1,17 @@
+# Experiment 006 — Changed Artifact Hash Evidence
+
+## LIMITPOL
+6677042015ae40faff8dc221ba4a6bdbc50af5b313ce5a2b2ddc9abcfb7101ec  .work/atlaspay-understand-001/runs/atlaspay/transform/run-004/LIMITPOL.pre-slice-1a.cbl
+ca425f9884d7a729c38a0f8b4b517b065d6f2d903ccb3509203591ec85759b04  .work/atlaspay-understand-001/src/cobol/LIMITPOL.cbl
+
+## EXCEPT01
+068d35b4af57b2141f02f886b1ca8c0940ed3a7379b2f4c559125ad35294bc3d  .work/atlaspay-understand-001/runs/atlaspay/transform/run-004/EXCEPT01.pre-slice-2a.cbl
+6735cae2ebc0c354aa51d37af5ff1dd7ff43328d68fda6a7d427a755b33a21a1  .work/atlaspay-understand-001/src/cobol/EXCEPT01.cbl
+
+## CUSTRSK
+0f936009163cf716fa62813916e27ac8cf307016d00088d0d09e99b7ed217b25  .work/atlaspay-understand-001/runs/atlaspay/transform/run-004/CUSTRSK.pre-slice-4a.cbl
+45d138b5d947b06e01450e00f92db6e758c957f8cd2109b1a58a5144e777310a  .work/atlaspay-understand-001/src/cobol/CUSTRSK.cbl
+
+## TRNLIM01
+4da600249d86a26bbc17d94910833c2fedacfdab7cf567b52b5ec73e3ea9d552  .work/atlaspay-understand-001/runs/atlaspay/transform/run-004/TRNLIM01.pre-slice-4a.cbl
+2e9f5594d5e5cfcce7d09178c9872117d1e4429cdf9681bbdcb1bcaf0cf3760b  .work/atlaspay-understand-001/src/cobol/TRNLIM01.cbl

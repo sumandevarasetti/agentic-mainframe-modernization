@@ -1,6 +1,6 @@
 # Framework Playbooks
 
-Playbooks are **vendor-neutral execution and evidence contracts** for Agentic Strangler stages.
+Playbooks are **vendor-neutral execution and evidence contracts** for Agentic Mainframe Modernization Framework stages.
 
 ## Native capability first
 

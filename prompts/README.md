@@ -1,6 +1,6 @@
 # Supplemental Framework Prompts
 
-Prompt assets in this repository standardize evidence requests and close gaps between native product outputs and Agentic Strangler evidence contracts.
+Prompt assets in this repository standardize evidence requests and close gaps between native product outputs and Agentic Mainframe Modernization Framework evidence contracts.
 
 ## Native capability first
 

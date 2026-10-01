@@ -1,38 +1,27 @@
-# The Agentic Strangler
+# Agentic Mainframe Modernization Framework
 
-**Framework version:** 0.1.0  
-**Status:** Canonical public definition  
+**Framework version:** 0.3.9
+**Status:** Canonical public definition
 **Companion book:** *Project Bob — Accelerating Mainframe Modernization with Agentic AI*
 
-## Relationship to Project Strangler
+## Framework overview
 
-The architectural lifecycle is:
+The Agentic Mainframe Modernization Framework is a human-governed, evidence-driven lifecycle for incrementally modernizing mainframe capabilities. It is not a code-conversion tool. It is a methodology for deciding what should change, in what order, with what proof, and under whose authority.
 
-**Observe → Encapsulate → Extract → Redirect → Retire**
+The framework lifecycle is:
 
-The Agentic Strangler does not replace it. It adds a human-governed execution loop:
+**UNDERSTAND → DECIDE → PLAN → TRANSFORM → PROVE → SHIFT → LEARN**
 
-# UNDERSTAND → DECIDE → PLAN → TRANSFORM → PROVE → SHIFT → LEARN
-
-The architectural lifecycle describes **how the legacy footprint evolves**. The Agentic Strangler describes **how a human-agent engineering system executes each safe modernization increment**.
-
-## Phrase originality
-
-This repository does **not** claim that the phrase "Agentic Strangler" was coined here. The contribution is the specific mainframe-oriented lifecycle, evidence model, human authority model, reusable workflow structure, and reference implementation.
-
-## Core thesis
-
-> The defining contribution of agentic AI to mainframe modernization is not automatic code generation. It is the ability to compress the cycle from understanding a legacy capability to making, proving, and safely introducing a modernization decision.
-
-## Operating rules
+## Core rules
 
 1. **No Evidence, No Progression.**
 2. **Agents perform work. Humans retain authority.**
-3. **Agent autonomy should generally decrease as irreversibility increases.**
+3. **Agent autonomy decreases as irreversibility increases.**
 4. **Modernization is decision-first, not generation-first.**
 5. **KEEP is a valid modernization decision.**
 6. **Production progression is evidence-driven, not schedule-driven.**
 7. **LEARN turns one increment into reusable knowledge for the next.**
+8. **Native Capability First.**
 
 ---
 
@@ -168,7 +157,7 @@ UNDERSTAND
 
 # Human authority and irreversibility
 
-> **Agent autonomy should generally decrease as irreversibility increases.**
+> **Agent autonomy decreases as irreversibility increases.**
 
 ```text
 MORE REVERSIBLE                                            LESS REVERSIBLE
@@ -176,9 +165,9 @@ MORE REVERSIBLE                                            LESS REVERSIBLE
 Analyze → Recommend → Generate → Test → Deploy → Shift → Retire
 ```
 
-# Automated Rewrite vs. Agentic Strangler
+# Agentic modernization vs. automated rewrite
 
-| Automated Rewrite | Agentic Strangler |
+| Automated Rewrite | Agentic Modernization |
 |---|---|
 | Starts with code | Starts with understanding |
 | Assumes transformation | Decides whether transformation is appropriate |
@@ -189,7 +178,7 @@ Analyze → Recommend → Generate → Test → Deploy → Shift → Retire
 | Human review late | Human authority at consequential gates |
 | Tool-centric | Methodology-centric |
 
-> Automated rewriting asks, “How quickly can we convert this code?” The Agentic Strangler asks, “What should change, why, how little can we safely change, and what evidence would justify that change?”
+> Automated rewriting asks, "How quickly can we convert this code?" The Agentic Mainframe Modernization Framework asks, "What should change, why, how little can we safely change, and what evidence would justify that change?"
 
 # KEEP is a valid outcome
 
@@ -198,6 +187,6 @@ A modernization system must be able to recommend **KEEP** when a capability is s
 # Related assets
 
 - [Human Gates](../governance/human-gates.yaml)
-- [Full Agentic Strangler Workflow](../workflows/full-agentic-strangler/)
-- [AtlasPay Chapter 3 Example](../examples/atlaspay/modernization/chapter-03/)
+- [Full Agentic Modernization Workflow](../workflows/full-agentic-modernization/)
 - [Book Mapping](book-mapping.md)
+- [Book Baseline](book/book-reference-baseline.md)

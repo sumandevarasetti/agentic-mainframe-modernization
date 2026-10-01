@@ -6,7 +6,7 @@ IBM Bob Premium Package for Z (PP4Z) is the primary IBM Z reference implementati
 
 > **Do not rebuild a verified PP4Z capability in the framework. Compose it.**
 
-The Agentic Strangler layer defines lifecycle, evidence contracts, human gates, evaluation and progression criteria. PP4Z supplies Z-specific execution capabilities.
+The Agentic Mainframe Modernization Framework layer defines lifecycle, evidence contracts, human gates, evaluation and progression criteria. PP4Z supplies Z-specific execution capabilities.
 
 ## Experiments
 

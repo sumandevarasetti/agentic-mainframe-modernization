@@ -1,6 +1,6 @@
 example: AtlasPay Dynamic Transaction Limit
 status: illustrative-framework-example
-workflow: full-agentic-strangler
+workflow: full-agentic-modernization
 stages:
   UNDERSTAND:
     output: current_state_evidence_pack

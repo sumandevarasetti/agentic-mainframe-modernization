@@ -1,15 +1,23 @@
 {
   "repository": "agentic-mainframe-modernization",
-  "version": "0.2.0",
-  "status": "reference-estates-and-benchmark-foundation",
+  "version": "0.3.9",
+  "status": "book-reference-baseline",
   "key_assets": [
-    "docs/agentic-strangler.md",
+    "docs/agentic-mainframe-modernization.md",
+    "docs/book/book-reference-baseline.md",
+    "docs/book/book-baseline.yaml",
+    "docs/book-mapping.md",
     "governance/human-gates.yaml",
-    "workflows/full-agentic-strangler/",
-    "examples/atlaspay/",
-    "evals/atlaspay/ground-truth.yaml",
+    "governance/autonomy-policy.yaml",
+    "workflows/full-agentic-modernization/",
+    "examples/atlaspay/src/",
+    "examples/atlaspay/tests/golden-master/cases.yaml",
+    "evidence/atlaspay/runs/",
     "evals/common/metrics.md",
     "benchmarks/aws-carddemo/"
   ],
-  "note": "Per-file cryptographic manifests may be generated as part of a future release automation workflow."
+  "protected_evaluator_assets": [
+    "evals/atlaspay/ground-truth.yaml"
+  ],
+  "note": "Evaluator ground truth is excluded from key_assets. It is a post-run scoring artifact only and must never be exposed during a Bob run."
 }

@@ -1,7 +1,7 @@
 policy_name: autonomy-policy
 version: 0.1.0
 status: framework-portable
-rule: "Agent autonomy should generally decrease as irreversibility increases."
+rule: "Agent autonomy decreases as irreversibility increases."
 levels:
   A0:
     name: observe-only

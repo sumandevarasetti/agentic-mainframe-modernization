@@ -1,6 +1,6 @@
 # Native Capability First
 
-**Framework rule:** When a target product already provides a verified capability, the Agentic Strangler Framework should compose, govern, evaluate, or extend that capability rather than rebuild it.
+**Framework rule:** When a target product already provides a verified capability, the Agentic Mainframe Modernization Framework should compose, govern, evaluate, or extend that capability rather than rebuild it.
 
 ## Current implementation scope
 
@@ -14,7 +14,7 @@ Agentic Mainframe Modernization is a methodology layer, not an alternative mainf
 
 ## Three layers
 
-### 1. Agentic Strangler Framework
+### 1. Agentic Mainframe Modernization Framework
 
 Defines:
 
